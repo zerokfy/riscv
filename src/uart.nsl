@@ -1,0 +1,65 @@
+//  Baud-rate : 115200bps
+declare uart {
+    input       uart_tx;
+    output      uart_rx;
+    input       txd[8];
+    output      rxd[8];
+    func_out    uart_rxd(rxd);
+    func_in     uart_txd(txd);
+}
+
+module uart {
+    reg         count[10];
+    reg         rx_cnt[4];
+    reg         uart_rx_d;
+    reg         uart_rx_d2;
+    reg         uart_rx_d3;
+    proc_name   count_start();
+    proc_name   tranceive();
+
+    //  Synchronization
+    uart_rx_d   :=  uart_rx;
+    uart_rx_d2  :=  uart_rx_d;
+    uart_rx_d3  :=  uart_rx_d2;
+    if(uart_rx_d3 & ~uart_rx_d2) {
+        count   :=  10'h000;
+        count_start();
+    }
+
+    proc count_start {
+        count++;
+        any {
+            count_start == 216  : {
+                                    count   := 10'h000;
+                                    rx_cnt  := 4'h0;
+                                    tranceive();
+                                  }
+            uart_rx_d2          : count_start.finish();
+        }
+    }
+
+    proc tranceive {
+        count++;
+        any {
+            count == 216    : {
+                                uart_tx :=  tx_buf[7];
+                                tx_buf  :=  {tx_buf[6:0], 1'b0};
+                              }
+            count == 433    : {
+                                rx_cnt++;
+                                count   :=  10'h000;
+                                rx_buf  :=  {rx_buf[7:1], uart_rx};
+                                tranceive();
+                              }
+            rx_cnt == 8     : {
+                                uart_rxd(rx_buf);
+                                tranceive.finish();
+                              }
+        }
+    }
+
+    func uart_txd {
+        tx_buf  :=  txd;
+    }
+}
+
