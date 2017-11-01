@@ -1,2 +1,50 @@
 declare dmac {
-    input
+    input           HRDATA[31:0];
+    output          HADDR[31:0],
+                    HWDATA[31:0],
+                    HBURST[2:0],
+                    HSIZE[1:0],
+                    HTRANS[1:0],
+                    HWRITE;
+    input           BR, BO;
+    output          BG;
+    input           rxd[7:0];
+    output          txd[7:0];
+
+    func_in         uart_rxd(txd);
+    func_out        bus_req();
+    func_in         bus_grant();
+    func_out        bus_open();
+
+    func_in         uart_txd();
+}
+
+module dmac {
+    reg             txd_buf[7:0],
+                    rxd_buf[7:0];
+
+    func uart_rxd {
+        rxd_buf :=  rxd;
+        bus_req();
+    }
+
+    func bus_grant {
+        HADDR[31:0]     :=  0x0000_1000;
+        HWDATA[31:0]    :=  {24'h000_0000, rxd_buf};
+        HBURST[2:0]     :=  3'h0;
+        HSIZE[1:0]      :=  2'h0;
+        HTRANS[1:0]     :=  2'b01;
+        HWRITE          :=  1'b1;
+        bus_open();
+    }
+        
+    func uart_rxd {
+        HADDR[31:0]     :=  0x0000_1000;
+        txd_buf         :=  HRDATA[7:0];
+        HBURST[2:0]     :=  3'h0;
+        HSIZE[1:0]      :=  2'h0;
+        HTRANS[1:0]     :=  2'b01;
+        HWRITE          :=  1'b0;
+    }
+}
+
