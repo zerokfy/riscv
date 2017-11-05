@@ -48,7 +48,7 @@ module uart {
             count == 433    : {
                                 rx_cnt++;
                                 count   :=  10'h000;
-                                rx_buf  :=  {rx_buf[7:1], uart_rx};
+                                rx_buf  :=  {rx_buf[6:0], uart_rx};
                                 tranceive();
                               }
             rx_cnt == 8     : {
