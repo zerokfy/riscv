@@ -1,3 +1,3 @@
 all:
-	nsl2vl dmac.nsl
+	nsl2vl core.nsl
 

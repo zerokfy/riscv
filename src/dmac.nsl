@@ -1,13 +1,13 @@
 declare dmac {
-    input           HRDATA[31:0];
-    output          HADDR[31:0],
-                    HWDATA[31:0],
-                    HBURST[2:0],
-                    HSIZE[1:0],
-                    HTRANS[1:0],
+    input           HRDATA[32];
+    output          HADDR[32],
+                    HWDATA[32],
+                    HBURST[3],
+                    HSIZE[2],
+                    HTRANS[2],
                     HWRITE;
-    input           rxd[7:0];
-    output          txd[7:0];
+    input           rxd[8];
+    output          txd[8];
 
     func_in         write_req(rxd);
     func_in         read_req();
@@ -18,10 +18,9 @@ declare dmac {
 }
 
 module dmac {
-    reg             txd_buf[7:0],
-                    rxd_buf[7:0],
-                    write,
-                    txd_dummy;
+    reg             txd_buf[8],
+                    rxd_buf[8],
+                    write;
     func_self       exec_write(),
                     exec_read();
 
@@ -44,28 +43,34 @@ module dmac {
     func exec_write {
         seq {
             {
-                HADDR[31:0]     :=  32'h0000_1000;
-                HBURST[2:0]     :=  3'h0;
-                HSIZE[1:0]      :=  2'h0;
-                HTRANS[1:0]     :=  2'b01;
-                HWRITE          :=  write;
+                HADDR       =  32'h0000_1000;
+                HBURST      =  3'h0;
+                HSIZE       =  2'h0;
+                HTRANS      =  2'b01;
+                HWRITE      =  write;
             }
-            HWDATA[31:0]    :=  {24'h000_0000, rxd_buf};
+            {
+                HWDATA  =  {24'h000_0000, rxd_buf};
+                bus_open();
+            }
         }
     }
         
     func exec_read {
         seq {
             {
-                HADDR[31:0]     :=  32'h0000_1000;
-                HBURST[2:0]     :=  3'h0;
-                HSIZE[1:0]      :=  2'h0;
-                HTRANS[1:0]     :=  2'b01;
-                HWRITE          :=  write;
+                HADDR       =  32'h0000_1000;
+                HBURST      =  3'h0;
+                HSIZE       =  2'h0;
+                HTRANS      =  2'b01;
+                HWRITE      =  write;
             }
-            txd_dummy       :=  HRDATA[7:0];
-            txd_buf         :=  HRDATA[7:0];
-            read_ack(txd_buf);
+            txd_buf := HRDATA[7:0];
+            {
+                txd_buf    :=  HRDATA[7:0];
+                read_ack(txd_buf);
+                bus_open();
+            }
         }
     }
 }

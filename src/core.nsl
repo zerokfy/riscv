@@ -1,0 +1,41 @@
+#define     INST_ADDR       32'h0001_0000;
+
+declare core {
+    input           idata
+                  , iaddr
+                  , daddr
+                  , rdata
+                  ;
+    output          wdata
+                  ;
+    func_out        mem_read(iaddr) : idata
+                  ;
+}
+
+module core {
+
+    reg             pc = INST_ADDR
+                  , inst
+                  ;
+    proc_name       ift,
+                    dec(inst),
+                    exec,
+                    macc,
+                    wbak;
+
+    proc ift {
+        dec(mem_read(pc++));
+    }
+
+    proc dec {
+        exec();
+    }
+
+    proc exec {
+        macc();
+    }
+
+    proc wbak {
+        ift();
+    }
+}
