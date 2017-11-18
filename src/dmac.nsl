@@ -1,50 +1,77 @@
 declare dmac {
-    input           HRDATA[31:0];
-    output          HADDR[31:0],
-                    HWDATA[31:0],
-                    HBURST[2:0],
-                    HSIZE[1:0],
-                    HTRANS[1:0],
+    input           HRDATA[32];
+    output          HADDR[32],
+                    HWDATA[32],
+                    HBURST[3],
+                    HSIZE[2],
+                    HTRANS[2],
                     HWRITE;
-    input           BR, BO;
-    output          BG;
-    input           rxd[7:0];
-    output          txd[7:0];
+    input           rxd[8];
+    output          txd[8];
 
-    func_in         uart_rxd(txd);
+    func_in         write_req(rxd);
+    func_in         read_req();
+    func_out        read_ack(txd);
     func_out        bus_req();
     func_in         bus_grant();
     func_out        bus_open();
-
-    func_in         uart_txd();
 }
 
 module dmac {
-    reg             txd_buf[7:0],
-                    rxd_buf[7:0];
+    reg             txd_buf[8],
+                    rxd_buf[8],
+                    write;
+    func_self       exec_write(),
+                    exec_read();
 
-    func uart_rxd {
-        rxd_buf :=  rxd;
+    func write_req {
+        rxd_buf         :=  rxd;
+        write           :=  1'b1;
+        bus_req();
+    }
+
+    func read_req {
+        write           :=  1'b0;
         bus_req();
     }
 
     func bus_grant {
-        HADDR[31:0]     :=  0x0000_1000;
-        HWDATA[31:0]    :=  {24'h000_0000, rxd_buf};
-        HBURST[2:0]     :=  3'h0;
-        HSIZE[1:0]      :=  2'h0;
-        HTRANS[1:0]     :=  2'b01;
-        HWRITE          :=  1'b1;
-        bus_open();
+        if(write)   exec_write();
+        else        exec_read();
+    }
+
+    func exec_write {
+        seq {
+            {
+                HADDR       =  32'h0000_1000;
+                HBURST      =  3'h0;
+                HSIZE       =  2'h0;
+                HTRANS      =  2'b01;
+                HWRITE      =  write;
+            }
+            {
+                HWDATA  =  {24'h000_0000, rxd_buf};
+                bus_open();
+            }
+        }
     }
         
-    func uart_rxd {
-        HADDR[31:0]     :=  0x0000_1000;
-        txd_buf         :=  HRDATA[7:0];
-        HBURST[2:0]     :=  3'h0;
-        HSIZE[1:0]      :=  2'h0;
-        HTRANS[1:0]     :=  2'b01;
-        HWRITE          :=  1'b0;
+    func exec_read {
+        seq {
+            {
+                HADDR       =  32'h0000_1000;
+                HBURST      =  3'h0;
+                HSIZE       =  2'h0;
+                HTRANS      =  2'b01;
+                HWRITE      =  write;
+            }
+            txd_buf := HRDATA[7:0];
+            {
+                txd_buf    :=  HRDATA[7:0];
+                read_ack(txd_buf);
+                bus_open();
+            }
+        }
     }
 }
 
