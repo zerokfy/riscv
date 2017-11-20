@@ -12,27 +12,66 @@ declare core {
                   ;
 }
 
-module core {
+struct dec_inst {
+    funct[10];
+    imm[12];
+    rs2[5];
+    rs1[5];
+    rd[5];
+    opcode[5];
+};
 
-    reg             pc = INST_ADDR
-                  , inst
-                  ;
-    proc_name       ift,
-                    dec(inst),
-                    exec,
-                    macc,
-                    wbak;
+module core {
+    dec_inst reg      dec_inst
+                    ;
+    reg               pc = INST_ADDR
+                    , inst[32]
+                    , rs1[5]
+                    , rs2[5]
+                    , rd[5]
+                    , imm[20];
+                    ;
+    proc_name         ift
+                    , dec(inst)
+                    , exec
+                    , macc(rs1, rs2, rd, imm)
+                    , wbak
+                    ;
 
     proc ift {
         dec(mem_read(pc++));
     }
 
     proc dec {
+        any {
+            inst[6:2] == 5'h0D  : {
+                macc(5'h0, 5'h0, inst[11:7], inst[31:12]); 
+                inst_LUI    = 1;
+            }
+            inst[6:2] == 5'h05  : {
+                macc(5'h0, 5'h0, inst[11:7], inst[31:12]);
+                inst_AUIPC  = 1;
+            }
+            inst[6:2] == 5'h1B  : {
+                macc(5'h0, 5'h0, inst[11:7], {inst[31], inst[19:12], inst[20], inst[30:21]});
+                inst_JAL    = 1;
+            }
+            inst[6:2] == 5'h19  : {
+                macc(inst[19:15], 5'h0, inst[11:7], {8'h00, inst[31:20});
+                inst_JALR   = 1;
+            }
+            inst[6:2] == 5'h18  : {
+                macc(inst[19:15], inst[24:20], 5'h0, {})
+        }
         exec();
     }
 
     proc exec {
         macc();
+    }
+
+    proc macc {
+        wbak();
     }
 
     proc wbak {
