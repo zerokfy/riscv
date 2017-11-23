@@ -21,20 +21,25 @@ struct dec_inst {
     opcode[5];
 };
 
+struct general {
+    gr[32];
+};
+
 module core {
-    dec_inst reg      dec_inst
-                    ;
+    dec_inst    reg   dec_inst;
+    general     reg   gen_reg[32] = 32'h0000_0000;
     reg               pc = INST_ADDR
                     , inst[32]
                     , rs1[5]
                     , rs2[5]
                     , rd[5]
-                    , imm[20];
+                    , imm[20]
+    wire            , pre_imm[20]
                     ;
     proc_name         ift
                     , dec(inst)
-                    , exec
-                    , macc(rs1, rs2, rd, imm)
+                    , exec(rs1, rs2, rd, imm)
+                    , macc
                     , wbak
                     ;
 
@@ -43,27 +48,154 @@ module core {
     }
 
     proc dec {
+        exec();
         any {
-            inst[6:2] == 5'h0D  : {
-                macc(5'h0, 5'h0, inst[11:7], inst[31:12]); 
-                inst_LUI    = 1;
+            inst[6:2] == 5'h00  : {
+                pre_imm = {8'h00, inst[31:20]};
+                exec(inst[19:15], 5'h00, inst[11:7], pre_imm);
+                any {
+                    inst[14:12] == 3'h0 :   inst_LB     = 1'b1;
+                    inst[14:12] == 3'h1 :   inst_LH     = 1'b1;
+                    inst[14:12] == 3'h2 :   inst_LW     = 1'b1;
+                    inst[14:12] == 3'h4 :   inst_LBU    = 1'b1;
+                    inst[14:12] == 3'h5 :   inst_LHU    = 1'b1;
+                }
+            }
+            inst[6:2] == 5'h03  : {
+                //  FENCE and FENCE.I Instructions are not implement
+                //  since out of order is also not
+                ift();
+            }
+            inst[6:2] == 5'h04  : {
+                pre_imm = {8'h00, inst[31:20]};
+                exec(inst[19:15], 5'h00, inst[11:7], pre_imm);
+                any {
+                    inst[14:12] == 3'h0 :   inst_ADDI   = 1'b1;
+                    inst[14:12] == 3'h1 :   inst_SLLI   = 1'b1;
+                    inst[14:12] == 3'h2 :   inst_SLTI   = 1'b1;
+                    inst[14:12] == 3'h3 :   inst_SLTIU  = 1'b1;
+                    inst[14:12] == 3'h4 :   inst_XORI   = 1'b1;
+                    inst[14:12] == 3'h5 :   any {
+                                                inst[31:25] == 7'h00 :  inst_SRLI = 1'b1;
+                                                inst[31:25] == 7'h20 :  inst_SRAI = 1'b1;
+                                            }
+                    inst[14:12] == 3'h6 :   inst_ORI    = 1'b1;
+                    inst[14:12] == 3'h7 :   inst_ANDI   = 1'b1;
+                }
             }
             inst[6:2] == 5'h05  : {
-                macc(5'h0, 5'h0, inst[11:7], inst[31:12]);
-                inst_AUIPC  = 1;
+                pre_imm = {13'h0000, inst[31:25]};
+                exec(5'h00, 5'h00, inst[11:7], pre_imm);
+                inst_AUIPC  = 1'b1;
             }
-            inst[6:2] == 5'h1B  : {
-                macc(5'h0, 5'h0, inst[11:7], {inst[31], inst[19:12], inst[20], inst[30:21]});
-                inst_JAL    = 1;
+            inst[6:2] == 5'h08  : {
+                pre_imm = {13'h0000, inst[31:25]};
+                exec(inst[19:15], inst[24:20], 5'h00, pre_imm);
+                any{
+                    inst[14:12] == 3'h0 :   inst_SB     = 1'b1;
+                    inst[14:12] == 3'h1 :   inst_SH     = 1'b1;
+                    inst[14:12] == 3'h2 :   inst_SW     = 1'b1;
+                }
             }
-            inst[6:2] == 5'h19  : {
-                macc(inst[19:15], 5'h0, inst[11:7], {8'h00, inst[31:20});
-                inst_JALR   = 1;
+            inst[6:2] == 5'h0B  : {
+                pre_imm = {13'h0000, inst[31:25]};
+                exec(inst[19:15], inst[24:20], inst[11:7], pre_imm);
+                any{
+                    inst[31:27] == 5'h00 :  inst_AMOADDW    = 1'b1;
+                    inst[31:27] == 5'h01 :  inst_AMOSWAPW   = 1'b1;
+                    inst[31:27] == 5'h02 :  inst_LRW        = 1'b1;
+                    inst[31:27] == 5'h03 :  inst_SCW        = 1'b1;
+                    inst[31:27] == 5'h04 :  inst_AMOXORW    = 1'b1;
+                    inst[31:27] == 5'h08 :  inst_AMOORW     = 1'b1;
+                    inst[31:27] == 5'h0C :  inst_AMOANDW    = 1'b1;
+                    inst[31:27] == 5'h10 :  inst_AMOMINW    = 1'b1;
+                    inst[31:27] == 5'h14 :  inst_AMOMAXW    = 1'b1;
+                    inst[31:27] == 5'h18 :  inst_AMOMINUW   = 1'b1;
+                    inst[31:27] == 5'h1C :  inst_AMOMAXUW   = 1'b1;
+                }
+            }
+            inst[6:2] == 5'h0C  : any {
+                inst[25] :  {
+                                exec(inst[19:15], inst[24:20], inst[11:7], 20'h0_0000);
+                                any {
+                                    inst[14:12] == 3'h0 :   any {
+                                                                inst[30] :  inst_ADD = 1'b1;
+                                                               !inst[30] :  inst_SUB = 1'b1;
+                                                            }
+                                    inst[14:12] == 3'h1 :   inst_SLL    = 1'b1;
+                                    inst[14:12] == 3'h2 :   inst_SLT    = 1'b1;
+                                    inst[14:12] == 3'h3 :   inst_SLTU   = 1'b1;
+                                    inst[14:12] == 3'h4 :   inst_XOR    = 1'b1;
+                                    inst[14:12] == 3'h5 :   any {
+                                                                inst[30] :  inst_SRL = 1'b1;
+                                                               !inst[30] :  inst_SRA = 1'b1;
+                                                            }
+                                    inst[14:12] == 3'h6 :   inst_OR     = 1'b1;
+                                    inst[14:12] == 3'h7 :   inst_AND    = 1'b1;
+                                }
+                            }
+               !inst[25] :  {
+                                exec(inst[19:15], inst[24:20], inst[11:7], 20'h0_0000);
+                                any {
+                                    inst[14:12] == 3'h0 :   inst_MUL    = 1'b1;
+                                    inst[14:12] == 3'h1 :   inst_MULH   = 1'b1;
+                                    inst[14:12] == 3'h2 :   inst_MULHSU = 1'b1;
+                                    inst[14:12] == 3'h3 :   inst_MULHU  = 1'b1;
+                                    inst[14:12] == 3'h4 :   inst_DIV    = 1'b1;
+                                    inst[14:12] == 3'h5 :   inst_DIVU   = 1'b1;
+                                    inst[14:12] == 3'h6 :   inst_REM    = 1'b1;
+                                    inst[14:12] == 3'h7 :   inst_REMU   = 1'b1;
+                                }
+                            }
+            }
+            inst[6:2] == 5'h0D  : {
+                pre_imm = inst[31:12];
+                exec(5'h00, 5'h00, inst[11:7], pre_imm); 
+                inst_LUI    = 1'b1;
             }
             inst[6:2] == 5'h18  : {
-                macc(inst[19:15], inst[24:20], 5'h0, {})
+                pre_imm = {inst[31], inst[7], inst[30:25], inst[11:8], 1'b0});
+                exec(inst[19:15], inst[24:20], 5'h00, pre_imm);
+                any {
+                    inst[14:12] == 3'h0 :   inst_BEQ    = 1'b1;
+                    inst[14:12] == 3'h1 :   inst_BNE    = 1'b1;
+                    inst[14:12] == 3'h4 :   inst_BLT    = 1'b1;
+                    inst[14:12] == 3'h5 :   inst_BGE    = 1'b1;
+                    inst[14:12] == 3'h6 :   inst_BLTU   = 1'b1;
+                    inst[14:12] == 3'h7 :   inst_BGEU   = 1'b1;
+                }
+            }
+            inst[6:2] == 5'h19  : {
+                pre_imm = {8'h00, inst[31:20};
+                exec(inst[19:15], 5'h00, inst[11:7], pre_imm);
+                inst_JALR   = 1'b1;
+            }
+            inst[6:2] == 5'h1B  : {
+                pre_imm = {inst[31], inst[19:12], inst[20], inst[30:21]};
+                exec(5'h00, 5'h00, inst[11:7], pre_imm);
+                inst_JAL    = 1'b1;
+            }
+            inst[6:2] == 5'h1C  : {
+                inst[14:12] :   {
+                                    exec(inst[19:15], 5'h00, inst[11:7], inst[31:20]);
+                                    any {
+                                        inst[14:12] == 3'h1 :   inst_CSRRW  = 1'b1;
+                                        inst[14:12] == 3'h2 :   inst_CSRRS  = 1'b1;
+                                        inst[14:12] == 3'h3 :   inst_CSRRC  = 1'b1;
+                                        inst[14:12] == 3'h5 :   inst_CSRRWI = 1'b1;
+                                        inst[14:12] == 3'h6 :   inst_CSRRSI = 1'b1;
+                                        inst[14:12] == 3'h7 :   inst_CSRRCI = 1'b1;
+                                    }
+                                }
+               !inst[14:12] :   {
+                                    exec(5'h00, 5'h00, 5'h00, 20'h0_0000);
+                                    any {
+                                        inst[31:20] == 12'h000 : inst_ECALL  = 1'b1;
+                                        inst[31:20] == 12'h001 : inst_EBREAK = 1'b1;
+                                    }
+                                }
+            }
         }
-        exec();
     }
 
     proc exec {
