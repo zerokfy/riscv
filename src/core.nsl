@@ -1,3 +1,4 @@
+#include    "inst_num.nsl"
 #define     INST_ADDR       32'h0001_0000;
 
 declare core {
@@ -22,139 +23,29 @@ struct dec_inst {
 };
 
 struct general {
-    gr[32];
+    r[32];
 };
 
 module core {
     dec_inst    reg   dec_inst;
-    general     reg   gen_reg[32] = 32'h0000_0000;
+    general     reg   gr[32] = 32'h0000_0000;
     reg               pc = INST_ADDR
                     , inst[32]
-                    , rs1[5]
-                    , rs2[5]
-                    , rs3[5]
-                    , rd[5]
+                    , rs1[32]
+                    , rs2[32]
+                    , rs3[32]
+                    , rd[32]
                     , imm[20]
-                    , inst_ADD      = 1'b0
-                    , inst_ADDI     = 1'b0
-                    , inst_AMOADDW  = 1'b0
-                    , inst_AMOANDW  = 1'b0
-                    , inst_AMOMAXUW = 1'b0
-                    , inst_AMOMAXW  = 1'b0
-                    , inst_AMOMINUW = 1'b0
-                    , inst_AMOMINW  = 1'b0
-                    , inst_AMOORW   = 1'b0
-                    , inst_AMOSWAPW = 1'b0
-                    , inst_AMOXORW  = 1'b0
-                    , inst_AND      = 1'b0
-                    , inst_ANDI     = 1'b0
-                    , inst_AUIPC    = 1'b0
-                    , inst_BEQ      = 1'b0
-                    , inst_BGE      = 1'b0
-                    , inst_BGEU     = 1'b0
-                    , inst_BLT      = 1'b0
-                    , inst_BLTU     = 1'b0
-                    , inst_BNE      = 1'b0
-                    , inst_CSRRC    = 1'b0
-                    , inst_CSRRCI   = 1'b0
-                    , inst_CSRRS    = 1'b0
-                    , inst_CSRRSI   = 1'b0
-                    , inst_CSRRW    = 1'b0
-                    , inst_CSRRWI   = 1'b0
-                    , inst_DIV      = 1'b0
-                    , inst_DIVU     = 1'b0
-                    , inst_EBREAK   = 1'b0
-                    , inst_ECALL    = 1'b0
-                    , inst_FADDD    = 1'b0
-                    , inst_FADDS    = 1'b0
-                    , inst_FCLASSD  = 1'b0
-                    , inst_FCLASSS  = 1'b0
-                    , inst_FCVTDS   = 1'b0
-                    , inst_FCVTDW   = 1'b0
-                    , inst_FCVTDWU  = 1'b0
-                    , inst_FCVTSD   = 1'b0
-                    , inst_FCVTSW   = 1'b0
-                    , inst_FCVTSWU  = 1'b0
-                    , inst_FCVTWD   = 1'b0
-                    , inst_FCVTWS   = 1'b0
-                    , inst_FCVTWUD  = 1'b0
-                    , inst_FCVTWUS  = 1'b0
-                    , inst_FDIVD    = 1'b0
-                    , inst_FDIVS    = 1'b0
-                    , inst_FEQD     = 1'b0
-                    , inst_FEQS     = 1'b0
-                    , inst_FLD      = 1'b0
-                    , inst_FLED     = 1'b0
-                    , inst_FLES     = 1'b0
-                    , inst_FLTD     = 1'b0
-                    , inst_FLTS     = 1'b0
-                    , inst_FLW      = 1'b0
-                    , inst_FMADDD   = 1'b0
-                    , inst_FMADDS   = 1'b0
-                    , inst_FMAXD    = 1'b0
-                    , inst_FMAXS    = 1'b0
-                    , inst_FMIND    = 1'b0
-                    , inst_FMINS    = 1'b0
-                    , inst_FMMADDD  = 1'b0
-                    , inst_FMMADDS  = 1'b0
-                    , inst_FMMSUBD  = 1'b0
-                    , inst_FMMSUBS  = 1'b0
-                    , inst_FMSUBD   = 1'b0
-                    , inst_FMSUBS   = 1'b0
-                    , inst_FMULD    = 1'b0
-                    , inst_FMULS    = 1'b0
-                    , inst_FMVWX    = 1'b0
-                    , inst_FMVXW    = 1'b0
-                    , inst_FSD      = 1'b0
-                    , inst_FSGNJD   = 1'b0
-                    , inst_FSGNJND  = 1'b0
-                    , inst_FSGNJNS  = 1'b0
-                    , inst_FSGNJS   = 1'b0
-                    , inst_FSGNJXD  = 1'b0
-                    , inst_FSGNJXS  = 1'b0
-                    , inst_FSQRTD   = 1'b0
-                    , inst_FSQRTS   = 1'b0
-                    , inst_FSUBD    = 1'b0
-                    , inst_FSUBS    = 1'b0
-                    , inst_FSW      = 1'b0
-                    , inst_JAL      = 1'b0
-                    , inst_JALR     = 1'b0
-                    , inst_LB       = 1'b0
-                    , inst_LBU      = 1'b0
-                    , inst_LH       = 1'b0
-                    , inst_LHU      = 1'b0
-                    , inst_LRW      = 1'b0
-                    , inst_LUI      = 1'b0
-                    , inst_LW       = 1'b0
-                    , inst_MUL      = 1'b0
-                    , inst_MULH     = 1'b0
-                    , inst_MULHSU   = 1'b0
-                    , inst_MULHU    = 1'b0
-                    , inst_OR       = 1'b0
-                    , inst_ORI      = 1'b0
-                    , inst_REM      = 1'b0
-                    , inst_REMU     = 1'b0
-                    , inst_SB       = 1'b0
-                    , inst_SCW      = 1'b0
-                    , inst_SH       = 1'b0
-                    , inst_SLL      = 1'b0
-                    , inst_SLLI     = 1'b0
-                    , inst_SLT      = 1'b0
-                    , inst_SLTI     = 1'b0
-                    , inst_SLTIU    = 1'b0
-                    , inst_SLTU     = 1'b0
-                    , inst_SRA      = 1'b0
-                    , inst_SRAI     = 1'b0
-                    , inst_SRL      = 1'b0
-                    , inst_SRLI     = 1'b0
-                    , inst_SUB      = 1'b0
-                    , inst_SW       = 1'b0
-                    , inst_XOR      = 1'b0
-                    , inst_XORI     = 1'b0
+                    , order[8]
+                    ;
+    wire              pre_order
+                    , pre_imm
+                    , pre_rs1
+                    , pre_rs2
                     ;
     proc_name         ift
                     , dec(inst)
-                    , exec(rs1, rs2, rd, imm)
+                    , exec(order, rs1, rs2, rd, imm)
                     , macc
                     , wbak
                     ;
@@ -164,256 +55,256 @@ module core {
     }
 
     proc dec {
-        exec(inst[19:15], inst[24:20], inst[11:7], imm);
+        exec(pre_order, inst[19:15], inst[24:20], inst[11:7], pre_imm);
         any {
             inst[6:2] == 5'h00  : {
-                imm = {8'h00, inst[31:20]};
+                pre_imm = {8'h00, inst[31:20]};
                 any {
-                    inst[14:12] == 3'h0 :   inst_LB     = 1'b1;
-                    inst[14:12] == 3'h1 :   inst_LH     = 1'b1;
-                    inst[14:12] == 3'h2 :   inst_LW     = 1'b1;
-                    inst[14:12] == 3'h4 :   inst_LBU    = 1'b1;
-                    inst[14:12] == 3'h5 :   inst_LHU    = 1'b1;
+                    inst[14:12] == 3'h0 :   pre_order   = LB;
+                    inst[14:12] == 3'h1 :   pre_order   = LH;
+                    inst[14:12] == 3'h2 :   pre_order   = LW;
+                    inst[14:12] == 3'h4 :   pre_order   = LBU;
+                    inst[14:12] == 3'h5 :   pre_order   = LHU;
                 }
             }
             inst[6:2] == 5'h01  : {
-                imm         = {8'h00, inst[31:20]};
+                pre_imm = {8'h00, inst[31:20]};
                 any {
-                    inst[14:12] == 3'h2 :   inst_FLW    = 1'b1;
-                    inst[14:12] == 3'h3 :   inst_FLD    = 1'b1;
+                    inst[14:12] == 3'h2 :   pre_order   = FLW;
+                    inst[14:12] == 3'h3 :   pre_order   = FLD;
                 }
             }
             inst[6:2] == 5'h03  : {
                 //  FENCE and FENCE.I Instructions are not implemented
                 //  since out of order is also not
-                ift();
+                pre_imm = 20'h0_0000;
             }
             inst[6:2] == 5'h04  : {
-                imm = {8'h00, inst[31:20]};
+                pre_imm = {8'h00, inst[31:20]};
                 any {
-                    inst[14:12] == 3'h0 :   inst_ADDI   = 1'b1;
-                    inst[14:12] == 3'h1 :   inst_SLLI   = 1'b1;
-                    inst[14:12] == 3'h2 :   inst_SLTI   = 1'b1;
-                    inst[14:12] == 3'h3 :   inst_SLTIU  = 1'b1;
-                    inst[14:12] == 3'h4 :   inst_XORI   = 1'b1;
+                    inst[14:12] == 3'h0 :   pre_order   = ADDI;
+                    inst[14:12] == 3'h1 :   pre_order   = SLLI;
+                    inst[14:12] == 3'h2 :   pre_order   = SLTI;
+                    inst[14:12] == 3'h3 :   pre_order   = SLTIU;
+                    inst[14:12] == 3'h4 :   pre_order   = XORI;
                     inst[14:12] == 3'h5 :   any {
-                                                inst[31:25] == 7'h00 :  inst_SRLI = 1'b1;
-                                                inst[31:25] == 7'h20 :  inst_SRAI = 1'b1;
+                                                inst[31:25] == 7'h00 :  pre_order   = SRLI;
+                                                inst[31:25] == 7'h20 :  pre_order   = SRAI;
                                             }
-                    inst[14:12] == 3'h6 :   inst_ORI    = 1'b1;
-                    inst[14:12] == 3'h7 :   inst_ANDI   = 1'b1;
+                    inst[14:12] == 3'h6 :   pre_order   = ORI;
+                    inst[14:12] == 3'h7 :   pre_order   = ANDI;
                 }
             }
             inst[6:2] == 5'h05  : {
-                imm = {13'h0000, inst[31:25]};
-                inst_AUIPC  = 1'b1;
+                pre_imm     = {13'h0000, inst[31:25]};
+                pre_order   = AUIPC;
             }
             inst[6:2] == 5'h08  : {
-                imm = {13'h0000, inst[31:25]};
+                pre_imm = {13'h0000, inst[31:25]};
                 any{
-                    inst[14:12] == 3'h0 :   inst_SB     = 1'b1;
-                    inst[14:12] == 3'h1 :   inst_SH     = 1'b1;
-                    inst[14:12] == 3'h2 :   inst_SW     = 1'b1;
+                    inst[14:12] == 3'h0 :   pre_order   = SB;
+                    inst[14:12] == 3'h1 :   pre_order   = SH;
+                    inst[14:12] == 3'h2 :   pre_order   = SW;
                 }
             }
             inst[6:2] == 5'h09  : {
-                imm         = {8'h00, inst[31:25], inst[11:7]};
+                pre_imm = {8'h00, inst[31:25], inst[11:7]};
                 any {
-                    inst[14:12] == 3'h2 :   inst_FSW    = 1'b1;
-                    inst[14:12] == 3'h3 :   inst_FSD    = 1'b1;
+                    inst[14:12] == 3'h2 :   pre_order   = FSW;
+                    inst[14:12] == 3'h3 :   pre_order   = FSD;
                 }
             }
             inst[6:2] == 5'h0B  : {
-                imm = {13'h0000, inst[31:25]};
+                pre_imm = {13'h0000, inst[31:25]};
                 any{
-                    inst[31:27] == 5'h00 :  inst_AMOADDW    = 1'b1;
-                    inst[31:27] == 5'h01 :  inst_AMOSWAPW   = 1'b1;
-                    inst[31:27] == 5'h02 :  inst_LRW        = 1'b1;
-                    inst[31:27] == 5'h03 :  inst_SCW        = 1'b1;
-                    inst[31:27] == 5'h04 :  inst_AMOXORW    = 1'b1;
-                    inst[31:27] == 5'h08 :  inst_AMOORW     = 1'b1;
-                    inst[31:27] == 5'h0C :  inst_AMOANDW    = 1'b1;
-                    inst[31:27] == 5'h10 :  inst_AMOMINW    = 1'b1;
-                    inst[31:27] == 5'h14 :  inst_AMOMAXW    = 1'b1;
-                    inst[31:27] == 5'h18 :  inst_AMOMINUW   = 1'b1;
-                    inst[31:27] == 5'h1C :  inst_AMOMAXUW   = 1'b1;
+                    inst[31:27] == 5'h00 :  pre_order   = AMOADDW;
+                    inst[31:27] == 5'h01 :  pre_order   = AMOSWAPW;
+                    inst[31:27] == 5'h02 :  pre_order   = LRW;
+                    inst[31:27] == 5'h03 :  pre_order   = SCW;
+                    inst[31:27] == 5'h04 :  pre_order   = AMOXORW;
+                    inst[31:27] == 5'h08 :  pre_order   = AMOORW;
+                    inst[31:27] == 5'h0C :  pre_order   = AMOANDW;
+                    inst[31:27] == 5'h10 :  pre_order   = AMOMINW;
+                    inst[31:27] == 5'h14 :  pre_order   = AMOMAXW;
+                    inst[31:27] == 5'h18 :  pre_order   = AMOMINUW;
+                    inst[31:27] == 5'h1C :  pre_order   = AMOMAXUW;
                 }
             }
             inst[6:2] == 5'h0C  : any {
                 inst[25] :  {
                     any {
                         inst[14:12] == 3'h0 :   any {
-                                                    inst[30] :  inst_ADD = 1'b1;
-                                                   !inst[30] :  inst_SUB = 1'b1;
+                                                    inst[30] :  pre_order   = ADD;
+                                                   !inst[30] :  pre_order   = SUB;
                                                 }
-                        inst[14:12] == 3'h1 :   inst_SLL    = 1'b1;
-                        inst[14:12] == 3'h2 :   inst_SLT    = 1'b1;
-                        inst[14:12] == 3'h3 :   inst_SLTU   = 1'b1;
-                        inst[14:12] == 3'h4 :   inst_XOR    = 1'b1;
+                        inst[14:12] == 3'h1 :   pre_order   = SLL;
+                        inst[14:12] == 3'h2 :   pre_order   = SLT;
+                        inst[14:12] == 3'h3 :   pre_order   = SLTU;
+                        inst[14:12] == 3'h4 :   pre_order   = XOR;
                         inst[14:12] == 3'h5 :   any {
-                                                    inst[30] :  inst_SRL = 1'b1;
-                                                   !inst[30] :  inst_SRA = 1'b1;
+                                                    inst[30] :  pre_order   = SRL;
+                                                   !inst[30] :  pre_order   = SRA;
                                                 }
-                        inst[14:12] == 3'h6 :   inst_OR     = 1'b1;
-                        inst[14:12] == 3'h7 :   inst_AND    = 1'b1;
+                        inst[14:12] == 3'h6 :   pre_order   = OR;
+                        inst[14:12] == 3'h7 :   pre_order   = AND;
                     }
                 }
                !inst[25] :  {
                     any {
-                        inst[14:12] == 3'h0 :   inst_MUL    = 1'b1;
-                        inst[14:12] == 3'h1 :   inst_MULH   = 1'b1;
-                        inst[14:12] == 3'h2 :   inst_MULHSU = 1'b1;
-                        inst[14:12] == 3'h3 :   inst_MULHU  = 1'b1;
-                        inst[14:12] == 3'h4 :   inst_DIV    = 1'b1;
-                        inst[14:12] == 3'h5 :   inst_DIVU   = 1'b1;
-                        inst[14:12] == 3'h6 :   inst_REM    = 1'b1;
-                        inst[14:12] == 3'h7 :   inst_REMU   = 1'b1;
+                        inst[14:12] == 3'h0 :   pre_order   = MUL;
+                        inst[14:12] == 3'h1 :   pre_order   = MULH;
+                        inst[14:12] == 3'h2 :   pre_order   = MULHSU;
+                        inst[14:12] == 3'h3 :   pre_order   = MULHU;
+                        inst[14:12] == 3'h4 :   pre_order   = DIV;
+                        inst[14:12] == 3'h5 :   pre_order   = DIVU;
+                        inst[14:12] == 3'h6 :   pre_order   = REM;
+                        inst[14:12] == 3'h7 :   pre_order   = REMU;
                     }
                 }
             }
             inst[6:2] == 5'h0D  : {
-                imm         = inst[31:12];
-                inst_LUI    = 1'b1;
+                pre_imm     = inst[31:12];
+                pre_order   = LUI;
             }
             inst[6:2] == 5'h10  : {
-                imm             = 20'h0_0000;
-                rs3             = inst[31:27];
+                pre_imm = 20'h0_0000;
+                rs3     = inst[31:27];
                 any {
-                    inst[26:25] == 2'h0 :   inst_FMADDS = 1'b1;
-                    inst[26:25] == 2'h1 :   inst_FMADDD = 1'b1;
+                    inst[26:25] == 2'h0 :   pre_order   = FMADDS;
+                    inst[26:25] == 2'h1 :   pre_order   = FMADDD;
                 }
             }
             inst[6:2] == 5'h11  : {
-                imm             = 20'h0_0000;
-                rs3             = inst[31:27];
+                pre_imm = 20'h0_0000;
+                rs3     = inst[31:27];
                 any {
-                    inst[26:25] == 2'h0 :   inst_FMSUBS     = 1'b1;
-                    inst[26:25] == 2'h1 :   inst_FMSUBD     = 1'b1;
+                    inst[26:25] == 2'h0 :   pre_order   = FMSUBS;
+                    inst[26:25] == 2'h1 :   pre_order   = FMSUBD;
                 }
             }
             inst[6:2] == 5'h12  : {
-                imm             = 20'h0_0000;
-                rs3             = inst[31:27];
+                pre_imm = 20'h0_0000;
+                rs3     = inst[31:27];
                 any {
-                    inst[26:25] == 2'h0 :   inst_FMMSUBS    = 1'b1;
-                    inst[26:25] == 2'h1 :   inst_FMMSUBD    = 1'b1;
+                    inst[26:25] == 2'h0 :   pre_order   = FMMSUBS;
+                    inst[26:25] == 2'h1 :   pre_order   = FMMSUBD;
                 }
             }
             inst[6:2] == 5'h13  : {
-                imm             = 20'h0_0000;
-                rs3             = inst[31:27];
+                pre_imm = 20'h0_0000;
+                rs3     = inst[31:27];
                 any {
-                    inst[26:25] == 2'h0 :   inst_FMMADDS    = 1'b1;
-                    inst[26:25] == 2'h1 :   inst_FMMADDD    = 1'b1;
+                    inst[26:25] == 2'h0 :   pre_order   = FMMADDS;
+                    inst[26:25] == 2'h1 :   pre_order   = FMMADDD;
                 }
             }
             inst[6:2] == 5'h14  : {
-                imm             = 20'h0_0000;
+                pre_imm = 20'h0_0000;
                 any {
                     inst[25] : any {
-                        inst[31:27] == 5'h00 :  inst_FADDD  = 1'b1;
-                        inst[31:27] == 5'h01 :  inst_FSUBD  = 1'b1;
-                        inst[31:27] == 5'h02 :  inst_FMULD  = 1'b1;
-                        inst[31:27] == 5'h03 :  inst_FDIVD  = 1'b1;
+                        inst[31:27] == 5'h00 :  pre_order   = FADDD;
+                        inst[31:27] == 5'h01 :  pre_order   = FSUBD;
+                        inst[31:27] == 5'h02 :  pre_order   = FMULD;
+                        inst[31:27] == 5'h03 :  pre_order   = FDIVD;
                         inst[31:27] == 5'h04 :  any {
-                                                    inst[14:12] == 3'h0 :   inst_FSGNJD     = 1'b1;
-                                                    inst[14:12] == 3'h1 :   inst_FSGNJND    = 1'b1;
-                                                    inst[14:12] == 3'h2 :   inst_FSGNJXD    = 1'b1;
+                                                    inst[14:12] == 3'h0 :   pre_order   = FSGNJD;
+                                                    inst[14:12] == 3'h1 :   pre_order   = FSGNJND;
+                                                    inst[14:12] == 3'h2 :   pre_order   = FSGNJXD;
                                                 }
                         inst[31:27] == 5'h05 :  any {
-                                                    inst[14:12] == 3'h0 :   inst_FMIND      = 1'b1;
-                                                    inst[14:12] == 3'h1 :   inst_FMAXD      = 1'b1;
+                                                    inst[14:12] == 3'h0 :   pre_order   = FMIND;
+                                                    inst[14:12] == 3'h1 :   pre_order   = FMAXD;
                                                 }
                         inst[31:27] == 5'h08 :  any {
-                                                    inst[24:20] == 5'h0 :   inst_FCVTDS     = 1'b1;
-                                                    inst[24:20] == 5'h1 :   inst_FCVTSD     = 1'b1;
+                                                    inst[24:20] == 5'h0 :   pre_order   = FCVTDS;
+                                                    inst[24:20] == 5'h1 :   pre_order   = FCVTSD;
                                                 }
-                        inst[31:27] == 5'h0B :  inst_FSQRTD = 1'b1;
+                        inst[31:27] == 5'h0B :  pre_order   = FSQRTD;
                         inst[31:27] == 5'h14 :  any {
-                                                    inst[14:12] == 3'h0 :   inst_FLED       = 1'b1;
-                                                    inst[14:12] == 3'h1 :   inst_FLTD       = 1'b1;
-                                                    inst[14:12] == 3'h2 :   inst_FEQD       = 1'b1;
+                                                    inst[14:12] == 3'h0 :   pre_order   = FLED;
+                                                    inst[14:12] == 3'h1 :   pre_order   = FLTD;
+                                                    inst[14:12] == 3'h2 :   pre_order   = FEQD;
                                                 }
                         inst[31:27] == 5'h18 :  any {
-                                                    inst[24:20] == 3'h0 :   inst_FCVTWD     = 1'b1;
-                                                    inst[24:20] == 3'h1 :   inst_FCVTWUD    = 1'b1;
+                                                    inst[24:20] == 3'h0 :   pre_order   = FCVTWD;
+                                                    inst[24:20] == 3'h1 :   pre_order   = FCVTWUD;
                                                 }
                         inst[31:27] == 5'h1A :  any {
-                                                    inst[24:20] == 3'h0 :   inst_FCVTDW     = 1'b1;
-                                                    inst[24:20] == 3'h1 :   inst_FCVTDWU    = 1'b1;
+                                                    inst[24:20] == 3'h0 :   pre_order   = FCVTDW;
+                                                    inst[24:20] == 3'h1 :   pre_order   = FCVTDWU;
                                                 }
-                        inst[31:27] == 5'h1C :  inst_FCLASSD = 1'b1;
+                        inst[31:27] == 5'h1C :  pre_order   = FCLASSD;
                     }
                    !inst[25] : any {
-                        inst[31:27] == 5'h00 :  inst_FADDS  = 1'b1;
-                        inst[31:27] == 5'h01 :  inst_FSUBS  = 1'b1;
-                        inst[31:27] == 5'h02 :  inst_FMULS  = 1'b1;
-                        inst[31:27] == 5'h03 :  inst_FDIVS  = 1'b1;
+                        inst[31:27] == 5'h00 :  pre_order   = FADDS;
+                        inst[31:27] == 5'h01 :  pre_order   = FSUBS;
+                        inst[31:27] == 5'h02 :  pre_order   = FMULS;
+                        inst[31:27] == 5'h03 :  pre_order   = FDIVS;
                         inst[31:27] == 5'h04 :  any {
-                                                    inst[14:12] == 3'h0 :   inst_FSGNJS     = 1'b1;
-                                                    inst[14:12] == 3'h1 :   inst_FSGNJNS    = 1'b1;
-                                                    inst[14:12] == 3'h2 :   inst_FSGNJXS    = 1'b1;
+                                                    inst[14:12] == 3'h0 :   pre_order   = FSGNJS;
+                                                    inst[14:12] == 3'h1 :   pre_order   = FSGNJNS;
+                                                    inst[14:12] == 3'h2 :   pre_order   = FSGNJXS;
                                                 }
                         inst[31:27] == 5'h05 :  any {
-                                                    inst[14:12] == 3'h0 :   inst_FMINS      = 1'b1;
-                                                    inst[14:12] == 3'h1 :   inst_FMAXS      = 1'b1;
+                                                    inst[14:12] == 3'h0 :   pre_order   = FMINS;
+                                                    inst[14:12] == 3'h1 :   pre_order   = FMAXS;
                                                 }
-                        inst[31:27] == 5'h0B :  inst_FSQRTS = 1'b1;
+                        inst[31:27] == 5'h0B :  pre_order   = FSQRTS;
                         inst[31:27] == 5'h14 :  any {
-                                                    inst[14:12] == 3'h0 :   inst_FLES       = 1'b1;
-                                                    inst[14:12] == 3'h1 :   inst_FLTS       = 1'b1;
-                                                    inst[14:12] == 3'h2 :   inst_FEQS       = 1'b1;
+                                                    inst[14:12] == 3'h0 :   pre_order   = FLES;
+                                                    inst[14:12] == 3'h1 :   pre_order   = FLTS;
+                                                    inst[14:12] == 3'h2 :   pre_order   = FEQS;
                                                 }
                         inst[31:27] == 5'h18 :  any {
-                                                    inst[24:20] == 5'h00 :  inst_FCVTWS     = 1'b1;
-                                                    inst[24:20] == 5'h01 :  inst_FCVTWUS    = 1'b1;
+                                                    inst[24:20] == 5'h00 :  pre_order   = FCVTWS;
+                                                    inst[24:20] == 5'h01 :  pre_order   = FCVTWUS;
                                                 }
                         inst[31:27] == 5'h1A :  any {
-                                                    inst[24:20] == 5'h00 :  inst_FCVTSW     = 1'b1;
-                                                    inst[24:20] == 5'h01 :  inst_FCVTSWU    = 1'b1;
+                                                    inst[24:20] == 5'h00 :  pre_order   = FCVTSW;
+                                                    inst[24:20] == 5'h01 :  pre_order   = FCVTSWU;
                                                 }
                         inst[31:27] == 5'h1C :  any {
-                                                    inst[14:12] == 3'h0 :   inst_FMVXW      = 1'b1;
-                                                    inst[14:12] == 3'h1 :   inst_FCLASSS    = 1'b1;
+                                                    inst[14:12] == 3'h0 :   pre_order   = FMVXW;
+                                                    inst[14:12] == 3'h1 :   pre_order   = FCLASSS;
                                                 }
-                        inst[31:27] == 5'h1E :  inst_FMVWX  = 1'b1;
+                        inst[31:27] == 5'h1E :  pre_order   = FMVWX;
                     }
                 }
             }
             inst[6:2] == 5'h18  : {
-                imm = {inst[31], inst[7], inst[30:25], inst[11:8], 1'b0});
+                pre_imm = {inst[31], inst[7], inst[30:25], inst[11:8], 1'b0});
                 any {
-                    inst[14:12] == 3'h0 :   inst_BEQ    = 1'b1;
-                    inst[14:12] == 3'h1 :   inst_BNE    = 1'b1;
-                    inst[14:12] == 3'h4 :   inst_BLT    = 1'b1;
-                    inst[14:12] == 3'h5 :   inst_BGE    = 1'b1;
-                    inst[14:12] == 3'h6 :   inst_BLTU   = 1'b1;
-                    inst[14:12] == 3'h7 :   inst_BGEU   = 1'b1;
+                    inst[14:12] == 3'h0 :   pre_order   = BEQ;
+                    inst[14:12] == 3'h1 :   pre_order   = BNE;
+                    inst[14:12] == 3'h4 :   pre_order   = BLT;
+                    inst[14:12] == 3'h5 :   pre_order   = BGE;
+                    inst[14:12] == 3'h6 :   pre_order   = BLTU;
+                    inst[14:12] == 3'h7 :   pre_order   = BGEU;
                 }
             }
             inst[6:2] == 5'h19  : {
-                imm = {8'h00, inst[31:20};
-                inst_JALR   = 1'b1;
+                pre_imm = {8'h00, inst[31:20};
+                pre_order   = JALR;
             }
             inst[6:2] == 5'h1B  : {
-                imm = {inst[31], inst[19:12], inst[20], inst[30:21]};
-                inst_JAL    = 1'b1;
+                pre_imm = {inst[31], inst[19:12], inst[20], inst[30:21]};
+                pre_order   = JAL;
             }
             inst[6:2] == 5'h1C  : {
                 inst[14:12] :   {
                                     any {
-                                        inst[14:12] == 3'h1 :   inst_CSRRW  = 1'b1;
-                                        inst[14:12] == 3'h2 :   inst_CSRRS  = 1'b1;
-                                        inst[14:12] == 3'h3 :   inst_CSRRC  = 1'b1;
-                                        inst[14:12] == 3'h5 :   inst_CSRRWI = 1'b1;
-                                        inst[14:12] == 3'h6 :   inst_CSRRSI = 1'b1;
-                                        inst[14:12] == 3'h7 :   inst_CSRRCI = 1'b1;
+                                        inst[14:12] == 3'h1 :   pre_order   = CSRRW;
+                                        inst[14:12] == 3'h2 :   pre_order   = CSRRS;
+                                        inst[14:12] == 3'h3 :   pre_order   = CSRRC;
+                                        inst[14:12] == 3'h5 :   pre_order   = CSRRWI;
+                                        inst[14:12] == 3'h6 :   pre_order   = CSRRSI;
+                                        inst[14:12] == 3'h7 :   pre_order   = CSRRCI;
                                     }
                                 }
                !inst[14:12] :   {
                                     any {
-                                        inst[31:20] == 12'h000 : inst_ECALL  = 1'b1;
-                                        inst[31:20] == 12'h001 : inst_EBREAK = 1'b1;
+                                        inst[31:20] == 12'h000 : pre_order  = ECALL;
+                                        inst[31:20] == 12'h001 : pre_order  = EBREAK;
                                     }
                                 }
             }
@@ -421,122 +312,137 @@ module core {
     }
 
     proc exec any {
-        inst_ADD :
-        inst_ADDI : 
-        inst_AMOADDW :
-        inst_AMOANDW :
-        inst_AMOMAXUW :
-        inst_AMOMAXW :
-        inst_AMOMINUW :
-        inst_AMOMINW :
-        inst_AMOORW :
-        inst_AMOSWAPW :
-        inst_AMOXORW :
-        inst_AND :
-        inst_ANDI :
-        inst_AUIPC :
-        inst_BEQ :
-        inst_BGE :
-        inst_BGEU :
-        inst_BLT :
-        inst_BLTU :
-        inst_BNE :
-        inst_CSRRC :
-        inst_CSRRCI :
-        inst_CSRRS :
-        inst_CSRRSI :
-        inst_CSRRW :
-        inst_CSRRWI :
-        inst_DIV :
-        inst_DIVU :
-        inst_EBREAK :
-        inst_ECALL :
-        inst_FADDD :
-        inst_FADDS :
-        inst_FCLASSD :
-        inst_FCLASSS :
-        inst_FCVTDS :
-        inst_FCVTDW :
-        inst_FCVTDWU :
-        inst_FCVTSD :
-        inst_FCVTSW :
-        inst_FCVTSWU :
-        inst_FCVTWD :
-        inst_FCVTWS :
-        inst_FCVTWUD :
-        inst_FCVTWUS :
-        inst_FDIVD :
-        inst_FDIVS :
-        inst_FEQD :
-        inst_FEQS :
-        inst_FLD :
-        inst_FLED :
-        inst_FLES :
-        inst_FLTD :
-        inst_FLTS :
-        inst_FLW :
-        inst_FMADDD :
-        inst_FMADDS :
-        inst_FMAXD :
-        inst_FMAXS :
-        inst_FMIND :
-        inst_FMINS :
-        inst_FMMADDD :
-        inst_FMMADDS :
-        inst_FMMSUBD :
-        inst_FMMSUBS :
-        inst_FMSUBD :
-        inst_FMSUBS :
-        inst_FMULD :
-        inst_FMULS :
-        inst_FMVWX :
-        inst_FMVXW :
-        inst_FSD :
-        inst_FSGNJD :
-        inst_FSGNJND :
-        inst_FSGNJNS :
-        inst_FSGNJS :
-        inst_FSGNJXD :
-        inst_FSGNJXS :
-        inst_FSQRTD :
-        inst_FSQRTS :
-        inst_FSUBD :
-        inst_FSUBS :
-        inst_FSW :
-        inst_JAL :
-        inst_JALR :
-        inst_LB :
-        inst_LBU :
-        inst_LH :
-        inst_LHU :
-        inst_LRW :
-        inst_LUI :
-        inst_LW :
-        inst_MUL :
-        inst_MULH :
-        inst_MULHSU :
-        inst_MULHU :
-        inst_OR :
-        inst_ORI :
-        inst_REM :
-        inst_REMU :
-        inst_SB :
-        inst_SCW :
-        inst_SH :
-        inst_SLL :
-        inst_SLLI :
-        inst_SLT :
-        inst_SLTI :
-        inst_SLTIU :
-        inst_SLTU :
-        inst_SRA :
-        inst_SRAI :
-        inst_SRL :
-        inst_SRLI :
-        inst_SUB :
-        inst_SW :
-        inst_XOR :
-        inst_XORI :
+        order == ADDI :         gr[rd].r    :=  32'(gr[rs1].r +  32#(imm));
+        order == SLTI :         gr[rd].r    :=  32'(gr[rs1].r <= 32#(imm));
+        order == SLTIU :        any {
+                                    imm == 20'(1)   : if(rs1 == 5'(0))  gr[rd].r    := 32'(1);
+                                                      else              gr[rd].r    := 32'(0);
+                                    imm != 20'(1)   : 32'(gr[rs1].r <= 32'(imm));
+                                }
+        order == ANDI :         gr[rd].r    :=      gr[rs1].r & 32#(imm);
+        order == ORI :          gr[rd].r    :=      gr[rs1].r | 32#(imm);
+        order == XORI :         if(imm == 20#(-1))  gr[rd].r = ~gr[rs1].r;
+                                else                gr[rd].r =  gr[rs1].r ^ 32#(imm);
+        order == SLLI :         gr[rd].r    :=      gr[rs1].r << imm;
+        order == SRLI :         gr[rd].r    :=      gr[rs1].r >> imm;
+        order == SRAI :         gr[rd].r    :=     {gr[rs1].r[31], gr[rs1].r[30:0]>>imm};
+        order == LUI :          gr[rd].r    :=     {imm, 12'(0)};
+        order == AUIPC :        gr[rd].r    :=      pc + {imm, 12'(0)};
+        order == ADD :          gr[rd].r    :=      gr[rs1].r +  gr[rs2].r;
+        order == SUB :          gr[rd].r    :=      gr[rs1].r -  gr[rs2].r;
+        order == SLT :          {
+                                    gr[rd].r    :=  32'(pre_rs1 < pre_rs2);
+                                    any {
+                                        gr[rs1].r[31]   : pre_rs1 = ~gr[rs1].r[30:0]+31'(1);
+                                       ~gr[rs1].r[31]   : pre_rs1 =  gr[rs1].r[30:0];
+                                        gr[rs2].r[31]   : pre_rs2 = ~gr[rs2].r[30:0]+31'(1);
+                                       ~gr[rs2].r[31]   : pre_rs2 =  gr[rs2].r[30:0];
+                                    }
+                                }
+        order == SLTU :         gr[rd].r    :=  32'(gr[rs1].r < gr[rs2].r);
+        order == AND :          gr[rd].r    :=      gr[rs1].r & gr[rs2].r;
+        order == OR :           gr[rd].r    :=      gr[rs1].r | gr[rs2].r;
+        order == XOR :          gr[rd].r    :=      gr[rs1].r ^ gr[rs2].r;
+        order == SLL :          gr[rd].r    :=      gr[rs1].r << gr[rs1].r[4:0];
+        order == SRL :          gr[rd].r    :=      gr[rs1].r >> gr[rs1].r[4:0];
+        order == SRA :          any {
+                                    gr[rs1].r[31]       : gr[rd].r
+
+        order == AMOADDW :
+        order == AMOANDW :
+        order == AMOMAXUW :
+        order == AMOMAXW :
+        order == AMOMINUW :
+        order == AMOMINW :
+        order == AMOORW :
+        order == AMOSWAPW :
+        order == AMOXORW :
+        order == BEQ :
+        order == BGE :
+        order == BGEU :
+        order == BLT :
+        order == BLTU :
+        order == BNE :
+        order == CSRRC :
+        order == CSRRCI :
+        order == CSRRS :
+        order == CSRRSI :
+        order == CSRRW :
+        order == CSRRWI :
+        order == DIV :
+        order == DIVU :
+        order == EBREAK :
+        order == ECALL :
+        order == FADDD :
+        order == FADDS :
+        order == FCLASSD :
+        order == FCLASSS :
+        order == FCVTDS :
+        order == FCVTDW :
+        order == FCVTDWU :
+        order == FCVTSD :
+        order == FCVTSW :
+        order == FCVTSWU :
+        order == FCVTWD :
+        order == FCVTWS :
+        order == FCVTWUD :
+        order == FCVTWUS :
+        order == FDIVD :
+        order == FDIVS :
+        order == FEQD :
+        order == FEQS :
+        order == FLD :
+        order == FLED :
+        order == FLES :
+        order == FLTD :
+        order == FLTS :
+        order == FLW :
+        order == FMADDD :
+        order == FMADDS :
+        order == FMAXD :
+        order == FMAXS :
+        order == FMIND :
+        order == FMINS :
+        order == FMMADDD :
+        order == FMMADDS :
+        order == FMMSUBD :
+        order == FMMSUBS :
+        order == FMSUBD :
+        order == FMSUBS :
+        order == FMULD :
+        order == FMULS :
+        order == FMVWX :
+        order == FMVXW :
+        order == FSD :
+        order == FSGNJD :
+        order == FSGNJND :
+        order == FSGNJNS :
+        order == FSGNJS :
+        order == FSGNJXD :
+        order == FSGNJXS :
+        order == FSQRTD :
+        order == FSQRTS :
+        order == FSUBD :
+        order == FSUBS :
+        order == FSW :
+        order == JAL :
+        order == JALR :
+        order == LB :
+        order == LBU :
+        order == LH :
+        order == LHU :
+        order == LRW :
+        order == LW :
+        order == MUL :
+        order == MULH :
+        order == MULHSU :
+        order == MULHU :
+        order == REM :
+        order == REMU :
+        order == SB :
+        order == SCW :
+        order == SH :
+        order == SW :
     }
 
     proc macc {
