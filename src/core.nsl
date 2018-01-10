@@ -2,454 +2,498 @@
 #define     INST_ADDR       32'h0001_0000;
 
 declare core {
-    input           idata
-                  , iaddr
-                  , daddr
-                  , rdata
-                  ;
-    output          wdata
-                  ;
-    func_out        mem_read(iaddr) : idata
-                  ;
+    input         idata
+                , iaddr
+                , daddr
+                , rdata
+                ;
+    output        wdata
+                ;
+    func_out      mem_read(addr) : idata
+                , mem_write(addr, data)
+                ;
 }
 
-struct dec_inst {
-    funct[10];
-    imm[12];
-    rs2[5];
-    rs1[5];
-    rd[5];
-    opcode[5];
+struct fr {
+    sign;
+    exp[8];
+    mant[23];
 };
 
-struct general {
-    r[32];
+struct dr {
+    sign;
+    exp[11];
+    mant[52];
 };
 
 module core {
-    dec_inst    reg   dec_inst;
-    general     reg   gr[32] = 32'h0000_0000;
+    fr  reg           fr[32];
+    dr  reg           dr[32];
+    mem               gr[32][32]
+                    ;
     reg               pc = INST_ADDR
                     , inst[32]
-                    , rs1[32]
-                    , rs2[32]
-                    , rs3[32]
-                    , rd[32]
+                    , rs1[5]
+                    , rs2[5]
+                    , rs3[5]
+                    , rd[5]
                     , imm[20]
                     , order[8]
+                    , rsv_dat[32]
                     ;
-    wire              pre_order
-                    , pre_imm
-                    , pre_rs1
-                    , pre_rs2
-                    ;
-    proc_name         ift
+    proc_name         ift(pc)
                     , dec(inst)
-                    , exec(order, rs1, rs2, rd, imm)
-                    , macc
-                    , wbak
+                    , exer(order,  rd, rs1, rs2)
+                    , exer4(order, rd, rs1, rs2, rs3, rm)
+                    , exei(order,  rd, rs1, imm)
+                    , exes(order,  rs1, rs2, imm)
+                    , exeb(order,  rs1, rs2, imm)
+                    , exeu(order,  rd, imm)
+                    , exej(order,  rd, imm)
                     ;
 
     proc ift {
         dec(mem_read(pc++));
     }
 
-    proc dec {
-        exec(pre_order, inst[19:15], inst[24:20], inst[11:7], pre_imm);
-        any {
-            inst[6:2] == 5'h00  : {
-                pre_imm = {8'h00, inst[31:20]};
-                any {
-                    inst[14:12] == 3'h0 :   pre_order   = LB;
-                    inst[14:12] == 3'h1 :   pre_order   = LH;
-                    inst[14:12] == 3'h2 :   pre_order   = LW;
-                    inst[14:12] == 3'h4 :   pre_order   = LBU;
-                    inst[14:12] == 3'h5 :   pre_order   = LHU;
-                }
-            }
-            inst[6:2] == 5'h01  : {
-                pre_imm = {8'h00, inst[31:20]};
-                any {
-                    inst[14:12] == 3'h2 :   pre_order   = FLW;
-                    inst[14:12] == 3'h3 :   pre_order   = FLD;
-                }
-            }
-            inst[6:2] == 5'h03  : {
-                //  FENCE and FENCE.I Instructions are not implemented
-                //  since out of order is also not
-                pre_imm = 20'h0_0000;
-            }
-            inst[6:2] == 5'h04  : {
-                pre_imm = {8'h00, inst[31:20]};
-                any {
-                    inst[14:12] == 3'h0 :   pre_order   = ADDI;
-                    inst[14:12] == 3'h1 :   pre_order   = SLLI;
-                    inst[14:12] == 3'h2 :   pre_order   = SLTI;
-                    inst[14:12] == 3'h3 :   pre_order   = SLTIU;
-                    inst[14:12] == 3'h4 :   pre_order   = XORI;
-                    inst[14:12] == 3'h5 :   any {
-                                                inst[31:25] == 7'h00 :  pre_order   = SRLI;
-                                                inst[31:25] == 7'h20 :  pre_order   = SRAI;
+    proc dec any {
+            inst[6:2] == 5'h00 : any {
+                                    inst[14:12] == 3'h0 :   exei(LB,  inst[11:7], inst[19:15], inst[31:20]);
+                                    inst[14:12] == 3'h1 :   exei(LH,  inst[11:7], inst[19:15], inst[31:20]);
+                                    inst[14:12] == 3'h2 :   exei(LW,  inst[11:7], inst[19:15], inst[31:20]);
+                                    inst[14:12] == 3'h4 :   exei(LBU, inst[11:7], inst[19:15], inst[31:20]);
+                                    inst[14:12] == 3'h5 :   exei(LHU, inst[11:7], inst[19:15], inst[31:20]);
+                                }
+            inst[6:2] == 5'h01 : any {
+                                    inst[14:12] == 3'h2 :   exei(FLW, inst[11:7], inst[19:15], inst[31:20]);
+                                    inst[14:12] == 3'h3 :   exei(FLD, inst[11:7], inst[19:15], inst[31:20]);
+                                }
+            inst[6:2] == 5'h02 :    ift();  //  custom instruction
+            inst[6:2] == 5'h03 :    ift();  //  fence not support since no implement out-of-order
+            inst[6:2] == 5'h04 : any {
+                                    inst[14:12] == 3'h0 :   exei(ADDI,  inst[11:7], inst[19:15], inst[31:20]);
+                                    inst[14:12] == 3'h2 :   exei(SLTI,  inst[11:7], inst[19:15], inst[31:20]);
+                                    inst[14:12] == 3'h3 :   exei(SLTIU, inst[11:7], inst[19:15], inst[31:20]);
+                                    inst[14:12] == 3'h4 :   exei(XORI,  inst[11:7], inst[19:15], inst[31:20]);
+                                    inst[14:12] == 3'h6 :   exei(ORI,   inst[11:7], inst[19:15], inst[31:20]);
+                                    inst[14:12] == 3'h7 :   exei(ANDI,  inst[11:7], inst[19:15], inst[31:20]);
+                                }
+            inst[6:2] == 5'h05 :    exeu(AUIPC, inst[11:7], inst[31:12]);
+            inst[6:2] == 5'h06 :    ift();  //  Use for 64bit-length instruction
+            inst[6:2] == 5'h07 :    ift();  //  No definition
+            inst[6:2] == 5'h08 : any {
+                                    inst[14:12] == 3'h0 :   exes(SB, inst[19:15], inst[24:20], {inst[31:25], inst[11:7]});
+                                    inst[14:12] == 3'h1 :   exes(SH, inst[19:15], inst[24:20], {inst[31:25], inst[11:7]});
+                                    inst[14:12] == 3'h2 :   exes(SW, inst[19:15], inst[24:20], {inst[31:25], inst[11:7]});
+                                }
+            inst[6:2] == 5'h09 : any {
+                                    inst[14:12] == 3'h2 :   exes(FSW, inst[19:15], inst[24:20], {inst[31:25], inst[11:7]});
+                                    inst[14:12] == 3'h3 :   exes(FSD, inst[19:15], inst[24:20], {inst[31:25], inst[11:7]});
+                                }
+            inst[6:2] == 5'h0A :    ift();  //  Custom instruction
+            inst[6:2] == 5'h0B : any {  //  aq and rl bit are not implement since out-of-order is not
+                                    inst[31:27] == 5'h00 :  exer(AMOADDW,  inst[11:7], inst[19:15], inst[24:20]);
+                                    inst[31:27] == 5'h01 :  exer(AMOSWAPW, inst[11:7], inst[19:15], inst[24:20]);
+                                    inst[31:27] == 5'h02 :  exer(LRW,      inst[11:7], inst[19:15], inst[24:20]);
+                                    inst[31:27] == 5'h03 :  exer(SCW,      inst[11:7], inst[19:15], inst[24:20]);
+                                    inst[31:27] == 5'h04 :  exer(AMOXOR,   inst[11:7], inst[19:15], inst[24:20]);
+                                    inst[31:27] == 5'h08 :  exer(AMOORW,   inst[11:7], inst[19:15], inst[24:20]);
+                                    inst[31:27] == 5'h0C :  exer(AMOANDW,  inst[11:7], inst[19:15], inst[24:20]);
+                                    inst[31:27] == 5'h10 :  exer(AMOMINW,  inst[11:7], inst[19:15], inst[24:20]);
+                                    inst[31:27] == 5'h14 :  exer(AMOMAXW,  inst[11:7], inst[19:15], inst[24:20]);
+                                    inst[31:27] == 5'h18 :  exer(AMOMINUW, inst[11:7], inst[19:15], inst[24:20]);
+                                    inst[31:27] == 5'h1C :  exer(AMOMAXUW, inst[11:7], inst[19:15], inst[24:20]);
+                                }
+            inst[6:2] == 5'h0C : any {
+                                    inst[25] : any {
+                                                inst[14:12] == 3'h0 :   exer(MUL,    inst[11:7], inst[19:15], inst[24:20]);
+                                                inst[14:12] == 3'h1 :   exer(MULH,   inst[11:7], inst[19:15], inst[24:20]);
+                                                inst[14:12] == 3'h2 :   exer(MULHSU, inst[11:7], inst[19:15], inst[24:20]);
+                                                inst[14:12] == 3'h3 :   exer(MULSU,  inst[11:7], inst[19:15], inst[24:20]);
+                                                inst[14:12] == 3'h4 :   exer(DIV,    inst[11:7], inst[19:15], inst[24:20]);
+                                                inst[14:12] == 3'h5 :   exer(DIVU,   inst[11:7], inst[19:15], inst[24:20]);
+                                                inst[14:12] == 3'h6 :   exer(REM,    inst[11:7], inst[19:15], inst[24:20]);
+                                                inst[14:12] == 3'h7 :   exer(REMU,   inst[11:7], inst[19:15], inst[24:20]);
+                                    }
+                                   ~inst[25] : any {
+                                                inst[14:12] == 3'h0 :   any {
+                                                                           ~inst[30] :  exer(ADD,  inst[11:7], inst[19:15], inst[24:20]);
+                                                                            inst[30] :  exer(SUB,  inst[11:7], inst[19:15], inst[24:20]);
+                                                                        }
+                                                inst[14:12] == 3'h1 :                   exer(SLL,  inst[11:7], inst[19:15], inst[24:20]);
+                                                inst[14:12] == 3'h2 :                   exer(SLT,  inst[11:7], inst[19:15], inst[24:20]);
+                                                inst[14:12] == 3'h3 :                   exer(SLTU, inst[11:7], inst[19:15], inst[24:20]);
+                                                inst[14:12] == 3'h4 :                   exer(XOR,  inst[11:7], inst[19:15], inst[24:20]);
+                                                inst[14:12] == 3'h5 :   any {
+                                                                           ~inst[30] :  exer(SRL,  inst[11:7], inst[19:15], inst[24:20]);
+                                                                            inst[30] :  exer(SRA,  inst[11:7], inst[19:15], inst[24:20]);
+                                                                        }
+                                                inst[14:12] == 3'h6 :                   exer(OR,   inst[11:7], inst[19:15], inst[24:20]);
+                                                inst[14:12] == 3'h7 :                   exer(AND,  inst[11:7], inst[19:15], inst[24:20]);
+                                    }
+                                }
+            inst[6:2] == 5'h0D :    exeu(LUI, inst[11:7], inst[31:12]);
+            inst[6:2] == 5'h0E :    ift();  //  Use for 64bit-length instruction
+            inst[6:2] == 5'h0F :    ift();  //  No definition
+            inst[6:2] == 5'h10 : any {
+                                   ~inst[25] :  exer4(FMADDS,  inst[11:7], inst[19:15], inst[24:20], inst[31:27], inst[14:12]);
+                                    inst[25] :  exer4(FMADDD,  inst[11:7], inst[19:15], inst[24:20], inst[31:27], inst[14:12]);
+                                }
+            inst[6:2] == 5'h11 : any {
+                                   ~inst[25] :  exer4(FMSUBS,  inst[11:7], inst[19:15], inst[24:20], inst[31:27], inst[14:12]);
+                                    inst[25] :  exer4(FMSUBD,  inst[11:7], inst[19:15], inst[24:20], inst[31:27], inst[14:12]);
+                                }
+            inst[6:2] == 5'h12 : any {
+                                   ~inst[25] :  exer4(FNMSUBS,  inst[11:7], inst[19:15], inst[24:20], inst[31:27], inst[14:12]);
+                                    inst[25] :  exer4(FNMSUBD,  inst[11:7], inst[19:15], inst[24:20], inst[31:27], inst[14:12]);
+                                }
+            inst[6:2] == 5'h13 : any {
+                                   ~inst[25] :  exer4(FNMADDS,  inst[11:7], inst[19:15], inst[24:20], inst[31:27], inst[14:12]);
+                                    inst[25] :  exer4(FNMADDD,  inst[11:7], inst[19:15], inst[24:20], inst[31:27], inst[14:12]);
+                                }
+            inst[6:2] == 5'h14 : any {
+                                   ~inst[25] : any {
+                                                inst[31:27] == 5'h00 :  exer4(FADDS,  inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                inst[31:27] == 5'h01 :  exer4(FSUBS,  inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                inst[31:27] == 5'h02 :  exer4(FMULS,  inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                inst[31:27] == 5'h03 :  exer4(FDIVS,  inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                inst[31:27] == 5'h0B :  exer4(FSQRTS, inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                inst[31:27] == 5'h18 : any {
+                                                                       ~inst[20] :  exer4(FCVTWS,  inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                                        inst[20] :  exer4(FCVTWUS, inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                                    }
+                                                inst[31:27] == 5'h1A : any {
+                                                                       ~inst[20] :  exer4(FCVTSW,  inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                                        inst[20] :  exer4(FCVTSWU, inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                                    }
+                                                inst[31:27] == 5'h04 : any {
+                                                                        inst[14:12] == 3'h0 :   exer(FSGNJS,  inst[11:7], inst[19:15], inst[24:20]);
+                                                                        inst[14:12] == 3'h1 :   exer(FSGNJNS, inst[11:7], inst[19:15], inst[24:20]);
+                                                                        inst[14:12] == 3'h2 :   exer(FSGNJXS, inst[11:7], inst[19:15], inst[24:20]);
+                                                                    }
+                                                inst[31:27] == 5'h05 : any {
+                                                                        inst[14:12] == 3'h0 :  exer(FMINS, inst[11:7], inst[19:15], inst[24:20]);
+                                                                        inst[14:12] == 3'h1 :  exer(FMAXS, inst[11:7], inst[19:15], inst[24:20]);
+                                                                    }
+                                                inst[31:27] == 5'h14 : any {
+                                                                        inst[14:12] == 3'h0 :   exer(FLES, inst[11:7], inst[19:15], inst[24:20]);
+                                                                        inst[14:12] == 3'h1 :   exer(FLTS, inst[11:7], inst[19:15], inst[24:20]);
+                                                                        inst[14:12] == 3'h2 :   exer(FEQS, inst[11:7], inst[19:15], inst[24:20]);
+                                                                    }
+                                                inst[31:27] == 5'h1C : any {
+                                                                        inst[14:12] == 3'h0 :   exer(FMVXW,   inst[11:7], inst[19:15], inst[24:20]);
+                                                                        inst[14:12] == 3'h1 :   exer(FCLASSS, inst[11:7], inst[19:15], inst[24:20]);
+                                                                    }
+                                                inst[31:27] == 5'h1E :  exer(FMVWX, inst[11:7], inst[19:15], inst[24:20]);
                                             }
-                    inst[14:12] == 3'h6 :   pre_order   = ORI;
-                    inst[14:12] == 3'h7 :   pre_order   = ANDI;
-                }
-            }
-            inst[6:2] == 5'h05  : {
-                pre_imm     = {13'h0000, inst[31:25]};
-                pre_order   = AUIPC;
-            }
-            inst[6:2] == 5'h08  : {
-                pre_imm = {13'h0000, inst[31:25]};
-                any{
-                    inst[14:12] == 3'h0 :   pre_order   = SB;
-                    inst[14:12] == 3'h1 :   pre_order   = SH;
-                    inst[14:12] == 3'h2 :   pre_order   = SW;
-                }
-            }
-            inst[6:2] == 5'h09  : {
-                pre_imm = {8'h00, inst[31:25], inst[11:7]};
-                any {
-                    inst[14:12] == 3'h2 :   pre_order   = FSW;
-                    inst[14:12] == 3'h3 :   pre_order   = FSD;
-                }
-            }
-            inst[6:2] == 5'h0B  : {
-                pre_imm = {13'h0000, inst[31:25]};
-                any{
-                    inst[31:27] == 5'h00 :  pre_order   = AMOADDW;
-                    inst[31:27] == 5'h01 :  pre_order   = AMOSWAPW;
-                    inst[31:27] == 5'h02 :  pre_order   = LRW;
-                    inst[31:27] == 5'h03 :  pre_order   = SCW;
-                    inst[31:27] == 5'h04 :  pre_order   = AMOXORW;
-                    inst[31:27] == 5'h08 :  pre_order   = AMOORW;
-                    inst[31:27] == 5'h0C :  pre_order   = AMOANDW;
-                    inst[31:27] == 5'h10 :  pre_order   = AMOMINW;
-                    inst[31:27] == 5'h14 :  pre_order   = AMOMAXW;
-                    inst[31:27] == 5'h18 :  pre_order   = AMOMINUW;
-                    inst[31:27] == 5'h1C :  pre_order   = AMOMAXUW;
-                }
-            }
-            inst[6:2] == 5'h0C  : any {
-                inst[25] :  {
-                    any {
-                        inst[14:12] == 3'h0 :   any {
-                                                    inst[30] :  pre_order   = ADD;
-                                                   !inst[30] :  pre_order   = SUB;
-                                                }
-                        inst[14:12] == 3'h1 :   pre_order   = SLL;
-                        inst[14:12] == 3'h2 :   pre_order   = SLT;
-                        inst[14:12] == 3'h3 :   pre_order   = SLTU;
-                        inst[14:12] == 3'h4 :   pre_order   = XOR;
-                        inst[14:12] == 3'h5 :   any {
-                                                    inst[30] :  pre_order   = SRL;
-                                                   !inst[30] :  pre_order   = SRA;
-                                                }
-                        inst[14:12] == 3'h6 :   pre_order   = OR;
-                        inst[14:12] == 3'h7 :   pre_order   = AND;
-                    }
-                }
-               !inst[25] :  {
-                    any {
-                        inst[14:12] == 3'h0 :   pre_order   = MUL;
-                        inst[14:12] == 3'h1 :   pre_order   = MULH;
-                        inst[14:12] == 3'h2 :   pre_order   = MULHSU;
-                        inst[14:12] == 3'h3 :   pre_order   = MULHU;
-                        inst[14:12] == 3'h4 :   pre_order   = DIV;
-                        inst[14:12] == 3'h5 :   pre_order   = DIVU;
-                        inst[14:12] == 3'h6 :   pre_order   = REM;
-                        inst[14:12] == 3'h7 :   pre_order   = REMU;
-                    }
-                }
-            }
-            inst[6:2] == 5'h0D  : {
-                pre_imm     = inst[31:12];
-                pre_order   = LUI;
-            }
-            inst[6:2] == 5'h10  : {
-                pre_imm = 20'h0_0000;
-                rs3     = inst[31:27];
-                any {
-                    inst[26:25] == 2'h0 :   pre_order   = FMADDS;
-                    inst[26:25] == 2'h1 :   pre_order   = FMADDD;
-                }
-            }
-            inst[6:2] == 5'h11  : {
-                pre_imm = 20'h0_0000;
-                rs3     = inst[31:27];
-                any {
-                    inst[26:25] == 2'h0 :   pre_order   = FMSUBS;
-                    inst[26:25] == 2'h1 :   pre_order   = FMSUBD;
-                }
-            }
-            inst[6:2] == 5'h12  : {
-                pre_imm = 20'h0_0000;
-                rs3     = inst[31:27];
-                any {
-                    inst[26:25] == 2'h0 :   pre_order   = FMMSUBS;
-                    inst[26:25] == 2'h1 :   pre_order   = FMMSUBD;
-                }
-            }
-            inst[6:2] == 5'h13  : {
-                pre_imm = 20'h0_0000;
-                rs3     = inst[31:27];
-                any {
-                    inst[26:25] == 2'h0 :   pre_order   = FMMADDS;
-                    inst[26:25] == 2'h1 :   pre_order   = FMMADDD;
-                }
-            }
-            inst[6:2] == 5'h14  : {
-                pre_imm = 20'h0_0000;
-                any {
-                    inst[25] : any {
-                        inst[31:27] == 5'h00 :  pre_order   = FADDD;
-                        inst[31:27] == 5'h01 :  pre_order   = FSUBD;
-                        inst[31:27] == 5'h02 :  pre_order   = FMULD;
-                        inst[31:27] == 5'h03 :  pre_order   = FDIVD;
-                        inst[31:27] == 5'h04 :  any {
-                                                    inst[14:12] == 3'h0 :   pre_order   = FSGNJD;
-                                                    inst[14:12] == 3'h1 :   pre_order   = FSGNJND;
-                                                    inst[14:12] == 3'h2 :   pre_order   = FSGNJXD;
-                                                }
-                        inst[31:27] == 5'h05 :  any {
-                                                    inst[14:12] == 3'h0 :   pre_order   = FMIND;
-                                                    inst[14:12] == 3'h1 :   pre_order   = FMAXD;
-                                                }
-                        inst[31:27] == 5'h08 :  any {
-                                                    inst[24:20] == 5'h0 :   pre_order   = FCVTDS;
-                                                    inst[24:20] == 5'h1 :   pre_order   = FCVTSD;
-                                                }
-                        inst[31:27] == 5'h0B :  pre_order   = FSQRTD;
-                        inst[31:27] == 5'h14 :  any {
-                                                    inst[14:12] == 3'h0 :   pre_order   = FLED;
-                                                    inst[14:12] == 3'h1 :   pre_order   = FLTD;
-                                                    inst[14:12] == 3'h2 :   pre_order   = FEQD;
-                                                }
-                        inst[31:27] == 5'h18 :  any {
-                                                    inst[24:20] == 3'h0 :   pre_order   = FCVTWD;
-                                                    inst[24:20] == 3'h1 :   pre_order   = FCVTWUD;
-                                                }
-                        inst[31:27] == 5'h1A :  any {
-                                                    inst[24:20] == 3'h0 :   pre_order   = FCVTDW;
-                                                    inst[24:20] == 3'h1 :   pre_order   = FCVTDWU;
-                                                }
-                        inst[31:27] == 5'h1C :  pre_order   = FCLASSD;
-                    }
-                   !inst[25] : any {
-                        inst[31:27] == 5'h00 :  pre_order   = FADDS;
-                        inst[31:27] == 5'h01 :  pre_order   = FSUBS;
-                        inst[31:27] == 5'h02 :  pre_order   = FMULS;
-                        inst[31:27] == 5'h03 :  pre_order   = FDIVS;
-                        inst[31:27] == 5'h04 :  any {
-                                                    inst[14:12] == 3'h0 :   pre_order   = FSGNJS;
-                                                    inst[14:12] == 3'h1 :   pre_order   = FSGNJNS;
-                                                    inst[14:12] == 3'h2 :   pre_order   = FSGNJXS;
-                                                }
-                        inst[31:27] == 5'h05 :  any {
-                                                    inst[14:12] == 3'h0 :   pre_order   = FMINS;
-                                                    inst[14:12] == 3'h1 :   pre_order   = FMAXS;
-                                                }
-                        inst[31:27] == 5'h0B :  pre_order   = FSQRTS;
-                        inst[31:27] == 5'h14 :  any {
-                                                    inst[14:12] == 3'h0 :   pre_order   = FLES;
-                                                    inst[14:12] == 3'h1 :   pre_order   = FLTS;
-                                                    inst[14:12] == 3'h2 :   pre_order   = FEQS;
-                                                }
-                        inst[31:27] == 5'h18 :  any {
-                                                    inst[24:20] == 5'h00 :  pre_order   = FCVTWS;
-                                                    inst[24:20] == 5'h01 :  pre_order   = FCVTWUS;
-                                                }
-                        inst[31:27] == 5'h1A :  any {
-                                                    inst[24:20] == 5'h00 :  pre_order   = FCVTSW;
-                                                    inst[24:20] == 5'h01 :  pre_order   = FCVTSWU;
-                                                }
-                        inst[31:27] == 5'h1C :  any {
-                                                    inst[14:12] == 3'h0 :   pre_order   = FMVXW;
-                                                    inst[14:12] == 3'h1 :   pre_order   = FCLASSS;
-                                                }
-                        inst[31:27] == 5'h1E :  pre_order   = FMVWX;
-                    }
-                }
-            }
-            inst[6:2] == 5'h18  : {
-                pre_imm = {inst[31], inst[7], inst[30:25], inst[11:8], 1'b0});
-                any {
-                    inst[14:12] == 3'h0 :   pre_order   = BEQ;
-                    inst[14:12] == 3'h1 :   pre_order   = BNE;
-                    inst[14:12] == 3'h4 :   pre_order   = BLT;
-                    inst[14:12] == 3'h5 :   pre_order   = BGE;
-                    inst[14:12] == 3'h6 :   pre_order   = BLTU;
-                    inst[14:12] == 3'h7 :   pre_order   = BGEU;
-                }
-            }
-            inst[6:2] == 5'h19  : {
-                pre_imm = {8'h00, inst[31:20};
-                pre_order   = JALR;
-            }
-            inst[6:2] == 5'h1B  : {
-                pre_imm = {inst[31], inst[19:12], inst[20], inst[30:21]};
-                pre_order   = JAL;
-            }
-            inst[6:2] == 5'h1C  : {
-                inst[14:12] :   {
+                                    inst[25] : any {
+                                                inst[31:27] == 5'h00 :  exer4(FADDD,  inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                inst[31:27] == 5'h01 :  exer4(FSUBD,  inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                inst[31:27] == 5'h02 :  exer4(FMULD,  inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                inst[31:27] == 5'h03 :  exer4(FDIVD,  inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                inst[31:27] == 5'h0B :  exer4(FSQRTD, inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                inst[31:27] == 5'h08 :  any {
+                                                                           ~inst[25] :  exer4(FCVTSD,  inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                                            inst[25] :  exer4(FCVTDS,  inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                                        }
+                                                inst[31:27] == 5'h18 :  any {
+                                                                           ~inst[20] :  exer4(FCVTWD,  inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                                            inst[20] :  exer4(FCVTWUD, inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                                        }
+                                                inst[31:27] == 5'h1A :  any {
+                                                                           ~inst[20] :  exer4(FCVTDW,  inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                                            inst[20] :  exer4(FCVTDWU, inst[11:7], inst[19:15], inst[24:20], 5'h00, inst[14:12]);
+                                                                        }
+                                                inst[31:27] == 5'h04 :  any {
+                                                                            inst[14:12] == 3'h0 :   exer(FSGNJD,  inst[11:7], inst[19:15], inst[24:20]);
+                                                                            inst[14:12] == 3'h1 :   exer(FSGNJND, inst[11:7], inst[19:15], inst[24:20]);
+                                                                            inst[14:12] == 3'h2 :   exer(FSGNJXD, inst[11:7], inst[19:15], inst[24:20]);
+                                                                        }
+                                                inst[31:27] == 5'h05 :  any {
+                                                                            inst[14:12] == 3'h0 :   exer(FMIND, inst[11:7], inst[19:15], inst[24:20]);
+                                                                            inst[14:12] == 3'h1 :   exer(FMAXD, inst[11:7], inst[19:15], inst[24:20]);
+                                                                        }
+                                                inst[31:27] == 5'h14 :  any {
+                                                                            inst[14:12] == 3'h0 :   exer(FLED, inst[11:7], inst[19:15], inst[24:20]);
+                                                                            inst[14:12] == 3'h1 :   exer(FLTD, inst[11:7], inst[19:15], inst[24:20]);
+                                                                            inst[14:12] == 3'h2 :   exer(FEQD, inst[11:7], inst[19:15], inst[24:20]);
+                                                                        }
+                                                inst[31:27] == 5'h1C :  exer(FCLASSD, inst[11:7], inst[19:15], inst[24:20]);
+                                            }
+                                }
+            inst[6:2] == 5'h15 :    ift();  //  Reserve
+            inst[6:2] == 5'h16 :    ift();  //  Custom instruction
+            inst[6:2] == 5'h17 :    ift();  //  No definition
+            inst[6:2] == 5'h18 :    any {
+                                        inst[14:12] == 3'h0 :   exeb(BEQ,  inst[19:15], inst[24:20], {inst[31], inst[7], inst[30:25], inst[11:8], 1'b0});
+                                        inst[14:12] == 3'h1 :   exeb(BNE,  inst[19:15], inst[24:20], {inst[31], inst[7], inst[30:25], inst[11:8], 1'b0});
+                                        inst[14:12] == 3'h4 :   exeb(BLT,  inst[19:15], inst[24:20], {inst[31], inst[7], inst[30:25], inst[11:8], 1'b0});
+                                        inst[14:12] == 3'h5 :   exeb(BGE,  inst[19:15], inst[24:20], {inst[31], inst[7], inst[30:25], inst[11:8], 1'b0});
+                                        inst[14:12] == 3'h6 :   exeb(BLTU, inst[19:15], inst[24:20], {inst[31], inst[7], inst[30:25], inst[11:8], 1'b0});
+                                        inst[14:12] == 3'h7 :   exeb(BGEU, inst[19:15], inst[24:20], {inst[31], inst[7], inst[30:25], inst[11:8], 1'b0});
+                                    }
+            inst[6:2] == 5'h19 :    exei(JALR, inst[11:7], inst[19:15], inst[31:20]);
+            inst[6:2] == 5'h1A :    ift();  //  Reserve
+            inst[6:2] == 5'h1B :    exej(JAL,  inst[11:7], {inst[31], inst[19:12], inst[20], inst[30:21], 1'b0});
+            inst[6:2] == 5'h1C :    any {
+                                        inst[14:12] == 3'h0 :   any {
+                                                                   ~inst[20] :  exei(ECALL,  inst[11:7], inst[19:15], inst[31:20]);
+                                                                    inst[20] :  exei(EBREAK, inst[11:7], inst[19:15], inst[31:20]);
+                                                                }
+                                        inst[14:12] == 3'h1 :   exei(CSRRW,  inst[11:7], inst[19:15], inst[31:20]);
+                                        inst[14:12] == 3'h2 :   exei(CSRRS,  inst[11:7], inst[19:15], inst[31:20]);
+                                        inst[14:12] == 3'h3 :   exei(CSRRC,  inst[11:7], inst[19:15], inst[31:20]);
+                                        inst[14:12] == 3'h5 :   exei(CSRRWI, inst[11:7], inst[19:15], inst[31:20]);
+                                        inst[14:12] == 3'h6 :   exei(CSRRSI, inst[11:7], inst[19:15], inst[31:20]);
+                                        inst[14:12] == 3'h7 :   exei(CSRRCI, inst[11:7], inst[19:15], inst[31:20]);
+                                    }
+            inst[6:2] == 5'h1D :    ift();  //  Reserve
+            inst[6:2] == 5'h1E :    ift();  //  Custom instruction
+            inst[6:2] == 5'h1F :    ift();  //  No definition
+    }
+
+    proc exer {
+        any {
+            order == AMOADDW :  {
+                                    gr[rd] :=  mem_read(gr[rs1]);
+                                    mem_write(gr[rs1], gr[rd]+gr[rs2]);
+                                }
+            order == AMOSWAPW : {
+                                    gr[rd] :=  mem_read(gr[rs1]);
+                                    mem_write(gr[rs1], gr[rs2]);
+                                }
+            order == AMOXOR :   {
+                                    gr[rd] :=  mem_read(gr[rs1]);
+                                    mem_write(gr[rs1], gr[rd]^gr[rs2]);
+                                }
+            order == AMOORW :   {
+                                    gr[rd] :=  mem_read(gr[rs1]);
+                                    mem_write(gr[rs1], gr[rd]|gr[rs2]);
+                                }
+            order == AMOANDW :  {
+                                    gr[rd] :=  mem_read(gr[rs1]);
+                                    mem_write(gr[rs1], gr[rd]&gr[rs2]);
+                                }
+            order == AMOMINW :  {
+                                    gr[rd] :=  mem_read(gr[rs1]);
                                     any {
-                                        inst[14:12] == 3'h1 :   pre_order   = CSRRW;
-                                        inst[14:12] == 3'h2 :   pre_order   = CSRRS;
-                                        inst[14:12] == 3'h3 :   pre_order   = CSRRC;
-                                        inst[14:12] == 3'h5 :   pre_order   = CSRRWI;
-                                        inst[14:12] == 3'h6 :   pre_order   = CSRRSI;
-                                        inst[14:12] == 3'h7 :   pre_order   = CSRRCI;
+                                        gr[rd][31] == gr[rs2][31] :     mem_write(gr[rs1], if(gr[rd]>gr[rs2]) gr[rs2] else gr[rd]);
+                                       ~gr[rd][31] &  gr[rs2][31] :     mem_write(gr[rs1], gr[rs2]);
+                                        gr[rd][31] & ~gr[rs2][31] :     mem_write(gr[rs1], gr[rd]);
                                     }
                                 }
-               !inst[14:12] :   {
+            order == AMOMAXW :  {
+                                    gr[rd] :=  mem_read(gr[rs1]);
                                     any {
-                                        inst[31:20] == 12'h000 : pre_order  = ECALL;
-                                        inst[31:20] == 12'h001 : pre_order  = EBREAK;
+                                        gr[rd][31] == gr[rs2][31] :     mem_write(gr[rs1], if(gr[rd]>gr[rs2]) gr[rd] else gr[rs2]);
+                                       ~gr[rd][31] &  gr[rs2][31] :     mem_write(gr[rs1], gr[rs2]);
+                                        gr[rd][31] & ~gr[rs2][31] :     mem_write(gr[rs1], gr[rd]);
                                     }
                                 }
-            }
+            order == AMOMINUW : {
+                                    gr[rd] :=  mem_read(gr[rs1]);
+                                    mem_write(gr[rs1], if(gr[rd]>gr[rs2]) gr[rs2] else gr[rd]);
+                                }
+            order == AMOMAXUW : {
+                                    gr[rd] :=  mem_read(gr[rs1]);
+                                    mem_write(gr[rs1], if(gr[rd]>gr[rs2]) gr[rd] else gr[rs2]);
+                                }
+            order == LRW :  {
+                                gr[rd] :=   mem_read(gr[rs1]);
+                                rsv_dat =   gr[rd];
+                            }
+            order == SCW :  {
+                                mem_write(gr[rs1], gr[rs2]);
+                                gr[rd] :=  ~(rsv_dat == gr[rd]);
+                            }
+            order == MUL :      gr[rd] :=   (gr[rs1] * gr[rs2])[31:0];
+            order == MULH :     gr[rd] :=   (gr[rs1] * gr[rs2])[63:32];
+            order == MULHSU :   gr[rd] :=   if(gr[rs1][31]) {
+                                                gr[rd] :=   {2'b10, (~gr[rs1][30:0]+31'h1) * gr[rs2][30:0]}[63:32];
+                                            } else {
+                                                gr[rd] :=   (gr[rs1][30:0] * gr[rs2][30:0])[63:32];
+                                            }
+            order == MULSU :    gr[rd] :=   if(gr[rs1][31]) {
+                                                gr[rd] :=   {2'b10, (~gr[rs1][30:0]+31'h1) * gr[rs2][30:0]}[31:0];
+                                            } else {
+                                                gr[rd] :=   (gr[rs1][30:0] * gr[rs2][30:0])[31:0];
+                                            }
+            order == DIV :      gr[rd] :=   32'h0;
+            order == DIVU :     gr[rd] :=   32'h0;
+            order == REM :      gr[rd] :=   32'h0;
+            order == REMU :     gr[rd] :=   32'h0;
+            order == ADD :      gr[rd] :=   gr[rs1] + gr[rs2];
+            order == SUB :      gr[rd] :=   gr[rs1] - gr[rs2];
+            order == AND :      gr[rd] :=   gr[rs1] & gr[rs2];
+            order == OR :       gr[rd] :=   gr[rs1] | gr[rs2];
+            order == XOR :      gr[rd] :=   gr[rs1] ^ gr[rs2];
+            order == SLL :      gr[rd] :=   gr[rs1] << gr[rs2];
+            order == SLT :      any {
+                                    gr[rs1][31] ==  gr[rs2][31] :   gr[rd] :=   32'(gr[rs1]<gr[rs2]);
+                                   ~gr[rs1][31] &   gr[rs2][31] :   gr[rd] :=   32'h1;
+                                    gr[rs1][31] &  ~gr[rs2][31] :   gr[rd] :=   32'h0;
+                                }
+            order == SLTU :     gr[rd] :=   gr[rs1] < gr[rs2];
+            order == SRL :      gr[rd] :=   gr[rs1] >> gr[rs2];
+            order == SRA :      any {
+                                   ~gr[rs1][31] :   gr[rd] :=   gr[rs1] >> gr[rs2];
+                                    gr[rs1][31] :   gr[rd] :=   {32'h1, gr[rs1][31:gr[rs2]]}[31:0];
+                                }
+            order == FSGNJS :
+            order == FSGNJNS :
+            order == FSGNJXS :
+            order == FMINS :
+            order == FMAXS :
+            order == FLES :
+            order == FLTS :
+            order == FEQS :
+            order == FMVXW :
+            order == FCLASSS :
+            order == FMVWX :
+            order == FSGNJD :
+            order == FSGNJND :
+            order == FSGNJXD :
+            order == FMIND :
+            order == FMAXD :
+            order == FLED :
+            order == FLTD :
+            order == FEQD :
+            order == FCLASSD :
         }
     }
 
-    proc exec any {
-        order == ADDI :         gr[rd].r    :=  32'(gr[rs1].r +  32#(imm));
-        order == SLTI :         gr[rd].r    :=  32'(gr[rs1].r <= 32#(imm));
-        order == SLTIU :        any {
-                                    imm == 20'(1)   : if(rs1 == 5'(0))  gr[rd].r    := 32'(1);
-                                                      else              gr[rd].r    := 32'(0);
-                                    imm != 20'(1)   : 32'(gr[rs1].r <= 32'(imm));
-                                }
-        order == ANDI :         gr[rd].r    :=      gr[rs1].r & 32#(imm);
-        order == ORI :          gr[rd].r    :=      gr[rs1].r | 32#(imm);
-        order == XORI :         if(imm == 20#(-1))  gr[rd].r = ~gr[rs1].r;
-                                else                gr[rd].r =  gr[rs1].r ^ 32#(imm);
-        order == SLLI :         gr[rd].r    :=      gr[rs1].r << imm;
-        order == SRLI :         gr[rd].r    :=      gr[rs1].r >> imm;
-        order == SRAI :         gr[rd].r    :=     {gr[rs1].r[31], gr[rs1].r[30:0]>>imm};
-        order == LUI :          gr[rd].r    :=     {imm, 12'(0)};
-        order == AUIPC :        gr[rd].r    :=      pc + {imm, 12'(0)};
-        order == ADD :          gr[rd].r    :=      gr[rs1].r +  gr[rs2].r;
-        order == SUB :          gr[rd].r    :=      gr[rs1].r -  gr[rs2].r;
-        order == SLT :          {
-                                    gr[rd].r    :=  32'(pre_rs1 < pre_rs2);
-                                    any {
-                                        gr[rs1].r[31]   : pre_rs1 = ~gr[rs1].r[30:0]+31'(1);
-                                       ~gr[rs1].r[31]   : pre_rs1 =  gr[rs1].r[30:0];
-                                        gr[rs2].r[31]   : pre_rs2 = ~gr[rs2].r[30:0]+31'(1);
-                                       ~gr[rs2].r[31]   : pre_rs2 =  gr[rs2].r[30:0];
-                                    }
-                                }
-        order == SLTU :         gr[rd].r    :=  32'(gr[rs1].r < gr[rs2].r);
-        order == AND :          gr[rd].r    :=      gr[rs1].r & gr[rs2].r;
-        order == OR :           gr[rd].r    :=      gr[rs1].r | gr[rs2].r;
-        order == XOR :          gr[rd].r    :=      gr[rs1].r ^ gr[rs2].r;
-        order == SLL :          gr[rd].r    :=      gr[rs1].r << gr[rs1].r[4:0];
-        order == SRL :          gr[rd].r    :=      gr[rs1].r >> gr[rs1].r[4:0];
-        order == SRA :          any {
-                                    gr[rs1].r[31]       : gr[rd].r
-
-        order == AMOADDW :
-        order == AMOANDW :
-        order == AMOMAXUW :
-        order == AMOMAXW :
-        order == AMOMINUW :
-        order == AMOMINW :
-        order == AMOORW :
-        order == AMOSWAPW :
-        order == AMOXORW :
-        order == BEQ :
-        order == BGE :
-        order == BGEU :
-        order == BLT :
-        order == BLTU :
-        order == BNE :
-        order == CSRRC :
-        order == CSRRCI :
-        order == CSRRS :
-        order == CSRRSI :
-        order == CSRRW :
-        order == CSRRWI :
-        order == DIV :
-        order == DIVU :
-        order == EBREAK :
-        order == ECALL :
-        order == FADDD :
-        order == FADDS :
-        order == FCLASSD :
-        order == FCLASSS :
-        order == FCVTDS :
-        order == FCVTDW :
-        order == FCVTDWU :
-        order == FCVTSD :
-        order == FCVTSW :
-        order == FCVTSWU :
-        order == FCVTWD :
-        order == FCVTWS :
-        order == FCVTWUD :
-        order == FCVTWUS :
-        order == FDIVD :
-        order == FDIVS :
-        order == FEQD :
-        order == FEQS :
-        order == FLD :
-        order == FLED :
-        order == FLES :
-        order == FLTD :
-        order == FLTS :
-        order == FLW :
-        order == FMADDD :
-        order == FMADDS :
-        order == FMAXD :
-        order == FMAXS :
-        order == FMIND :
-        order == FMINS :
-        order == FMMADDD :
-        order == FMMADDS :
-        order == FMMSUBD :
-        order == FMMSUBS :
-        order == FMSUBD :
-        order == FMSUBS :
-        order == FMULD :
-        order == FMULS :
-        order == FMVWX :
-        order == FMVXW :
-        order == FSD :
-        order == FSGNJD :
-        order == FSGNJND :
-        order == FSGNJNS :
-        order == FSGNJS :
-        order == FSGNJXD :
-        order == FSGNJXS :
-        order == FSQRTD :
-        order == FSQRTS :
-        order == FSUBD :
-        order == FSUBS :
-        order == FSW :
-        order == JAL :
-        order == JALR :
-        order == LB :
-        order == LBU :
-        order == LH :
-        order == LHU :
-        order == LRW :
-        order == LW :
-        order == MUL :
-        order == MULH :
-        order == MULHSU :
-        order == MULHU :
-        order == REM :
-        order == REMU :
-        order == SB :
-        order == SCW :
-        order == SH :
-        order == SW :
+    proc exer4 {
+        any {
+            order == FMADDS :
+            order == FMSUBS :
+            order == FNMSUBS :
+            order == FNMADDS :
+            order == FADDS :
+            order == FSUBS :
+            order == FMULS :
+            order == FDIVS :
+            order == FSQRTS :
+            order == FCVTWS :
+            order == FCVTWUS :
+            order == FCVTSW :
+            order == FCVTSWU :
+            order == FMADDD :
+            order == FMSUBD :
+            order == FNMSUBD :
+            order == FNMADDD :
+            order == FADDD :
+            order == FSUBD :
+            order == FMULD :
+            order == FDIVD :
+            order == FSQRTD :
+            order == FCVTSD :
+            order == FCVTDS :
+            order == FCVTWD :
+            order == FCVTWUD :
+            order == FCVTDW :
+            order == FCVTDWU :
+        }
     }
 
-    proc macc {
-        wbak();
+    proc exei {
+        any {
+            order == LB :       gr[rd] :=   mem_read(gr[rs1]+32#imm)[7:0];
+            order == LH :       gr[rd] :=   mem_read(gr[rs1]+32#imm)[15:0];
+            order == LW :       gr[rd] :=   mem_read(gr[rs1]+32#imm);
+            order == LBW :      gr[rd] :=   mem_read(gr[rs1]+32'imm);
+            order == LHW :      gr[rd] :=   mem_read(gr[rs1]+32'imm)[15:0];
+            order == FLW :      fr[rd] :=   fpu(gr[rs1]+32#imm, order);
+            order == FLD :      dr[rd] :=  {mem_read(gr[rs1]+32#imm+32'h4), mem_read(gr[rs1]+32#imm)};
+            order == ADDI :     gr[rd] :=  (gr[rs1] + 32#imm)[31:0];
+            order == SLTI :     gr[rd] :=  (gr[rs1] < 32#imm)[31:0];
+            order == SLTIU :    gr[rd] :=  (gr[rs1] < 32#imm)[31:0];
+            order == XORI :     gr[rd] :=   gr[rs1] ^ 32#imm;
+            order == ORI :      gr[rd] :=   gr[rs1] | 32#imm;
+            order == ANDI :     gr[rd] :=   gr[rs1] & 32#imm;
+            order == JALR :     {
+                                    gr[rd] :=   pc + 32'h4;
+                                    pc     :=   {(gr[rs1] + 32#imm)[31:1], 1'b0};
+                                }
+            order == ECALL :    ift(pc);    //  No implement since this logic do not regard OS
+            order == EBREAK :   ift(pc);    //  No implement since this logic do not regard OS
+            order == CSRRW :    ift(pc);
+            order == CSRRS :    ift(pc);
+            order == CSRRC :    ift(pc);
+            order == CSRRWI :   ift(pc);
+            order == CSRRSI :   ift(pc);
+            order == CSRRCI :   ift(pc);
+        }
     }
 
-    proc wbak {
-        ift();
+    proc exes {
+        any {
+            order == SB :       mem_write(gr[rs1]+32#imm, gr[rs2][7:0]);
+            order == SH :       mem_write(gr[rs1]+32#imm, gr[rs2][15:0]);
+            order == SW :       mem_write(gr[rs1]+32#imm, gr[rs2][31:0]);
+            order == FSW :      mem_write(gr[rs1]+32#imm, fr[rs2][31:0]);
+            order == FSD :      {
+                                    mem_write(gr[rs1]+32#imm,       dr[rs2][31:0]);
+                                    mem_write(gr[rs1]+32#imm+32'h4, dr[rs2][63:32]);
+                                }
+        }
+        ift(pc);
+    }
+
+    proc exeb {
+        any {
+            order == BEQ :      if(gr[rs1] == gr[rs2]) {
+                                    pc :=   pc + 32#imm;
+                                } else {
+                                    ift(pc);
+                                }
+            order == BNE :      if(gr[rs1] != gr[rs2]) {
+                                    pc :=   pc + 32#imm;
+                                } else {
+                                    ift(pc);
+                                }
+            order == BLTU :     if(gr[rs1] < gr[rs2]) {
+                                    pc :=   pc + 32#imm;
+                                } else {
+                                    ift(pc);
+                                }
+            order == BGEU :     if(gr[rs1] > gr[rs2]) {
+                                    pc :=   pc + 32#imm;
+                                } else {
+                                    ift(pc);
+                                }
+            order == BLT :      any {
+                                    gr[rs1][31] ==  gr[rs2][31] :   if(gr[rs1][30:0] < gr[rs2][30:0]) {
+                                                                       pc :=   pc + 32#imm;
+                                                                    } else {
+                                                                       ift(pc);
+                                                                    }
+                                   ~gr[rs1][31] ==  gr[rs2][31] :   ift(pc);
+                                    gr[rs1][31] == ~gr[rs2][31] :   pc :=   pc + 32#imm;
+                                }
+            order == BGE :      any {
+                                    gr[rs1][31] ==  gr[rs2][31] :   if(gr[rs1][30:0] > gr[rs2][30:0]) {
+                                                                       pc :=   pc + 32#imm;
+                                                                    } else {
+                                                                       ift(pc);
+                                                                    }
+                                   ~gr[rs1][31] ==  gr[rs2][31] :   pc :=   pc + 32#imm;
+                                    gr[rs1][31] == ~gr[rs2][31] :   ift(pc);
+                                }
+        }
+    }
+
+    proc exeu {
+        any {
+            order == AUIPC :    gr[rd] :=   pc + {imm, 12'h000};
+            order == LUI :      gr[rd] :=   {imm, 12'h000};
+        }
+    }
+
+    proc exej {
+        order == JAL :  {
+                            gr[rd] :=   pc + 32'h4;
+                            pc     :=   pc + 32'imm;
+                        }
     }
 }
+

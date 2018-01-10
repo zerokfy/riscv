@@ -1,0 +1,54 @@
+declare alu {
+    input         s1[32]
+                , s2[32]
+                ;
+    output        result[32]
+                ;
+    func_in       mul_s(s1, s2)
+                , mul_u(s1, s2)
+                , div_s(s1, s2)
+                , div_u(s1, s2)
+                , rem_s(s1, s2)
+                , rem_u(s1, s2)
+                ;
+    func_out      ans(result)
+                ;
+}
+
+module alu {
+
+    wire          sub[31:0]
+                ;
+    reg           dvend[63:0]
+                , dvsor[31:0]
+                , dvcnt[5:0] = 6'h00
+                ;
+    proc_name     part_div(dvend, dvsor, dvcnt)
+                ;
+
+    function mul_s any {
+        s1[31] == s2[31] :  ans({1'b0, (s1*s2)[30:0]});
+        s1[31] != s2[31] :  ans({1'b1, (s1*s2)[30:0]});
+    }
+
+    function mul_u {
+        ans((s1*s2)[31:0]);
+    }
+
+    function div_u {
+        part_div(s1, 64's2, 6'h0);
+    }
+
+    proc part_div any {
+        dvcnt[5] :  ans(dvend[31:0]);
+       ~dvcnt[5] :  any {
+                        dvsor >  dvend[63:32] : part_div(dvsor, (dvend<<1)[63:0], dvcnt++);
+                        dvsor <= dvend[63:32] : part_div(
+                                                    dvsor,
+                                                    {(dvsor-dvend[63:32])[30:0], dvend[31:0], 1'b1},
+                                                    dvcnt++
+                                                );
+                    }
+    }
+}
+

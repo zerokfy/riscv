@@ -115,3 +115,6 @@
 #define     inst_XOR        8'h72
 #define     inst_XORI       8'h73
 
+#define     MUL             1'b0
+#define     DIV             1'b1
+
