@@ -17,30 +17,44 @@ declare alu {
 
 module alu {
 
-    wire          sub[31:0]
-                ;
-    reg           dvend[63:0]
-                , dvsor[31:0]
-                , dvcnt[5:0] = 6'h00
+    reg           dvend[64]
+                , dvsor[32]
+                , dvcnt[6] = 6'h00
                 ;
     proc_name     part_div(dvend, dvsor, dvcnt)
                 ;
 
-    function mul_s any {
+    func mul_s any {
         s1[31] == s2[31] :  ans({1'b0, (s1*s2)[30:0]});
         s1[31] != s2[31] :  ans({1'b1, (s1*s2)[30:0]});
     }
 
-    function mul_u {
+    func mul_u {
         ans((s1*s2)[31:0]);
     }
 
-    function div_u {
-        part_div(s1, 64's2, 6'h0);
+    func div_s seq {
+        part_div({1'b0, s1[30:0]}, {1'b0, s2[30:0]}, 6'h0);
+        ans({s1[31]==s2[31]}, dvend[30:0]);
+    }
+
+    func div_u seq {
+        part_div(s1, s2, 6'h0);
+        ans(dvend[31:0]);
+    }
+
+    func rem_s seq {
+        part_div({1'b0, s1[30:0]}, {1'b0, s2[30:0]}, 6'h0);
+        ans({s1[31]==s2[31], dvend[62:32]});
+    }
+
+    func rem_u seq {
+        part_div(s1, s2, 6'h0);
+        ans(dvend[63:32]);
     }
 
     proc part_div any {
-        dvcnt[5] :  ans(dvend[31:0]);
+        dvcnt[5] :  finish();
        ~dvcnt[5] :  any {
                         dvsor >  dvend[63:32] : part_div(dvsor, (dvend<<1)[63:0], dvcnt++);
                         dvsor <= dvend[63:32] : part_div(
@@ -50,5 +64,6 @@ module alu {
                                                 );
                     }
     }
+
 }
 
