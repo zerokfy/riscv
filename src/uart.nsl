@@ -2,64 +2,73 @@
 declare uart {
     input       uart_tx;
     output      uart_rx;
+
     input       txd[8];
     output      rxd[8];
-    func_out    uart_rxd(rxd);
+
+    input       mode;
+
     func_in     uart_txd(txd);
+    func_out    uart_rxd(rxd);
+    
+    func_in     mode();
 }
 
 module uart {
-    reg         count[10];
-    reg         rx_cnt[4];
-    reg         uart_rx_d;
-    reg         uart_rx_d2;
-    reg         uart_rx_d3;
-    proc_name   count_start();
-    proc_name   tranceive();
+    reg           rxd_d[3]
+                , sbit_cnt[10]
+                , store_cnt[10]
+                , rxd_cnt[4]
+                , rxd_fifo[8]
+                ;
+    proc_name   det_fedge(rxd_d);
+    proc_name   det_sbit(sbit_cnt);
+    proc_name   store_rxd(store_cnt);
 
-    //  Synchronization
-    uart_rx_d   :=  uart_rx;
-    uart_rx_d2  :=  uart_rx_d;
-    uart_rx_d3  :=  uart_rx_d2;
-    if(uart_rx_d3 & ~uart_rx_d2) {
-        count   :=  10'h000;
-        count_start();
+
+    function mode {
+        det_start();
     }
 
-    proc count_start {
-        count++;
+    proc det_fedge {
+        rxd_d := {rxd_d[1:0], rxd};
+        //  Synchronization
         any {
-            count_start == 216  : {
-                                    count   := 10'h000;
-                                    rx_cnt  := 4'h0;
-                                    tranceive();
-                                  }
-            uart_rx_d2          : count_start.finish();
+            rxd_d[2] && ~rxd_d[1] : det_sbit(10'h0);
         }
     }
 
-    proc tranceive {
-        count++;
+    proc det_sbit {
+        sbit_cnt++;
         any {
-            count == 216    : {
-                                uart_tx :=  tx_buf[7];
-                                tx_buf  :=  {tx_buf[6:0], 1'b0};
-                              }
-            count == 433    : {
+            sbit_cnt >= 216 : tranceive(4'h0);
+            rxd_d[2]        : det_fedge(3'h0);
+        }
+    }
+
+    proc store_rxd {
+        store_cnt++;
+        any {
+            store_cnt == 216 : {
+                uart_tx :=  tx_buf[7];
+                tx_buf  :=  {tx_buf[6:0], 1'b0};
+            }
+            store_cnt == 433    : {
                                 rx_cnt++;
                                 count   :=  10'h000;
                                 rx_buf  :=  {rx_buf[6:0], uart_rx};
                                 tranceive();
                               }
-            rx_cnt == 8     : {
+            rxd_cnt == 8    : {
                                 uart_rxd(rx_buf);
                                 tranceive.finish();
                               }
         }
     }
 
-    func uart_txd {
-        tx_buf  :=  txd;
+        func uart_txd {
+            tx_buf  :=  txd;
+        }
     }
 }
 

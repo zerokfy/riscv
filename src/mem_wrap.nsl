@@ -1,0 +1,68 @@
+declare mem_wrap interface {
+    input       , iaddr[32]
+                , iwdata[32]
+                , addr[32]
+                , wdata[32]
+                ;
+    output        irdata[32]
+                , rdata[32]
+                ;
+    func_in       imem_read(iaddr)
+                , imem_write(iaddr, iwdata)
+                , dmem_read(addr)
+                , dmem_write(addr, wdata)
+                ;
+}
+
+module mem_wrap {
+    OnChipRAM     inst_mem
+                , data_mem
+
+    function imem_read seq {
+        {
+            inst_mem.clock   = m_clock;
+            inst_mem.address = iaddr[8:0];
+            inst_mem.rden    = 1'b1;
+            inst_mem.wren    = 1'b0;
+        }
+        irdata = inst_mem.q;
+    }
+
+    function imem_write {
+        inst_mem.clock   = m_clock;
+        inst_mem.address = iaddr[8:0];
+        inst_mem.data    = iwdata;
+        inst_mem.rden    = 1'b0;
+        inst_mem.wren    = 1'b1;
+    }
+
+    function dmem_read seq {
+        {
+            data_mem.clock   = m_clock;
+            data_mem.address = addr[8:0];
+            data_mem.rden    = 1'b1;
+            data_mem.wren    = 1'b0;
+        }
+        rdata = data_mem.q;
+    }
+
+    function dmem_write {
+        data_mem.clock   = m_clock;
+        data_mem.address = addr[8:0];
+        data_mem.data    = wdata;
+        data_mem.rden    = 1'b0;
+        data_mem.wren    = 1'b1;
+    }
+}
+
+declare OnChipRAM interface {
+    input         clock
+                , address[9]
+                , data[32]
+                , rden
+                , wren
+                ;
+    output        q[32]
+                ;
+}
+

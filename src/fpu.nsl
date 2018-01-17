@@ -22,19 +22,33 @@ struct st_float {
 }
 
 module fpu {
-    st_float reg          st_s1
-                        , st_s2
+    st_float reg          st1_s1
+                        , st1_s2
+                        , st2_s1
+                        , st2_s2
                         , st_ans
                         ;
-    wire                  unnorm_man[24]
+    wire                  unnorm_man[25]
                         , s1man_s[23]
                         , s2man_s[23]
+                        ;
+    wire                  s1sig
+                        , s1exp[8]
+                        , s1man[24]
+                        , s2sig
+                        , s2exp[8]
+                        , s2man[24]
+                        , s1sig_r2
+                        , s1exp_r2[8]
+                        , s1man_r2[24]
+                        , s2sig_r2
+                        , s2exp_r2[8]
+                        , s2man_r2[24]
                         ;
     func_self             chk_except()
                         ;
     proc_name             adjust_digit()
-                        , calc_man()
-                        , normalize()
+                        , normalize(shamt)
                         ;
 
 
@@ -56,40 +70,48 @@ module fpu {
     }
 
     proc adjust_digit {
-        st_s1.sig := s1[31];
-        st_s2.sig := s2[31];
+        s1sig = s1[31];
+        s2sig = s2[31];
         any {
             s1[30:23] >= s2[30:23] : {
-                st_s1.exp := s1[30:23];
-                st_s1.man := s1[22:0];
-                st_s2.exp := s1[30:23];
-                st_s2.man := s2[22:0] >> (st_s1.exp-st_s2.exp);
-                calc_man();
+                s1exp = s1[30:23];
+                s1man = s1[22:0];
+                s2exp = s1[30:23];
+                s2man = {1'b1, s2[22:0]} >> (s1[30:23]-s2[30:23]);
             }
             s1[30:23] <  s2[30:23] : {
-                st_s1.exp := s2[30:23];
-                st_s1.man := s2[22:0] >> (st_s1.exp-st_s2.exp);
-                st_s2.exp := s1[30:23];
-                st_s2.man := s1[22:0];
-                calc_man();
+                s1exp = s2[30:23];
+                s1man = {1'b1, s2[22:0]} >> (s2[30:23]-s1[30:23]);
+                s2exp = s1[30:23];
+                s2man = s1[22:0];
             }   
         }
+        any {
+            s1sig :  s1man = ~s1man + 24'h1;
+           ~s1sig :  s1man =  s1man;
+            s2sig :  s2man = ~s2man + 24'h1;
+           ~s2sig :  s2man =  s2man;
+        }
+        unnorm_man = s1man + s1man;
+        normalize(5'd24);
     }
 
-    proc calc_man {
+    proc normalize {
         any {
-            st_s1.exp :  s1man_s = ~st_s1.man + 23'h1;
-           ~st_s1.exp :  s1man_s =  st_s1.man;
-            st_s2.exp :  s2man_s = ~st_s2.man + 23'h1;
-           ~st_s2.exp :  s2man_s =  st_s2.man;
-        }
-        unnorm_man = s1man_s + s2man_s;
-        any {
-            unnorm_man[23] := {
+            unnorm_man[24] : {
                 st_ans.man := unnorm_man[23:1];
-                any {
-                    almost_nan
-                st_ans.exp := st_s1.exp + 8'h1;
+                exp_add    := 8'h1;
+            }
+            unnorm_man[23] : {
+                st_ans.man := unnorm_man[22:0];
+                exp_add    := 8'h0;
+            }
+            unnorm_man[shamt] : {
+                st_ans.man := unnorm_man[22:0] << shamt;
+                exp_add    := 8'shamt;
+            }
+            normalize(shamt--);
+        }
     }
 }
 

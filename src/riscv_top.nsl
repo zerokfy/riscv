@@ -1,39 +1,22 @@
 declare riscv_top {
-    //  AHB-Lite
-    input       HRESP, HREADY;
-    output      HADDR[32],  HWDATA[32],
-                HSIZE[3],   HBURST[3], HPROT[4], HTRANS[2],
-                HMASTLOCK,  HWRITE;
-
-    //  UART
     input       UART_TX;
     output      UART_RX;
+
+    input       MODE;
 }
 
-struct ahb_lite {
-    addr[32];
-    wdata[32];
-    write;
-    size[3];
-    burst[3];
-    prot[4];
-    trans[2];
-    mastlock;
-    resp;
-    ready;
-}
 
 
 module riscv_top {
-    //  Instance Module declaration
-    cache       cache;
     uart        uart;
-    instcore    core;
-    matcore     matcore;
+    mem_wrap    mem_wrap;
+    core        core;
 
-    //  Bus declaration
-    ahb_lite    reg         ahb_out;
 
-    HADDR   =   ahb_lite.addr;
+    uart.uart_tx = UART_TX;
+    uart.uart_rx = UART_RX;
+
+    mem_wrap.iaddr = 
+    mem_wrap.iwdata = 
 }
-    
+
