@@ -1,22 +1,63 @@
 declare riscv_top {
-    input       UART_TX;
-    output      UART_RX;
-
-    input       MODE;
+    input         MODE
+                ;
+    output        seg_7_0[8]
+                , seg_7_1[8]
+                , seg_7_2[8]
+                , seg_7_3[8]
+                , seg_7_4[8]
+                , seg_7_5[8]
+                , seg_7_6[8]
+                ;
 }
 
 
-
 module riscv_top {
-    uart        uart;
-    mem_wrap    mem_wrap;
-    core        core;
+    reg           mode_syn[2]
+                , seg7_data[6]
+                ;
+    core          core;
+    CodeROM       rom;
+    OnChipRAM     ram;
+    seg7_ctrl     segc;
 
 
-    uart.uart_tx = UART_TX;
-    uart.uart_rx = UART_RX;
+    {
+        mode_syn   := {mode_syn[0], MODE};
+        core.idata  = rom.rdata;
+        core.rdata  = ram.rdata;
+        segc.data   = ram.rdata;
+    }
 
-    mem_wrap.iaddr = 
-    mem_wrap.iwdata = 
+    any {
+        mode_syn : {
+            ram.addr  = 0x00000200;
+            seg_7_0 = segc.digit_0;
+            seg_7_1 = segc.digit_1;
+            seg_7_2 = segc.digit_2;
+            seg_7_3 = segc.digit_3;
+            seg_7_4 = segc.digit_4;
+            seg_7_5 = segc.digit_5;
+        }
+       ~mode_syn : {
+            ram.addr  = core.daddr;
+            ram.wdata = core.wdata;
+            seg_7_0 = 8'b0100_0000;
+            seg_7_1 = 8'b0100_0000;
+            seg_7_2 = 8'b0100_0000;
+            seg_7_3 = 8'b0100_0000;
+            seg_7_4 = 8'b0100_0000;
+            seg_7_5 = 8'b0100_0000;
+        }
+    }
+
+    function core.dmem_read {
+        ram.mem_read();
+    }
+
+    function core.dmem_write {
+        ram.mem_write();
+    }
+
 }
 

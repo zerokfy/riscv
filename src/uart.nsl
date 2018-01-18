@@ -3,31 +3,30 @@ declare uart {
     input       uart_tx;
     output      uart_rx;
 
-    input       txd[8];
-    output      rxd[8];
+    input       rxd[8];
+    output      txd[8];
 
     input       mode;
-
-    func_in     uart_txd(txd);
-    func_out    uart_rxd(rxd);
-    
-    func_in     mode();
 }
 
 module uart {
     reg           rxd_d[3]
+                , mode_ff
                 , sbit_cnt[10]
                 , store_cnt[10]
-                , rxd_cnt[4]
-                , rxd_fifo[8]
+                , buf_cnt[5]
+                , rxd_buf[8]
                 ;
     proc_name   det_fedge(rxd_d);
     proc_name   det_sbit(sbit_cnt);
-    proc_name   store_rxd(store_cnt);
+    proc_name   store_rxd(rxd_buf, buf_cnt, store_cnt);
 
 
-    function mode {
-        det_start();
+    {
+        mode_ff := mode;
+        any {
+           ~mode_ff && mode : det_fedge(3'h1);
+        }
     }
 
     proc det_fedge {
@@ -41,7 +40,7 @@ module uart {
     proc det_sbit {
         sbit_cnt++;
         any {
-            sbit_cnt >= 216 : tranceive(4'h0);
+            sbit_cnt >= 216 : store_rxd(8'h0, 5'h0, 10'h0);
             rxd_d[2]        : det_fedge(3'h0);
         }
     }
@@ -49,20 +48,14 @@ module uart {
     proc store_rxd {
         store_cnt++;
         any {
-            store_cnt == 216 : {
-                uart_tx :=  tx_buf[7];
-                tx_buf  :=  {tx_buf[6:0], 1'b0};
+            store_cnt == 433 : {
+                rxd_buf := {rxd_buf[6:0], rxd};
+                buf_cnt++;
             }
-            store_cnt == 433    : {
-                                rx_cnt++;
-                                count   :=  10'h000;
-                                rx_buf  :=  {rx_buf[6:0], uart_rx};
-                                tranceive();
-                              }
-            rxd_cnt == 8    : {
-                                uart_rxd(rx_buf);
-                                tranceive.finish();
-                              }
+            buf_cnt == 5'h8 : {
+                rxd_word := {rxd_word[23:0], rxd_buf};
+                det_fedge(3'h1);
+            }
         }
     }
 

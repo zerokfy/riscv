@@ -1,0 +1,45 @@
+declare ram_wrap {
+    input         addr[32]
+                , wdata[32]
+                ;
+    output        rdata[32]
+                ;
+    func_in       mem_read(addr)
+                , mem_write(addr, wdata)
+                ;
+    func_out      read_en(rdata)
+                ;
+}
+
+module ram_wrap {
+    OnChipRAM   ram;
+
+    {
+        ram.clock   = m_clock;
+        ram.address = addr[8:0];
+        ram.data    = wdata;
+        rdata       = ram.q;
+    }
+
+    function mem_read seq {
+        ram.rden    = 1'b1;
+        ram.wren    = 1'b0;
+    }
+
+    function mem_write {
+        ram.rden    = 1'b0;
+        ram.wren    = 1'b1;
+    }
+}
+
+declare OnChipRAM interface {
+    input         clock
+                , address[9]
+                , data[32]
+                , rden
+                , wren
+                ;
+    output        q[32]
+                ;
+}
+

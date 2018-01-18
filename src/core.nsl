@@ -2,18 +2,15 @@
 #define     INST_ADDR       32'h0000_0000;
 
 declare core {
-    input         iaddr[32]
-                , idata[32]
-                , daddr[32]
+    input         idata[32]
                 , rdata[32]
                 ;
-    output        iwdata[32]
+    output        iaddr[32]
+                , daddr[32]
                 , wdata[32]
                 ;
-    func_out      imem_read(iaddr)
-                , imem_write(iaddr, iwdata)
-                , dmem_read(addr)
-                , dmem_write(addr, wdata)
+    func_out      dmem_read()
+                , dmem_write()
                 ;
 }
 
@@ -41,15 +38,18 @@ module core {
                     , exej(order,  rd, imm)
                     ;
 
-    rst_d := p_reset;
-    any {
-        rst_d && ~p_reset : {
-            ift(INST_ADDR);
+    {
+        rst_d := p_reset;
+        any {
+            rst_d && ~p_reset : {
+                ift(INST_ADDR);
+            }
         }
     }
 
-    proc ift {
-        dec(imem_read(pc++));
+    proc ift seq {
+        iaddr = pc++;
+        dec(idata);
     }
 
     proc dec any {
@@ -142,26 +142,41 @@ module core {
 
     proc exei seq {
         any {
-            order == LB :       seq {
-                                    dmem_read(gr[rs1]+32#imm)[7:0];
-                                    gr[rd] := rdata;
-                                }
-            order == LH :       seq {
-                                    dmem_read(gr[rs1]+32#imm)[15:0];
-                                    gr[rd] := rdata;
-                                }
-            order == LW :       seq {
-                                    dmem_read(gr[rs1]+32#imm);
-                                    gr[rd] := rdata;
-                                }
-            order == LBW :      seq {
-                                    dmem_read(gr[rs1]+32'imm);
-                                    gr[rd] := rdata;
-                                }
-            order == LHW :      seq {
-                                    dmem_read(gr[rs1]+32'imm)[15:0];
-                                    gr[rd] := rdata;
-                                }
+            order == LB : seq {
+                {
+                    dmem_read();
+                    daddr = gr[rs1] + 32#imm;
+                }
+                gr[rd] := {24'h0, rdata[7:0]};
+            }
+            order == LH : seq {
+                {
+                    dmem_read();
+                    daddr = gr[rs1] + 32#imm;
+                }
+                gr[rd] := {16'h0, rdata[15:0]};
+            }
+            order == LW : seq {
+                {
+                    dmem_read();
+                    daddr = gr[rs1] + 32#imm;
+                }
+                gr[rd] := rdata;
+            }
+            order == LBU : seq {
+                {
+                    dmem_read();
+                    daddr = gr[rs1] + 32'imm;
+                }
+                gr[rd] := rdata;
+            }
+            order == LHU : seq {
+                {
+                    dmem_read();
+                    daddr = gr[rs1] + 32'imm;
+                }
+                gr[rd] := {16'h0, rdata[15:0]};
+            }
             order == ADDI :     gr[rd] :=  (gr[rs1] + 32#imm)[31:0];
             order == SLTI :     gr[rd] :=  (gr[rs1] < 32#imm)[31:0];
             order == SLTIU :    gr[rd] :=  (gr[rs1] < 32#imm)[31:0];
@@ -178,9 +193,21 @@ module core {
 
     proc exes seq {
         any {
-            order == SB :   mem_write(gr[rs1]+32#imm, gr[rs2][7:0]);
-            order == SH :   mem_write(gr[rs1]+32#imm, gr[rs2][15:0]);
-            order == SW :   mem_write(gr[rs1]+32#imm, gr[rs2][31:0]);
+            order == SB : {
+                dmem_write();
+                daddr = gr[rs1] + 32#imm;
+                wdata = {24'h0, gr[rs2][7:0]};
+            }
+            order == SH : {
+                dmem_write();
+                daddr = gr[rs1] + 32#imm;
+                wdata = {16'h0, gr[rs2][15:0]};
+            }
+            order == SW : {
+                dmem_write();
+                daddr = gr[rs1] + 32#imm;
+                wdata = gr[rs2][31:0];
+            }
         }
         ift(pc);
     }

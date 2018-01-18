@@ -1,0 +1,56 @@
+declare seg7_ctrl {
+    input         data[32]
+                ;
+    output        digit_0[8]
+                , digit_1[8]
+                , digit_2[8]
+                , digit_3[8]
+                , digit_4[8]
+                , digit_5[8]
+}
+
+module seg7_ctrl {
+    digit_dec   dec[6];
+
+    {
+        dec[0].data = data[3:0];
+        dec[1].data = data[7:4];
+        dec[2].data = data[11:8];
+        dec[3].data = data[15:12];
+        dec[4].data = data[19:16];
+        dec[5].data = data[23:20];
+
+        digit_0 = dec[0].seg;
+        digit_1 = dec[1].seg;
+        digit_2 = dec[2].seg;
+        digit_3 = dec[3].seg;
+        digit_4 = dec[4].seg;
+        digit_5 = dec[5].seg;
+    }
+}
+
+declare digit_dec {
+    input       data[4];
+    output      seg[8];
+}
+
+module digit_dec {
+    any {
+        data == 4'h0 : seg = 8'b0011_1111;
+        data == 4'h1 : seg = 8'b0000_0110;
+        data == 4'h2 : seg = 8'b0101_1011;
+        data == 4'h3 : seg = 8'b0100_1111;
+        data == 4'h4 : seg = 8'b0110_0110;
+        data == 4'h5 : seg = 8'b0110_1101;
+        data == 4'h6 : seg = 8'b0111_1101;
+        data == 4'h7 : seg = 8'b0010_0111;
+        data == 4'h8 : seg = 8'b0111_1111;
+        data == 4'h9 : seg = 8'b0110_1111;
+        data == 4'hA : seg = 8'b0111_0111;
+        data == 4'hB : seg = 8'b0111_1100;
+        data == 4'hC : seg = 8'b0011_1000;
+        data == 4'hD : seg = 8'b0101_1110;
+        data == 4'hE : seg = 8'b0111_1001;
+        data == 4'hF : seg = 8'b0111_0001;
+    }
+}
