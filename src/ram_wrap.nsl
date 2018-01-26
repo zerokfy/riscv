@@ -1,3 +1,5 @@
+#include    "declare.nsl"
+
 declare ram_wrap {
     input         addr[32]
                 , wdata[32]
@@ -6,8 +8,6 @@ declare ram_wrap {
                 ;
     func_in       mem_read(addr)
                 , mem_write(addr, wdata)
-                ;
-    func_out      read_en(rdata)
                 ;
 }
 
@@ -30,16 +30,5 @@ module ram_wrap {
         ram.rden    = 1'b0;
         ram.wren    = 1'b1;
     }
-}
-
-declare OnChipRAM interface {
-    input         clock
-                , address[9]
-                , data[32]
-                , rden
-                , wren
-                ;
-    output        q[32]
-                ;
 }
 

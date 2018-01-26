@@ -1,3 +1,5 @@
+#include    "declare.nsl"
+
 declare riscv_top {
     input         MODE
                 ;
@@ -13,13 +15,15 @@ declare riscv_top {
 
 
 module riscv_top {
-    reg           mode_syn[2]
-                , seg7_data[6]
-                ;
-    core          core;
+
+    riscv_core    core;
     CodeROM       rom;
     OnChipRAM     ram;
     seg7_ctrl     segc;
+
+    reg           mode_syn[2]
+                , seg7_data[6]
+                ;
 
 
     {
