@@ -1,0 +1,188 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/cygwin64/home/tatsu/work/repo/riscv/prj/simulation/modelsim
+vCodeROM
+Z1 !s110 1517923092
+!i10b 1
+!s100 ho529B42UY`ULMdR1YPGS1
+I=I<f6ORh8A^j2mMa9M4;63
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1517407751
+8E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v
+FE:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v
+Z3 L0 39
+Z4 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z5 !s108 1517923092.000000
+!s107 E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM|E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v|
+!i113 1
+Z6 o-vlog01compat -work work
+!s92 -vlog01compat -work work +incdir+E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM
+Z7 tCvgOpt 0
+n@code@r@o@m
+vdigit_dec
+R1
+!i10b 1
+!s100 i=faGXcZMF@JnZV=`c:o02
+I0z^[EG9o9o4WA:1nmUm:@1
+R2
+R0
+Z8 w1517922724
+Z9 8E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v
+Z10 FE:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v
+L0 94
+R4
+r1
+!s85 0
+31
+R5
+Z11 !s107 E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v|
+Z12 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl|E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v|
+!i113 1
+R6
+Z13 !s92 -vlog01compat -work work +incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl
+R7
+vOnChipRAM
+R1
+!i10b 1
+!s100 CQ3VWbA<meZC>EN^U<RPh3
+ILEEGYT6<LdMBOJPg1n8>X1
+R2
+R0
+w1517407745
+8E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v
+FE:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v
+R3
+R4
+r1
+!s85 0
+31
+R5
+!s107 E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM|E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v|
+!i113 1
+R6
+!s92 -vlog01compat -work work +incdir+E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM
+R7
+n@on@chip@r@a@m
+vram_wrap
+R1
+!i10b 1
+!s100 :oJHU@7<69m@3J@IOz_>72
+I>==U?<?HV`LYZJVkJ_n^02
+R2
+R0
+Z14 w1517922725
+8E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v
+FE:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v
+L0 9
+R4
+r1
+!s85 0
+31
+R5
+!s107 E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl|E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v|
+!i113 1
+R6
+R13
+R7
+vriscv_top
+R1
+!i10b 1
+!s100 34^5_kVde0mXF0NN8Tk`:2
+I8=AMh6kn^PbVLAOIaj=Q=1
+R2
+R0
+R14
+8E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v
+FE:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v
+L0 9
+R4
+r1
+!s85 0
+31
+R5
+!s107 E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl|E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v|
+!i113 1
+R6
+R13
+R7
+vrom_wrap
+R1
+!i10b 1
+!s100 oULo<5AfY@MYBf6BF@8GQ2
+IilXPQQVliFWiRAc_<h7N90
+R2
+R0
+R14
+8E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v
+FE:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v
+L0 9
+R4
+r1
+!s85 0
+31
+R5
+!s107 E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl|E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v|
+!i113 1
+R6
+R13
+R7
+vrv32i_core
+!s110 1517923091
+!i10b 1
+!s100 o;dMLEO>[0Q9=P2B5E^h^2
+IYcAAV[bVjj=8W?n4CG9C=2
+R2
+R0
+R8
+8E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v
+FE:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v
+L0 9
+R4
+r1
+!s85 0
+31
+!s108 1517923091.000000
+!s107 E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl|E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v|
+!i113 1
+R6
+R13
+R7
+vseg7_ctrl
+R1
+!i10b 1
+!s100 ^S]Y6<V_;gThKc]8JhHRl1
+I_6o]mPOKkVT_OeOC`cHW_2
+R2
+R0
+R8
+R9
+R10
+L0 9
+R4
+r1
+!s85 0
+31
+R5
+R11
+R12
+!i113 1
+R6
+R13
+R7

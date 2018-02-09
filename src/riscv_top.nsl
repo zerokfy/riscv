@@ -1,40 +1,26 @@
-#include    "declare.nsl"
-
-declare riscv_top {
-    input         MODE
-                ;
-    output        seg_7_0[8]
-                , seg_7_1[8]
-                , seg_7_2[8]
-                , seg_7_3[8]
-                , seg_7_4[8]
-                , seg_7_5[8]
-                , seg_7_6[8]
-                ;
-}
-
+#include    "declare.inc"
 
 module riscv_top {
 
-    riscv_core    core;
-    CodeROM       rom;
-    OnChipRAM     ram;
+    rv32i_core    core;
+    rom_wrap      rom;
+    ram_wrap      ram;
     seg7_ctrl     segc;
 
     reg           mode_syn[2]
-                , seg7_data[6]
                 ;
 
 
     {
         mode_syn   := {mode_syn[0], MODE};
+        rom.addr    = core.iaddr;
         core.idata  = rom.rdata;
         core.rdata  = ram.rdata;
         segc.data   = ram.rdata;
     }
 
     any {
-        mode_syn : {
+        mode_syn[1] : {
             ram.addr  = 0x00000200;
             seg_7_0 = segc.digit_0;
             seg_7_1 = segc.digit_1;
@@ -43,7 +29,7 @@ module riscv_top {
             seg_7_4 = segc.digit_4;
             seg_7_5 = segc.digit_5;
         }
-       ~mode_syn : {
+       ~mode_syn[1] : {
             ram.addr  = core.daddr;
             ram.wdata = core.wdata;
             seg_7_0 = 8'b0100_0000;
@@ -56,12 +42,15 @@ module riscv_top {
     }
 
     function core.dmem_read {
-        ram.mem_read();
+        ram.addr    = core.daddr;
+        core.rdata  = ram.rdata;
+        ram.rden    = 1'b1;
     }
 
     function core.dmem_write {
-        ram.mem_write();
+        ram.addr    = core.daddr;
+        ram.wdata   = core.wdata;
+        ram.wren    = 1'b1;
     }
-
 }
 

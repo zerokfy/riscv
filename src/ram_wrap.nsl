@@ -1,15 +1,4 @@
-#include    "declare.nsl"
-
-declare ram_wrap {
-    input         addr[32]
-                , wdata[32]
-                ;
-    output        rdata[32]
-                ;
-    func_in       mem_read(addr)
-                , mem_write(addr, wdata)
-                ;
-}
+#include    "declare.inc"
 
 module ram_wrap {
     OnChipRAM   ram;
@@ -18,17 +7,9 @@ module ram_wrap {
         ram.clock   = m_clock;
         ram.address = addr[8:0];
         ram.data    = wdata;
+        ram.rden    = rden;
+        ram.wren    = wren;
         rdata       = ram.q;
-    }
-
-    function mem_read seq {
-        ram.rden    = 1'b1;
-        ram.wren    = 1'b0;
-    }
-
-    function mem_write {
-        ram.rden    = 1'b0;
-        ram.wren    = 1'b1;
     }
 }
 

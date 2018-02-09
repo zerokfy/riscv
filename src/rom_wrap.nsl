@@ -1,16 +1,11 @@
-#include    "declare.nsl"
-
-declare rom_wrap {
-    input       addr[32];
-    output      rdata[32];
-}
+#include    "declare.inc"
 
 module rom_wrap {
     CodeROM     rom;
 
     {
         rom.clock   = m_clock;
-        rom.address = addr[8:0];
+        rom.address = addr[9:0];
         rdata       = rom.q;
     }
 }

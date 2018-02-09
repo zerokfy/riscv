@@ -1,0 +1,15 @@
+#include    "declare.inc"
+
+declare sim_top simulation {}
+
+module sim_top {
+    riscv_top   logic_top;
+    reg         sim_time[32] = 32'h0;
+
+    {
+        logic_top.MODE = 1'b0;
+        sim_time++;
+        if(sim_time == 32'd10000)   _stop();
+    }
+}
+
