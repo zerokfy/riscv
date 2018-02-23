@@ -1,0 +1,26 @@
+#include    "declare.inc"
+
+module gen_gr {
+
+    mem           gr[32][32];
+
+    func rs1 {
+        if(rs1_n == 5'h0)   return 32'h0;
+        else                return gr[rs1_n];
+    }
+
+    func rs2 {
+        if(rs2_n == 5'h0)   return 32'h0;
+        else                return gr[rs2_n];
+    }
+
+    //func rs3 {
+    //    if(rs3_n == 5'h0)   return 32'h0;
+    //    else                return gr[rs3_n];
+    //}
+
+    func rd {
+        gr[rd_n] := wd;
+    }
+}
+

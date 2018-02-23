@@ -3,7 +3,7 @@
 `default_nettype wire
 
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Mon Feb 19 15:34:18 2018
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Feb 22 15:20:55 2018
  Licensed to :EVALUATION USER
 */
 
@@ -32,7 +32,7 @@ riscv_top logic_top (.m_clock(m_clock), .p_reset(p_reset), .seg_7_0(_logic_top_s
    assign  _logic_top_MODE = 1'b0;
    assign  _logic_top_p_reset = p_reset;
    assign  _logic_top_m_clock = m_clock;
-   assign  _net_0 = (sim_time==32'b00000000000000000010011100010000);
+   assign  _net_0 = (sim_time==32'b00000000000000000000001111101000);
 always @(posedge m_clock)
   begin
     if(_net_0)
@@ -51,11 +51,11 @@ endmodule
 // synthesis translate_on
 // synopsys translate_on
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Mon Feb 19 15:34:18 2018
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Feb 22 15:20:55 2018
  Licensed to :EVALUATION USER
 */
 /*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Mon Feb 19 15:34:18 2018
+ Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Feb 22 15:20:55 2018
  Licensed to :EVALUATION USER:
 */
 

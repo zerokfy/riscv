@@ -3,23 +3,18 @@
 #define     INST_ADDR       32'h0000_0000
 
 module rv32i_core {
-    mem               gr[32][32]
-                    ;
-    wire              rd_wire[32]
-                    , gr_dat[32]
-                    ;
+    gen_gr          gr;
+
     reg               pc[32] = INST_ADDR
                     , rst_d
                     , inst[32]
                     , rs1[5]
                     , rs2[5]
-                    //, rs3[5]
+//                    , rs3[5]
                     , rd[5]
                     , imm12[12]
                     , imm[20]
                     , order[8]
-                    ;
-    func_self         gr_acc(i, j, we, dat) : gr_dat
                     ;
     proc_name         ift(pc)
                     , dec(inst)
@@ -32,13 +27,6 @@ module rv32i_core {
                     , exeu(order,  rd, imm)
                     , exej(order,  rd, imm)
                     ;
-
-    function gr_acc {
-        if(i != 5'h0) {
-            if(we)  gr[i][j] := dat;
-            else    return gr[i][j];
-        } else      return 32'h0;
-    }
 
     {
         rst_d := p_reset;
@@ -53,88 +41,88 @@ module rv32i_core {
     }
 
     proc dec any {
-        inst[6:2] == 5'h00 : any {
-            inst[14:12] == 3'h0 :   exei_2(LB,  inst[11:7], inst[19:15], inst[31:20]);
-            inst[14:12] == 3'h1 :   exei_2(LH,  inst[11:7], inst[19:15], inst[31:20]);
-            inst[14:12] == 3'h2 :   exei_2(LW,  inst[11:7], inst[19:15], inst[31:20]);
-            inst[14:12] == 3'h4 :   exei_2(LBU, inst[11:7], inst[19:15], inst[31:20]);
-            inst[14:12] == 3'h5 :   exei_2(LHU, inst[11:7], inst[19:15], inst[31:20]);
+        idata[6:2] == 5'h00 : any {
+            idata[14:12] == 3'h0 :   exei_2(LB,  idata[11:7], idata[19:15], idata[31:20]);
+            idata[14:12] == 3'h1 :   exei_2(LH,  idata[11:7], idata[19:15], idata[31:20]);
+            idata[14:12] == 3'h2 :   exei_2(LW,  idata[11:7], idata[19:15], idata[31:20]);
+            idata[14:12] == 3'h4 :   exei_2(LBU, idata[11:7], idata[19:15], idata[31:20]);
+            idata[14:12] == 3'h5 :   exei_2(LHU, idata[11:7], idata[19:15], idata[31:20]);
         }
-        inst[6:2] == 5'h04 : any {
-            inst[14:12] == 3'h0 :   exei_1(ADDI,  inst[11:7], inst[19:15], inst[31:20]);
-            inst[14:12] == 3'h2 :   exei_1(SLTI,  inst[11:7], inst[19:15], inst[31:20]);
-            inst[14:12] == 3'h3 :   exei_1(SLTIU, inst[11:7], inst[19:15], inst[31:20]);
-            inst[14:12] == 3'h4 :   exei_1(XORI,  inst[11:7], inst[19:15], inst[31:20]);
-            inst[14:12] == 3'h6 :   exei_1(ORI,   inst[11:7], inst[19:15], inst[31:20]);
-            inst[14:12] == 3'h7 :   exei_1(ANDI,  inst[11:7], inst[19:15], inst[31:20]);
+        idata[6:2] == 5'h04 : any {
+            idata[14:12] == 3'h0 :   exei_1(ADDI,  idata[11:7], idata[19:15], idata[31:20]);
+            idata[14:12] == 3'h2 :   exei_1(SLTI,  idata[11:7], idata[19:15], idata[31:20]);
+            idata[14:12] == 3'h3 :   exei_1(SLTIU, idata[11:7], idata[19:15], idata[31:20]);
+            idata[14:12] == 3'h4 :   exei_1(XORI,  idata[11:7], idata[19:15], idata[31:20]);
+            idata[14:12] == 3'h6 :   exei_1(ORI,   idata[11:7], idata[19:15], idata[31:20]);
+            idata[14:12] == 3'h7 :   exei_1(ANDI,  idata[11:7], idata[19:15], idata[31:20]);
         }
-        inst[6:2] == 5'h05 :    exeu(AUIPC, inst[11:7], inst[31:12]);
-        inst[6:2] == 5'h08 : any {
-            inst[14:12] == 3'h0 :   exes(SB, inst[19:15], inst[24:20], {inst[31:25], inst[11:7]});
-            inst[14:12] == 3'h1 :   exes(SH, inst[19:15], inst[24:20], {inst[31:25], inst[11:7]});
-            inst[14:12] == 3'h2 :   exes(SW, inst[19:15], inst[24:20], {inst[31:25], inst[11:7]});
+        idata[6:2] == 5'h05 :    exeu(AUIPC, idata[11:7], idata[31:12]);
+        idata[6:2] == 5'h08 : any {
+            idata[14:12] == 3'h0 :   exes(SB, idata[19:15], idata[24:20], {idata[31:25], idata[11:7]});
+            idata[14:12] == 3'h1 :   exes(SH, idata[19:15], idata[24:20], {idata[31:25], idata[11:7]});
+            idata[14:12] == 3'h2 :   exes(SW, idata[19:15], idata[24:20], {idata[31:25], idata[11:7]});
         }
-        inst[6:2] == 5'h0C : any {
-           ~inst[25] : any {
-                inst[14:12] == 3'h0 : any {
-                   ~inst[30] :  exer(ADD,  inst[11:7], inst[19:15], inst[24:20]);
-                    inst[30] :  exer(SUB,  inst[11:7], inst[19:15], inst[24:20]);
+        idata[6:2] == 5'h0C : any {
+           ~idata[25] : any {
+                idata[14:12] == 3'h0 : any {
+                   ~idata[30] :  exer(ADD,  idata[11:7], idata[19:15], idata[24:20]);
+                    idata[30] :  exer(SUB,  idata[11:7], idata[19:15], idata[24:20]);
                 }
-                inst[14:12] == 3'h1 : exer(SLL,  inst[11:7], inst[19:15], inst[24:20]);
-                inst[14:12] == 3'h2 : exer(SLT,  inst[11:7], inst[19:15], inst[24:20]);
-                inst[14:12] == 3'h3 : exer(SLTU, inst[11:7], inst[19:15], inst[24:20]);
-                inst[14:12] == 3'h4 : exer(XOR,  inst[11:7], inst[19:15], inst[24:20]);
-                inst[14:12] == 3'h5 : any {
-                   ~inst[30] :  exer(SRL,  inst[11:7], inst[19:15], inst[24:20]);
-                    inst[30] :  exer(SRA,  inst[11:7], inst[19:15], inst[24:20]);
+                idata[14:12] == 3'h1 : exer(SLL,  idata[11:7], idata[19:15], idata[24:20]);
+                idata[14:12] == 3'h2 : exer(SLT,  idata[11:7], idata[19:15], idata[24:20]);
+                idata[14:12] == 3'h3 : exer(SLTU, idata[11:7], idata[19:15], idata[24:20]);
+                idata[14:12] == 3'h4 : exer(XOR,  idata[11:7], idata[19:15], idata[24:20]);
+                idata[14:12] == 3'h5 : any {
+                   ~idata[30] :  exer(SRL,  idata[11:7], idata[19:15], idata[24:20]);
+                    idata[30] :  exer(SRA,  idata[11:7], idata[19:15], idata[24:20]);
                 }
-                inst[14:12] == 3'h6 : exer(OR,   inst[11:7], inst[19:15], inst[24:20]);
-                inst[14:12] == 3'h7 : exer(AND,  inst[11:7], inst[19:15], inst[24:20]);
+                idata[14:12] == 3'h6 : exer(OR,   idata[11:7], idata[19:15], idata[24:20]);
+                idata[14:12] == 3'h7 : exer(AND,  idata[11:7], idata[19:15], idata[24:20]);
             }
         }
-        inst[6:2] == 5'h0D :    exeu(LUI, inst[11:7], inst[31:12]);
-        inst[6:2] == 5'h18 :    any {
-            inst[14:12] == 3'h0 :   exeb(BEQ,  inst[19:15], inst[24:20], {inst[31], inst[7], inst[30:25], inst[11:8]});
-            inst[14:12] == 3'h1 :   exeb(BNE,  inst[19:15], inst[24:20], {inst[31], inst[7], inst[30:25], inst[11:8]});
-            inst[14:12] == 3'h4 :   exeb(BLT,  inst[19:15], inst[24:20], {inst[31], inst[7], inst[30:25], inst[11:8]});
-            inst[14:12] == 3'h5 :   exeb(BGE,  inst[19:15], inst[24:20], {inst[31], inst[7], inst[30:25], inst[11:8]});
-            inst[14:12] == 3'h6 :   exeb(BLTU, inst[19:15], inst[24:20], {inst[31], inst[7], inst[30:25], inst[11:8]});
-            inst[14:12] == 3'h7 :   exeb(BGEU, inst[19:15], inst[24:20], {inst[31], inst[7], inst[30:25], inst[11:8]});
+        idata[6:2] == 5'h0D :    exeu(LUI, idata[11:7], idata[31:12]);
+        idata[6:2] == 5'h18 :    any {
+            idata[14:12] == 3'h0 :   exeb(BEQ,  idata[19:15], idata[24:20], {idata[31], idata[7], idata[30:25], idata[11:8]});
+            idata[14:12] == 3'h1 :   exeb(BNE,  idata[19:15], idata[24:20], {idata[31], idata[7], idata[30:25], idata[11:8]});
+            idata[14:12] == 3'h4 :   exeb(BLT,  idata[19:15], idata[24:20], {idata[31], idata[7], idata[30:25], idata[11:8]});
+            idata[14:12] == 3'h5 :   exeb(BGE,  idata[19:15], idata[24:20], {idata[31], idata[7], idata[30:25], idata[11:8]});
+            idata[14:12] == 3'h6 :   exeb(BLTU, idata[19:15], idata[24:20], {idata[31], idata[7], idata[30:25], idata[11:8]});
+            idata[14:12] == 3'h7 :   exeb(BGEU, idata[19:15], idata[24:20], {idata[31], idata[7], idata[30:25], idata[11:8]});
         }
-        inst[6:2] == 5'h19 :    exei_jalr(JALR, inst[11:7], inst[19:15], inst[31:20]);
-        inst[6:2] == 5'h1B :    exej(JAL,  inst[11:7], {inst[31], inst[19:12], inst[20], inst[30:21]});
-        //inst[6:2] == 5'h1C :    any {
-        //    inst[14:12] == 3'h0 :   any {
-        //       ~inst[20] :  exei(ECALL,  inst[11:7], inst[19:15], inst[31:20]);
-        //        inst[20] :  exei(EBREAK, inst[11:7], inst[19:15], inst[31:20]);
+        idata[6:2] == 5'h19 :    exei_jalr(JALR, idata[11:7], idata[19:15], idata[31:20]);
+        idata[6:2] == 5'h1B :    exej(JAL, idata[11:7], {idata[31], idata[19:12], idata[20], idata[30:21]});
+        //idata[6:2] == 5'h1C :    any {
+        //    idata[14:12] == 3'h0 :   any {
+        //       ~idata[20] :  exei(ECALL,  idata[11:7], idata[19:15], idata[31:20]);
+        //        idata[20] :  exei(EBREAK, idata[11:7], idata[19:15], idata[31:20]);
         //    }
-        //    inst[14:12] == 3'h1 :   exei(CSRRW,  inst[11:7], inst[19:15], inst[31:20]);
-        //    inst[14:12] == 3'h2 :   exei(CSRRS,  inst[11:7], inst[19:15], inst[31:20]);
-        //    inst[14:12] == 3'h3 :   exei(CSRRC,  inst[11:7], inst[19:15], inst[31:20]);
-        //    inst[14:12] == 3'h5 :   exei(CSRRWI, inst[11:7], inst[19:15], inst[31:20]);
-        //    inst[14:12] == 3'h6 :   exei(CSRRSI, inst[11:7], inst[19:15], inst[31:20]);
-        //    inst[14:12] == 3'h7 :   exei(CSRRCI, inst[11:7], inst[19:15], inst[31:20]);
+        //    idata[14:12] == 3'h1 :   exei(CSRRW,  idata[11:7], idata[19:15], idata[31:20]);
+        //    idata[14:12] == 3'h2 :   exei(CSRRS,  idata[11:7], idata[19:15], idata[31:20]);
+        //    idata[14:12] == 3'h3 :   exei(CSRRC,  idata[11:7], idata[19:15], idata[31:20]);
+        //    idata[14:12] == 3'h5 :   exei(CSRRWI, idata[11:7], idata[19:15], idata[31:20]);
+        //    idata[14:12] == 3'h6 :   exei(CSRRSI, idata[11:7], idata[19:15], idata[31:20]);
+        //    idata[14:12] == 3'h7 :   exei(CSRRCI, idata[11:7], idata[19:15], idata[31:20]);
         //}
     }
 
     proc exer {
         any {
-            order == ADD :  gr[rd] :=   gr[rs1] +  gr[rs2];
-            order == SUB :  gr[rd] :=   gr[rs1] -  gr[rs2];
-            order == AND :  gr[rd] :=   gr[rs1] &  gr[rs2];
-            order == OR :   gr[rd] :=   gr[rs1] |  gr[rs2];
-            order == XOR :  gr[rd] :=   gr[rs1] ^  gr[rs2];
-            order == SLL :  gr[rd] :=   gr[rs1] << gr[rs2];
+            order == ADD :  gr.rd(rd, gr.rs1(rs1) +  gr.rs2(rs2));
+            order == SUB :  gr.rd(rd, gr.rs1(rs1) -  gr.rs2(rs2));
+            order == AND :  gr.rd(rd, gr.rs1(rs1) &  gr.rs2(rs2));
+            order == OR :   gr.rd(rd, gr.rs1(rs1) |  gr.rs2(rs2));
+            order == XOR :  gr.rd(rd, gr.rs1(rs1) ^  gr.rs2(rs2));
+            order == SLL :  gr.rd(rd, gr.rs1(rs1) << gr.rs2(rs2));
             order == SLT :  any {
-                gr[rs1][31] ==  gr[rs2][31] :   gr[rd] :=   32'(gr[rs1]<gr[rs2]);
-               ~gr[rs1][31] &   gr[rs2][31] :   gr[rd] :=   32'h1;
-                gr[rs1][31] &  ~gr[rs2][31] :   gr[rd] :=   32'h0;
+                gr.rs1(rs1)[31] ==  gr.rs2(rs2)[31] :   gr.rd(rd, 32'(gr.rs1(rs1)<gr.rs2(rs2)));
+               ~gr.rs1(rs1)[31] &   gr.rs2(rs2)[31] :   gr.rd(rd, 32'h1);
+                gr.rs1(rs1)[31] &  ~gr.rs2(rs2)[31] :   gr.rd(rd, 32'h0);
             }
-            order == SLTU : gr[rd] :=   32'(gr[rs1]<gr[rs2]);
-            order == SRL :  gr[rd] :=   gr[rs1] >> gr[rs2];
+            order == SLTU : gr.rd(rd, 32'(gr.rs1(rs1)<gr.rs2(rs2)));
+            order == SRL :  gr.rd(rd, gr.rs1(rs1) >> gr.rs2(rs2));
             order == SRA :  any {
-               ~gr[rs1][31] :   gr[rd] :=   gr[rs1] >> gr[rs2];
-                gr[rs1][31] :   gr[rd] :=  {1'b1, 31'(gr[rs1][30:0]>>gr[rs2])};
+               ~gr.rs1(rs1)[31] :   gr.rd(rd, gr.rs1(rs1) >> gr.rs2(rs2));
+                gr.rs1(rs1)[31] :   gr.rd(rd, {1'b1, 31'(gr.rs1(rs1)[30:0]>>gr.rs2(rs2))});
             }
         }
         ift(pc);
@@ -142,51 +130,51 @@ module rv32i_core {
 
     proc exei_1 {
         any {
-            order == ADDI :     gr[rd] :=  (gr[rs1] + 32#imm12)[31:0];
-            order == SLTI :     gr[rd] :=  32'(gr[rs1]<32#imm12);
-            order == SLTIU :    gr[rd] :=  32'(gr[rs1]<32'imm12);
-            order == XORI :     gr[rd] :=   gr[rs1] ^ 32#imm12;
-            order == ORI :      gr[rd] :=   gr[rs1] | 32#imm12;
-            order == ANDI :     gr[rd] :=   gr[rs1] & 32#imm12;
+            order == ADDI :     gr.rd(rd, (gr.rs1(rs1) + 32#imm12)[31:0]);
+            order == SLTI :     gr.rd(rd, 32'(gr.rs1(rs1)<32#imm12));
+            order == SLTIU :    gr.rd(rd, 32'(gr.rs1(rs1)<32'imm12));
+            order == XORI :     gr.rd(rd, gr.rs1(rs1) ^ 32#imm12);
+            order == ORI :      gr.rd(rd, gr.rs1(rs1) | 32#imm12);
+            order == ANDI :     gr.rd(rd, gr.rs1(rs1) & 32#imm12);
         }
         ift(pc);
     }
 
     proc exei_jalr {
-       gr[rd] :=   pc + 32'h4;
-       ift({(gr[rs1] + 32#imm12)[31:1], 1'b0});
+       gr.rd(rd, pc + 32'h4);
+       ift({(gr.rs1(rs1) + 32#imm12)[31:1], 1'b0});
     }
 
     proc exei_2 {
         any {
             order == LB : {
                 dmem_read();
-                daddr = gr[rs1] + 32#imm12;
-                gr[rd] := {24'h0, rdata[7:0]};
+                daddr = gr.rs1(rs1) + 32#imm12;
+                gr.rd(rd, {24'h0, rdata[7:0]});
                 ift(pc);
             }
             order == LH : {
                 dmem_read();
-                daddr = gr[rs1] + 32#imm12;
-                gr[rd] := {16'h0, rdata[15:0]};
+                daddr = gr.rs1(rs1) + 32#imm12;
+                gr.rd(rd, {16'h0, rdata[15:0]});
                 ift(pc);
             }
             order == LW : {
                 dmem_read();
-                daddr = gr[rs1] + 32#imm12;
-                gr[rd] := rdata;
+                daddr = gr.rs1(rs1) + 32#imm12;
+                gr.rd(rd, rdata);
                 ift(pc);
             }
             order == LBU : {
                 dmem_read();
-                daddr = gr[rs1] + 32'imm12;
-                gr[rd] := rdata;
+                daddr = gr.rs1(rs1) + 32'imm12;
+                gr.rd(rd, rdata);
                 ift(pc);
             }
             order == LHU : {
                 dmem_read();
-                daddr = gr[rs1] + 32'imm12;
-                gr[rd] := {16'h0, rdata[15:0]};
+                daddr = gr.rs1(rs1) + 32'imm12;
+                gr.rd(rd, {16'h0, rdata[15:0]});
                 ift(pc);
             }
         }
@@ -196,62 +184,62 @@ module rv32i_core {
         any {
             order == SB : {
                 dmem_write();
-                daddr = gr[rs1] + 32#imm12;
-                wdata = {24'h0, gr[rs2][7:0]};
+                daddr = gr.rs1(rs1) + 32#imm12;
+                wdata = {24'h0, gr.rs2(rs2)[7:0]};
             }
             order == SH : {
                 dmem_write();
-                daddr = gr[rs1] + 32#imm12;
-                wdata = {16'h0, gr[rs2][15:0]};
+                daddr = gr.rs1(rs1) + 32#imm12;
+                wdata = {16'h0, gr.rs2(rs2)[15:0]};
             }
             order == SW : {
                 dmem_write();
-                daddr = gr[rs1] + 32#imm12;
-                wdata = gr[rs2][31:0];
+                daddr = gr.rs1(rs1) + 32#imm12;
+                wdata = gr.rs2(rs2)[31:0];
             }
         }
         ift(pc);
     }
 
     proc exeb any {
-        order == BEQ :  any {
-            gr[rs1] == gr[rs2] : ift(pc+32#{imm12, 1'b0});
-            gr[rs1] != gr[rs2] : ift(pc);
+        order == BEQ :  {
+            if(gr.rs1(rs1) == gr.rs2(rs2))  ift(pc+32#{imm12, 1'b0});
+            else                            ift(pc);
         }
-        order == BNE :  any {
-            gr[rs1] != gr[rs2] : ift(pc+32#{imm12, 1'b0});
-            gr[rs1] == gr[rs2] : ift(pc);
+        order == BNE :  {
+            if(gr.rs1(rs1) != gr.rs2(rs2))  ift(pc+32#{imm12, 1'b0});
+            else                            ift(pc);
         }
-        order == BLTU : any {
-            gr[rs1] <  gr[rs2] : ift(pc+32#{imm12, 1'b0});
-            gr[rs1] >= gr[rs2] : ift(pc);
+        order == BLTU : {
+            if(gr.rs1(rs1) < gr.rs2(rs2))   ift(pc+32#{imm12, 1'b0});
+            else                            ift(pc);
         }
-        order == BGEU : any {
-            gr[rs1] >  gr[rs2] : ift(pc+32#{imm12, 1'b0});
-            gr[rs1] <= gr[rs2] : ift(pc);
+        order == BGEU : {
+            if(gr.rs1(rs1) > gr.rs2(rs2))   ift(pc+32#{imm12, 1'b0});
+            else                            ift(pc);
         }
         order == BLT :  any {
-            gr[rs1][31] == gr[rs2][31] : any {
-                gr[rs1][30:0] <  gr[rs2][30:0] : ift(pc+32#{imm12, 1'b0});
-                gr[rs1][30:0] >= gr[rs2][30:0] : ift(pc);
+            gr.rs1(rs1)[31] == gr.rs2(rs2)[31] : {
+                if(gr.rs1(rs1)[30:0] < gr.rs2(rs2)[30:0])   ift(pc+32#{imm12, 1'b0});
+                else                                        ift(pc);
             }
-           ~gr[rs1][31] &&  gr[rs2][31] :   ift(pc);
-            gr[rs1][31] && ~gr[rs2][31] :   ift(pc+32#{imm12, 1'b0});
+           ~gr.rs1(rs1)[31] &&  gr.rs2(rs2)[31] :           ift(pc);
+            gr.rs1(rs1)[31] && ~gr.rs2(rs2)[31] :           ift(pc+32#{imm12, 1'b0});
         }
         order == BGE :  any {
-            gr[rs1][31] ==  gr[rs2][31] : any {
-                gr[rs1][30:0] >  gr[rs2][30:0] : pc := pc + 32#{imm12, 1'b0};
-                gr[rs1][30:0] <= gr[rs2][30:0] : ift(pc);
+            gr.rs1(rs1)[31] == gr.rs2(rs2)[31] : {
+                if(gr.rs1(rs1)[30:0] > gr.rs2(rs2)[30:0])   pc := pc + 32#{imm12, 1'b0};
+                else                                        ift(pc);
            }
-           ~gr[rs1][31] &&  gr[rs2][31] :   pc := pc + 32#{imm12, 1'b0};
-            gr[rs1][31] && ~gr[rs2][31] :   ift(pc);
+           ~gr.rs1(rs1)[31] &&  gr.rs2(rs2)[31] :           pc := pc + 32#{imm12, 1'b0};
+            gr.rs1(rs1)[31] && ~gr.rs2(rs2)[31] :           ift(pc);
         }
     }
 
     proc exeu {
         any {
-            order == AUIPC :    gr[rd] :=   pc + {imm, 12'h000};
-            order == LUI :      gr[rd] :=   {imm, 12'h000};
+            order == AUIPC :    gr.rd(rd, pc + {imm, 12'h000});
+            order == LUI :      gr.rd(rd, {imm, 12'h000});
         }
         ift(pc);
     }
@@ -259,8 +247,8 @@ module rv32i_core {
     proc exej {
         any {
             order == JAL :  {
-                gr[rd] :=   pc + 32'h4;
-                ift(pc+32'{imm, 1'b0});
+                gr.rd(rd, pc + 32'h4);
+                ift(pc+32#{imm, 1'b0});
             }
         }
     }

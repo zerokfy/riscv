@@ -5,6 +5,7 @@ if {[file exists rtl_work]} {
 vlib rtl_work
 vmap work rtl_work
 
+vlog -vlog01compat -work work +incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl {E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/gen_gr.v}
 vlog -vlog01compat -work work +incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl {E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v}
 vlog -vlog01compat -work work +incdir+E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM {E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v}
 vlog -vlog01compat -work work +incdir+E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM {E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v}
