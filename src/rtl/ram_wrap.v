@@ -1,7 +1,6 @@
-/*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Feb 22 15:20:57 2018
- Licensed to :EVALUATION USER
-*/
+
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+ Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
 */
@@ -34,7 +33,6 @@ OnChipRAM ram (.q(_ram_q), .clock(_ram_clock), .address(_ram_address), .data(_ra
    assign  _ram_wren = wren;
    assign  rdata = _ram_q;
 endmodule
-/*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Feb 22 15:20:57 2018
- Licensed to :EVALUATION USER
-*/
+
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+ Licensed to :EVALUATION USER*/

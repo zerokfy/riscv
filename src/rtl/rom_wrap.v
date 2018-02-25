@@ -1,7 +1,6 @@
-/*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Feb 22 15:20:57 2018
- Licensed to :EVALUATION USER
-*/
+
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+ Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
 */
@@ -22,7 +21,6 @@ CodeROM rom (.q(_rom_q), .clock(_rom_clock), .address(_rom_address));
    assign  _rom_address = (addr[9:0]);
    assign  rdata = _rom_q;
 endmodule
-/*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Feb 22 15:20:57 2018
- Licensed to :EVALUATION USER
-*/
+
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+ Licensed to :EVALUATION USER*/

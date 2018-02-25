@@ -247,7 +247,7 @@ module rv32i_core {
     proc exej {
         any {
             order == JAL :  {
-                gr.rd(rd, pc + 32'h4);
+                gr.rd(rd, pc + 32'h1);
                 ift(pc+32#{imm, 1'b0});
             }
         }

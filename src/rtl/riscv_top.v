@@ -1,7 +1,6 @@
-/*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Feb 22 15:20:57 2018
- Licensed to :EVALUATION USER
-*/
+
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+ Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
 */
@@ -100,7 +99,6 @@ always @(posedge m_clock)
   mode_syn <= ({(mode_syn[0]),MODE});
 end
 endmodule
-/*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Feb 22 15:20:57 2018
- Licensed to :EVALUATION USER
-*/
+
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+ Licensed to :EVALUATION USER*/

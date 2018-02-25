@@ -2,10 +2,9 @@
 `timescale	1ns / 1ns
 `default_nettype wire
 
-/*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Feb 22 15:20:55 2018
- Licensed to :EVALUATION USER
-*/
+
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+ Licensed to :EVALUATION USER*/
 
 // synthesis translate_off
 // synopsys translate_off
@@ -50,14 +49,12 @@ endmodule
 
 // synthesis translate_on
 // synopsys translate_on
-/*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Feb 22 15:20:55 2018
- Licensed to :EVALUATION USER
-*/
-/*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Feb 22 15:20:55 2018
- Licensed to :EVALUATION USER:
-*/
+
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+ Licensed to :EVALUATION USER*/
+
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+ Licensed to :EVALUATION USER*/
 
 //synthesis translate_off
 /*

@@ -7,237 +7,237 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dE:/cygwin64/home/tatsu/work/repo/riscv/prj
+dE:/cygwin64/home/tatsu/work/repo/riscv/prj
 vCodeROM
-!s110 1519311629
+!s110 1519551633
 !i10b 1
 !s100 ho529B42UY`ULMdR1YPGS1
-Ia<OIgJKgWmYa4VY08cE6T1
-Z1 VDg1SIo80bB@j0V0VzS_@n1
-R0
-w1517407751
-8E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v
-FE:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v
-Z2 L0 39
-Z3 OV;L;10.5b;63
+IgBZoZ2zIbzR0LOH>fjYJX2
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 d/home/zerokfy/work/repo/riscv/prj
+Z2 w1518323896
+8/home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v
+F/home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v
+Z3 L0 39
+Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-!s108 1519311629.000000
-!s107 E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v|
-!s90 -reportprogress|300|-work|work|E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v|
+!s108 1519551633.000000
+!s107 /home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v|
+!s90 -reportprogress|300|-work|work|/home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v|
 !i113 1
-Z4 o-work work
-Z5 tCvgOpt 0
+Z5 o-work work
+Z6 tCvgOpt 0
 n@code@r@o@m
 vdigit_dec
-Z6 !s110 1519311641
+Z7 !s110 1519551628
 !i10b 1
-!s100 i=faGXcZMF@JnZV=`c:o02
-I<kHRoJ;J[o0OT_ZG`TQIe3
-R1
+!s100 EQaH^X9H`<E74[E3el30V1
+IgNX1?FzzTBY:?H92mgG^e3
 R0
-Z7 w1519311566
-Z8 8E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v
-Z9 FE:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v
-L0 94
-R3
+R1
+Z8 w1519538335
+Z9 8/home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
+Z10 F/home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
+L0 91
+R4
 r1
 !s85 0
 31
-Z10 !s108 1519311641.000000
-Z11 !s107 E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v|
-Z12 !s90 -reportprogress|30|-work|work|E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v|
+Z11 !s108 1519551628.000000
+Z12 !s107 /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v|
+Z13 !s90 -reportprogress|30|-work|work|/home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v|
 !i113 1
-R4
 R5
+R6
 vgen_gr
-Z13 !s110 1519311640
+R7
 !i10b 1
-!s100 g4NaGjC?DR>zGDEcV4F@E0
-I0K16Z[VVRn[_KW9[YMf410
-R1
+!s100 m1dPWDWPg;[0553K?fSnR1
+IKSSZb8C=Lkab`3oinO72@3
 R0
-Z14 w1519311567
-8E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/gen_gr.v
-FE:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/gen_gr.v
-L0 9
-R3
+R1
+R8
+8/home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
+F/home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
+L0 8
+R4
 r1
 !s85 0
 31
-Z15 !s108 1519311640.000000
-!s107 E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/gen_gr.v|
-!s90 -reportprogress|300|-work|work|E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/gen_gr.v|
+R11
+!s107 /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v|
+!s90 -reportprogress|300|-work|work|/home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v|
 !i113 1
-R4
 R5
+R6
 vOnChipRAM
-!s110 1519311633
+!s110 1519551637
 !i10b 1
 !s100 CQ3VWbA<meZC>EN^U<RPh3
-I^]3]F:KCfd@:gJI0FgT5L1
-R1
+Il4c`h[JBOoKi?W8I8bhdO0
 R0
-w1517407745
-8E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v
-FE:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v
+R1
 R2
+8/home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v
+F/home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v
 R3
+R4
 r1
 !s85 0
 31
-!s108 1519311633.000000
-!s107 E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v|
-!s90 -reportprogress|300|-work|work|E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v|
+!s108 1519551637.000000
+!s107 /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v|
+!s90 -reportprogress|300|-work|work|/home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v|
 !i113 1
-R4
 R5
+R6
 n@on@chip@r@a@m
 vram_wrap
-R13
-!i10b 1
-!s100 :oJHU@7<69m@3J@IOz_>72
-IJc<R?FQJ]D7Z6Lf]Az:g@0
-R1
-R0
-Z16 w1519311568
-8E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v
-FE:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v
-L0 9
-R3
-r1
-!s85 0
-31
-R15
-!s107 E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v|
-!s90 -reportprogress|300|-work|work|E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v|
-!i113 1
-R4
-R5
-vriscv_top
-R13
-!i10b 1
-!s100 34^5_kVde0mXF0NN8Tk`:2
-I1DN]QflWXi_P14Fj;O;8d1
-R1
-R0
-R14
-8E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v
-FE:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v
-L0 9
-R3
-r1
-!s85 0
-31
-R15
-!s107 E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v|
-!s90 -reportprogress|300|-work|work|E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v|
-!i113 1
-R4
-R5
-vrom_wrap
-R6
-!i10b 1
-!s100 oULo<5AfY@MYBf6BF@8GQ2
-IlN9d919Y1Hk[JWgS<:a9`3
-R1
-R0
-R16
-8E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v
-FE:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v
-L0 9
-R3
-r1
-!s85 0
-31
-R10
-!s107 E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v|
-!s90 -reportprogress|300|-work|work|E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v|
-!i113 1
-R4
-R5
-vrv32i_core
-R6
-!i10b 1
-!s100 ^DCCbSIn;jcH=[dzHMoiQ2
-I?Ml1_6[8XoOdNg@BX3CRl0
-R1
-R0
-R14
-8E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v
-FE:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v
-L0 9
-R3
-r1
-!s85 0
-31
-R10
-!s107 E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v|
-!s90 -reportprogress|300|-work|work|E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v|
-!i113 1
-R4
-R5
-vseg7_ctrl
-R6
-!i10b 1
-!s100 ^S]Y6<V_;gThKc]8JhHRl1
-Ij<gi?LCYUbcNUn8i_XzPP3
-R1
-R0
 R7
+!i10b 1
+!s100 Y_KOKhKkY`1;2E99;eFX=2
+Iaa[fi4HHhkT0]?`[OA<<f2
+R0
+R1
+R8
+8/home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
+F/home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
+L0 8
+R4
+r1
+!s85 0
+31
+R11
+!s107 /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v|
+!s90 -reportprogress|300|-work|work|/home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v|
+!i113 1
+R5
+R6
+vriscv_top
+R7
+!i10b 1
+!s100 ]CK7j;NZ349Sjee@jk0hb0
+IAP?NBS=VK>j^kKG>oZ^X:0
+R0
+R1
+R8
+8/home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
+F/home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
+L0 8
+R4
+r1
+!s85 0
+31
+R11
+!s107 /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v|
+!s90 -reportprogress|300|-work|work|/home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v|
+!i113 1
+R5
+R6
+vrom_wrap
+R7
+!i10b 1
+!s100 BSeEaj6R@>JfMOcZ<DaUl3
+I4RT8fhE0RMInO18?B5b4B1
+R0
+R1
+R8
+8/home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
+F/home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
+L0 8
+R4
+r1
+!s85 0
+31
+R11
+!s107 /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v|
+!s90 -reportprogress|300|-work|work|/home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v|
+!i113 1
+R5
+R6
+vrv32i_core
+R7
+!i10b 1
+!s100 >^bXEgY>M8acLWVmLlSAJ0
+IXboOeUHBo_Bo?FXOJCd3U0
+R0
+R1
+R8
+8/home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
+F/home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
+L0 8
+R4
+r1
+!s85 0
+31
+R11
+!s107 /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v|
+!s90 -reportprogress|300|-work|work|/home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v|
+!i113 1
+R5
+R6
+vseg7_ctrl
+R7
+!i10b 1
+!s100 FSLUZhCbS_b?6?nQi05>z2
+IUIomFf_2>KSlY@GKeGj8z1
+R0
+R1
 R8
 R9
-L0 9
-R3
+R10
+L0 8
+R4
 r1
 !s85 0
 31
-R10
 R11
 R12
+R13
 !i113 1
-R4
 R5
+R6
 vsim_top
-R6
-!i10b 1
-!s100 Dm5SRUb`0TL>N:NP==52L0
-I7T`h4ZX:H6:`bQlOh59L71
-R1
-R0
 R7
-Z17 8E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/sim_top.v
-Z18 FE:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/sim_top.v
-L0 16
-R3
+!i10b 1
+!s100 ba5Q_Rnh6oiiilSPRdhWB3
+Ie>]5izI_WDMjCkC8XPN^]1
+R0
+R1
+R8
+Z14 8/home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
+Z15 F/home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
+L0 15
+R4
 r1
 !s85 0
 31
-R10
-Z19 !s107 E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/sim_top.v|
-Z20 !s90 -reportprogress|30|-work|work|E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/sim_top.v|
+R11
+Z16 !s107 /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v|
+Z17 !s90 -reportprogress|30|-work|work|/home/zerokfy/work/repo/riscv/src/rtl/sim_top.v|
 !i113 1
-R4
 R5
+R6
 vtb
-R6
-!i10b 1
-!s100 ^<mFAV72C7@Q?z;lJilNh3
-IY7@d4E:fJ_OCbLOK8X:HF3
-R1
-R0
 R7
-R17
-R18
-L0 66
-R3
+!i10b 1
+!s100 ?<V7>Q4F;>PeX@^fENK<G0
+I0m@g8AFCP6^Gj^PBa]4Q11
+R0
+R1
+R8
+R14
+R15
+L0 63
+R4
 r1
 !s85 0
 31
-R10
-R19
-R20
+R11
+R16
+R17
 !i113 1
-R4
 R5
+R6

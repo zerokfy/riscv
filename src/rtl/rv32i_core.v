@@ -1,7 +1,6 @@
-/*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Feb 22 15:20:56 2018
- Licensed to :EVALUATION USER
-*/
+
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+ Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
 */
@@ -288,7 +287,7 @@ gen_gr gr (.m_clock(m_clock), .p_reset(p_reset), .rd(_gr_rd), .rs2(_gr_rs2), .rs
     (((exer&_net_47))?rd:5'b0)|
     ((((exer&_net_43)&_net_46))?rd:5'b0)|
     ((((exer&_net_43)&_net_44))?rd:5'b0);
-   assign  _gr_wd = (((exej&_net_110))?(pc+32'b00000000000000000000000000000100):32'b0)|
+   assign  _gr_wd = (((exej&_net_110))?(pc+32'b00000000000000000000000000000001):32'b0)|
     (((exeu&_net_109))?(pc+({imm,12'b000000000000})):32'b0)|
     (((exeu&_net_108))?({imm,12'b000000000000}):32'b0)|
     (((exei_2&_net_78))?({24'b000000000000000000000000,(rdata[7:0])}):32'b0)|
@@ -676,7 +675,7 @@ always @(posedge m_clock or posedge p_reset)
 if (p_reset)
      pc <= 32'b00000000000000000000000000000000;
 else if ((exej&_net_110))
-      pc <= (pc+({11'b00000000000,_net_111}));
+      pc <= (pc+({({(_net_111[20]),(_net_111[20]),(_net_111[20]),(_net_111[20]),(_net_111[20]),(_net_111[20]),(_net_111[20]),(_net_111[20]),(_net_111[20]),(_net_111[20]),(_net_111[20])}),_net_111}));
 else if (exeu)
       pc <= pc;
 else if (((exeb&_net_105)&(~_net_106)))
@@ -1098,7 +1097,6 @@ else if ((_proc_exej_set|_proc_exej_reset))
       exej <= _proc_exej_set;
 end
 endmodule
-/*
- Produced by NSL Core(version=20151214), IP ARCH, Inc. Thu Feb 22 15:20:56 2018
- Licensed to :EVALUATION USER
-*/
+
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+ Licensed to :EVALUATION USER*/

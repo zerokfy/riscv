@@ -1,6 +1,6 @@
 Analysis & Elaboration report for riscv_top
-Thu Feb 22 23:59:56 2018
-Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Sun Feb 25 18:39:25 2018
+Quartus Prime Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
 
 
 ---------------------
@@ -40,26 +40,26 @@ refer to the applicable agreement for further details.
 
 
 
-+----------------------------------------------------------------------------------+
-; Analysis & Elaboration Summary                                                   ;
-+------------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status      ; Successful - Thu Feb 22 23:59:56 2018       ;
-; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
-; Revision Name                      ; riscv_top                                   ;
-; Top-level Entity Name              ; riscv_top                                   ;
-; Family                             ; MAX 10                                      ;
-; Total logic elements               ; N/A until Partition Merge                   ;
-;     Total combinational functions  ; N/A until Partition Merge                   ;
-;     Dedicated logic registers      ; N/A until Partition Merge                   ;
-; Total registers                    ; N/A until Partition Merge                   ;
-; Total pins                         ; N/A until Partition Merge                   ;
-; Total virtual pins                 ; N/A until Partition Merge                   ;
-; Total memory bits                  ; N/A until Partition Merge                   ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
-; Total PLLs                         ; N/A until Partition Merge                   ;
-; UFM blocks                         ; N/A until Partition Merge                   ;
-; ADC blocks                         ; N/A until Partition Merge                   ;
-+------------------------------------+---------------------------------------------+
++-------------------------------------------------------------------------------------------+
+; Analysis & Elaboration Summary                                                            ;
++------------------------------------+------------------------------------------------------+
+; Analysis & Elaboration Status      ; Successful - Sun Feb 25 18:39:25 2018                ;
+; Quartus Prime Version              ; 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition ;
+; Revision Name                      ; riscv_top                                            ;
+; Top-level Entity Name              ; riscv_top                                            ;
+; Family                             ; MAX 10                                               ;
+; Total logic elements               ; N/A until Partition Merge                            ;
+;     Total combinational functions  ; N/A until Partition Merge                            ;
+;     Dedicated logic registers      ; N/A until Partition Merge                            ;
+; Total registers                    ; N/A until Partition Merge                            ;
+; Total pins                         ; N/A until Partition Merge                            ;
+; Total virtual pins                 ; N/A until Partition Merge                            ;
+; Total memory bits                  ; N/A until Partition Merge                            ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                            ;
+; Total PLLs                         ; N/A until Partition Merge                            ;
+; UFM blocks                         ; N/A until Partition Merge                            ;
+; ADC blocks                         ; N/A until Partition Merge                            ;
++------------------------------------+------------------------------------------------------+
 
 
 +------------------------------------------+
@@ -68,7 +68,7 @@ refer to the applicable agreement for further details.
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
 ; Number detected on machine ; 4           ;
-; Maximum allowed            ; 4           ;
+; Maximum allowed            ; 2           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -359,57 +359,57 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
-    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Thu Feb 22 23:59:43 2018
+    Info: Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
+    Info: Processing started: Sun Feb 25 18:39:10 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off riscv -c riscv_top --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file /cygwin64/home/tatsu/work/repo/riscv/src/rtl/gen_gr.v
-    Info (12023): Found entity 1: gen_gr File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/gen_gr.v Line: 9
-Info (12021): Found 1 design units, including 1 entities, in source file /cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v
-    Info (12023): Found entity 1: rv32i_core File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v Line: 9
-Info (12021): Found 0 design units, including 0 entities, in source file /cygwin64/home/tatsu/work/repo/riscv/src/rtl/sim_top.v
-Info (12021): Found 1 design units, including 1 entities, in source file /cygwin64/home/tatsu/work/repo/riscv/ip/onchipram/onchipram.v
-    Info (12023): Found entity 1: OnChipRAM File: E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v Line: 39
-Info (12021): Found 1 design units, including 1 entities, in source file /cygwin64/home/tatsu/work/repo/riscv/ip/coderom/coderom.v
-    Info (12023): Found entity 1: CodeROM File: E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v Line: 39
-Info (12021): Found 2 design units, including 2 entities, in source file /cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v
-    Info (12023): Found entity 1: seg7_ctrl File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 9
-    Info (12023): Found entity 2: digit_dec File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 94
-Info (12021): Found 1 design units, including 1 entities, in source file /cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v
-    Info (12023): Found entity 1: rom_wrap File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v Line: 9
-Info (12021): Found 1 design units, including 1 entities, in source file /cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v
-    Info (12023): Found entity 1: riscv_top File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v Line: 9
-Info (12021): Found 1 design units, including 1 entities, in source file /cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v
-    Info (12023): Found entity 1: ram_wrap File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v Line: 9
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
+    Info (12023): Found entity 1: gen_gr File: /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
+    Info (12023): Found entity 1: rv32i_core File: /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v Line: 8
+Info (12021): Found 0 design units, including 0 entities, in source file /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
+Info (12021): Found 1 design units, including 1 entities, in source file /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v
+    Info (12023): Found entity 1: OnChipRAM File: /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file /home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v
+    Info (12023): Found entity 1: CodeROM File: /home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v Line: 39
+Info (12021): Found 2 design units, including 2 entities, in source file /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
+    Info (12023): Found entity 1: seg7_ctrl File: /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 8
+    Info (12023): Found entity 2: digit_dec File: /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 91
+Info (12021): Found 1 design units, including 1 entities, in source file /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
+    Info (12023): Found entity 1: rom_wrap File: /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
+    Info (12023): Found entity 1: riscv_top File: /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
+    Info (12023): Found entity 1: ram_wrap File: /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v Line: 8
 Info (12127): Elaborating entity "riscv_top" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(34): object "_core_p_reset" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v Line: 34
-Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(35): object "_core_m_clock" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v Line: 35
-Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(38): object "_rom_p_reset" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v Line: 38
-Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(39): object "_rom_m_clock" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v Line: 39
-Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(45): object "_ram_p_reset" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v Line: 45
-Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(46): object "_ram_m_clock" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v Line: 46
-Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(54): object "_segc_p_reset" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v Line: 54
-Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(55): object "_segc_m_clock" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v Line: 55
-Info (12128): Elaborating entity "seg7_ctrl" for hierarchy "seg7_ctrl:segc" File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v Line: 58
-Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(28): object "_dec_p_reset" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 28
-Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(29): object "_dec_m_clock" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 29
-Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(32): object "_dec_5_p_reset" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 32
-Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(33): object "_dec_5_m_clock" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 33
-Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(36): object "_dec_4_p_reset" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 36
-Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(37): object "_dec_4_m_clock" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 37
-Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(40): object "_dec_3_p_reset" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 40
-Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(41): object "_dec_3_m_clock" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 41
-Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(44): object "_dec_2_p_reset" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 44
-Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(45): object "_dec_2_m_clock" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 45
-Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(48): object "_dec_1_p_reset" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 48
-Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(49): object "_dec_1_m_clock" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 49
-Info (12128): Elaborating entity "digit_dec" for hierarchy "seg7_ctrl:segc|digit_dec:dec" File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 50
-Info (12128): Elaborating entity "ram_wrap" for hierarchy "ram_wrap:ram" File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v Line: 59
-Info (12128): Elaborating entity "OnChipRAM" for hierarchy "ram_wrap:ram|OnChipRAM:ram" File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v Line: 28
-Info (12128): Elaborating entity "altsyncram" for hierarchy "ram_wrap:ram|OnChipRAM:ram|altsyncram:altsyncram_component" File: E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v Line: 88
-Info (12130): Elaborated megafunction instantiation "ram_wrap:ram|OnChipRAM:ram|altsyncram:altsyncram_component" File: E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v Line: 88
-Info (12133): Instantiated megafunction "ram_wrap:ram|OnChipRAM:ram|altsyncram:altsyncram_component" with the following parameter: File: E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v Line: 88
+Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(33): object "_core_p_reset" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v Line: 33
+Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(34): object "_core_m_clock" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v Line: 34
+Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(37): object "_rom_p_reset" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v Line: 37
+Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(38): object "_rom_m_clock" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v Line: 38
+Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(44): object "_ram_p_reset" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v Line: 44
+Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(45): object "_ram_m_clock" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v Line: 45
+Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(53): object "_segc_p_reset" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v Line: 53
+Warning (10036): Verilog HDL or VHDL warning at riscv_top.v(54): object "_segc_m_clock" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v Line: 54
+Info (12128): Elaborating entity "seg7_ctrl" for hierarchy "seg7_ctrl:segc" File: /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v Line: 57
+Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(27): object "_dec_p_reset" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 27
+Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(28): object "_dec_m_clock" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 28
+Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(31): object "_dec_5_p_reset" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 31
+Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(32): object "_dec_5_m_clock" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 32
+Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(35): object "_dec_4_p_reset" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 35
+Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(36): object "_dec_4_m_clock" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 36
+Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(39): object "_dec_3_p_reset" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 39
+Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(40): object "_dec_3_m_clock" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 40
+Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(43): object "_dec_2_p_reset" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 43
+Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(44): object "_dec_2_m_clock" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 44
+Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(47): object "_dec_1_p_reset" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 47
+Warning (10036): Verilog HDL or VHDL warning at seg7_ctrl.v(48): object "_dec_1_m_clock" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 48
+Info (12128): Elaborating entity "digit_dec" for hierarchy "seg7_ctrl:segc|digit_dec:dec" File: /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v Line: 49
+Info (12128): Elaborating entity "ram_wrap" for hierarchy "ram_wrap:ram" File: /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v Line: 58
+Info (12128): Elaborating entity "OnChipRAM" for hierarchy "ram_wrap:ram|OnChipRAM:ram" File: /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v Line: 27
+Info (12128): Elaborating entity "altsyncram" for hierarchy "ram_wrap:ram|OnChipRAM:ram|altsyncram:altsyncram_component" File: /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v Line: 88
+Info (12130): Elaborated megafunction instantiation "ram_wrap:ram|OnChipRAM:ram|altsyncram:altsyncram_component" File: /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v Line: 88
+Info (12133): Instantiated megafunction "ram_wrap:ram|OnChipRAM:ram|altsyncram:altsyncram_component" with the following parameter: File: /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v Line: 88
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
     Info (12134): Parameter "intended_device_family" = "MAX 10"
@@ -425,13 +425,13 @@ Info (12133): Instantiated megafunction "ram_wrap:ram|OnChipRAM:ram|altsyncram:a
     Info (12134): Parameter "width_a" = "32"
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_f5g1.tdf
-    Info (12023): Found entity 1: altsyncram_f5g1 File: E:/cygwin64/home/tatsu/work/repo/riscv/prj/db/altsyncram_f5g1.tdf Line: 27
-Info (12128): Elaborating entity "altsyncram_f5g1" for hierarchy "ram_wrap:ram|OnChipRAM:ram|altsyncram:altsyncram_component|altsyncram_f5g1:auto_generated" File: e:/intelfpga_lite/17.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Info (12128): Elaborating entity "rom_wrap" for hierarchy "rom_wrap:rom" File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v Line: 60
-Info (12128): Elaborating entity "CodeROM" for hierarchy "rom_wrap:rom|CodeROM:rom" File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v Line: 19
-Info (12128): Elaborating entity "altsyncram" for hierarchy "rom_wrap:rom|CodeROM:rom|altsyncram:altsyncram_component" File: E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v Line: 81
-Info (12130): Elaborated megafunction instantiation "rom_wrap:rom|CodeROM:rom|altsyncram:altsyncram_component" File: E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v Line: 81
-Info (12133): Instantiated megafunction "rom_wrap:rom|CodeROM:rom|altsyncram:altsyncram_component" with the following parameter: File: E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v Line: 81
+    Info (12023): Found entity 1: altsyncram_f5g1 File: /home/zerokfy/work/repo/riscv/prj/db/altsyncram_f5g1.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_f5g1" for hierarchy "ram_wrap:ram|OnChipRAM:ram|altsyncram:altsyncram_component|altsyncram_f5g1:auto_generated" File: /opt/intelFPGA_lite/17.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12128): Elaborating entity "rom_wrap" for hierarchy "rom_wrap:rom" File: /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v Line: 59
+Info (12128): Elaborating entity "CodeROM" for hierarchy "rom_wrap:rom|CodeROM:rom" File: /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v Line: 18
+Info (12128): Elaborating entity "altsyncram" for hierarchy "rom_wrap:rom|CodeROM:rom|altsyncram:altsyncram_component" File: /home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v Line: 81
+Info (12130): Elaborated megafunction instantiation "rom_wrap:rom|CodeROM:rom|altsyncram:altsyncram_component" File: /home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v Line: 81
+Info (12133): Instantiated megafunction "rom_wrap:rom|CodeROM:rom|altsyncram:altsyncram_component" with the following parameter: File: /home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v Line: 81
     Info (12134): Parameter "address_aclr_a" = "NONE"
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
@@ -447,18 +447,18 @@ Info (12133): Instantiated megafunction "rom_wrap:rom|CodeROM:rom|altsyncram:alt
     Info (12134): Parameter "width_a" = "32"
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_fta1.tdf
-    Info (12023): Found entity 1: altsyncram_fta1 File: E:/cygwin64/home/tatsu/work/repo/riscv/prj/db/altsyncram_fta1.tdf Line: 27
-Info (12128): Elaborating entity "altsyncram_fta1" for hierarchy "rom_wrap:rom|CodeROM:rom|altsyncram:altsyncram_component|altsyncram_fta1:auto_generated" File: e:/intelfpga_lite/17.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Info (12128): Elaborating entity "rv32i_core" for hierarchy "rv32i_core:core" File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v Line: 61
-Warning (10036): Verilog HDL or VHDL warning at rv32i_core.v(28): object "inst" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v Line: 28
-Warning (10036): Verilog HDL or VHDL warning at rv32i_core.v(55): object "_gr_p_reset" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v Line: 55
-Warning (10036): Verilog HDL or VHDL warning at rv32i_core.v(56): object "_gr_m_clock" assigned a value but never read File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v Line: 56
-Info (12128): Elaborating entity "gen_gr" for hierarchy "rv32i_core:core|gen_gr:gr" File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v Line: 189
-Warning (10034): Output port "s3_rd" at gen_gr.v(24) has no driver File: E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/gen_gr.v Line: 24
+    Info (12023): Found entity 1: altsyncram_fta1 File: /home/zerokfy/work/repo/riscv/prj/db/altsyncram_fta1.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_fta1" for hierarchy "rom_wrap:rom|CodeROM:rom|altsyncram:altsyncram_component|altsyncram_fta1:auto_generated" File: /opt/intelFPGA_lite/17.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12128): Elaborating entity "rv32i_core" for hierarchy "rv32i_core:core" File: /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v Line: 60
+Warning (10036): Verilog HDL or VHDL warning at rv32i_core.v(27): object "inst" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v Line: 27
+Warning (10036): Verilog HDL or VHDL warning at rv32i_core.v(54): object "_gr_p_reset" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v Line: 54
+Warning (10036): Verilog HDL or VHDL warning at rv32i_core.v(55): object "_gr_m_clock" assigned a value but never read File: /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v Line: 55
+Info (12128): Elaborating entity "gen_gr" for hierarchy "rv32i_core:core|gen_gr:gr" File: /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v Line: 188
+Warning (10034): Output port "s3_rd" at gen_gr.v(23) has no driver File: /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v Line: 23
 Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 25 warnings
-    Info: Peak virtual memory: 641 megabytes
-    Info: Processing ended: Thu Feb 22 23:59:56 2018
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:28
+    Info: Peak virtual memory: 1361 megabytes
+    Info: Processing ended: Sun Feb 25 18:39:25 2018
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:30
 
 
