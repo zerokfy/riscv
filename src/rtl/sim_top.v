@@ -3,7 +3,7 @@
 `default_nettype wire
 
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
  Licensed to :EVALUATION USER*/
 
 // synthesis translate_off
@@ -23,18 +23,18 @@ module sim_top ( p_reset , m_clock );
   wire [7:0] _logic_top_seg_7_3;
   wire [7:0] _logic_top_seg_7_4;
   wire [7:0] _logic_top_seg_7_5;
+  wire _logic_top_ecall;
+  wire _logic_top_ebreak;
   wire _logic_top_p_reset;
   wire _logic_top_m_clock;
-  wire _net_0;
-riscv_top logic_top (.m_clock(m_clock), .p_reset(p_reset), .seg_7_0(_logic_top_seg_7_0), .seg_7_1(_logic_top_seg_7_1), .seg_7_2(_logic_top_seg_7_2), .seg_7_3(_logic_top_seg_7_3), .seg_7_4(_logic_top_seg_7_4), .seg_7_5(_logic_top_seg_7_5), .MODE(_logic_top_MODE));
+riscv_top logic_top (.m_clock(m_clock), .p_reset(p_reset), .seg_7_0(_logic_top_seg_7_0), .seg_7_1(_logic_top_seg_7_1), .seg_7_2(_logic_top_seg_7_2), .seg_7_3(_logic_top_seg_7_3), .seg_7_4(_logic_top_seg_7_4), .seg_7_5(_logic_top_seg_7_5), .ecall(_logic_top_ecall), .ebreak(_logic_top_ebreak), .MODE(_logic_top_MODE));
 
    assign  _logic_top_MODE = 1'b0;
    assign  _logic_top_p_reset = p_reset;
    assign  _logic_top_m_clock = m_clock;
-   assign  _net_0 = (sim_time==32'b00000000000000000000001111101000);
 always @(posedge m_clock)
   begin
-    if(_net_0)
+    if((_logic_top_ecall != 1'b0))
     begin
     $stop;
     end
@@ -50,10 +50,10 @@ endmodule
 // synthesis translate_on
 // synopsys translate_on
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
  Licensed to :EVALUATION USER*/
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
  Licensed to :EVALUATION USER*/
 
 //synthesis translate_off

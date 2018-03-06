@@ -1,5 +1,5 @@
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
@@ -19,7 +19,7 @@ module ram_wrap ( p_reset , m_clock , addr , wdata , rden , wren , rdata );
   output [31:0] rdata;
   wire [31:0] rdata;
   wire _ram_clock;
-  wire [8:0] _ram_address;
+  wire [11:0] _ram_address;
   wire [31:0] _ram_data;
   wire _ram_rden;
   wire _ram_wren;
@@ -27,12 +27,12 @@ module ram_wrap ( p_reset , m_clock , addr , wdata , rden , wren , rdata );
 OnChipRAM ram (.q(_ram_q), .clock(_ram_clock), .address(_ram_address), .data(_ram_data), .rden(_ram_rden), .wren(_ram_wren));
 
    assign  _ram_clock = m_clock;
-   assign  _ram_address = (addr[8:0]);
+   assign  _ram_address = (addr[13:2]);
    assign  _ram_data = wdata;
    assign  _ram_rden = rden;
    assign  _ram_wren = wren;
    assign  rdata = _ram_q;
 endmodule
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
  Licensed to :EVALUATION USER*/

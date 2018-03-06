@@ -13,10 +13,27 @@ module riscv_top {
 
     {
         mode_syn   := {mode_syn[0], MODE};
+
         rom.addr    = core.iaddr;
         core.idata  = rom.rdata;
+
+        ram.addr    = core.daddr;
+        ram.wdata   = core.wdata;
         core.rdata  = ram.rdata;
+
         segc.data   = ram.rdata;
+        ecall       = core.ecall_led;
+        ebreak      = core.ebreak_led;
+    }
+
+    func dmem_w {
+        ram.wren = 4'hF;
+        ram.rden = 4'h0;
+    }
+
+    func dmem_r {
+        ram.wren = 4'h0;
+        ram.rden = 4'hF;
     }
 
     any {
@@ -39,18 +56,6 @@ module riscv_top {
             seg_7_4 = 8'b0100_0000;
             seg_7_5 = 8'b0100_0000;
         }
-    }
-
-    function core.dmem_read {
-        ram.addr    = core.daddr;
-        core.rdata  = ram.rdata;
-        ram.rden    = 1'b1;
-    }
-
-    function core.dmem_write {
-        ram.addr    = core.daddr;
-        ram.wdata   = core.wdata;
-        ram.wren    = 1'b1;
     }
 }
 

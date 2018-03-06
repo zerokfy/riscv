@@ -1,5 +1,5 @@
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
@@ -18,9 +18,9 @@ module rom_wrap ( p_reset , m_clock , addr , rdata );
 CodeROM rom (.q(_rom_q), .clock(_rom_clock), .address(_rom_address));
 
    assign  _rom_clock = m_clock;
-   assign  _rom_address = (addr[9:0]);
+   assign  _rom_address = (addr[11:2]);
    assign  rdata = _rom_q;
 endmodule
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
  Licensed to :EVALUATION USER*/

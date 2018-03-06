@@ -1,15 +1,25 @@
 #include    "declare.inc"
 
 module ram_wrap {
-    OnChipRAM   ram;
+    OnChipRAM   ram0, ram1, ram2, ram3;
 
     {
-        ram.clock   = m_clock;
-        ram.address = addr[8:0];
-        ram.data    = wdata;
-        ram.rden    = rden;
-        ram.wren    = wren;
-        rdata       = ram.q;
+        ram0.clock   = m_clock;
+        ram1.clock   = m_clock;
+        ram2.clock   = m_clock;
+        ram3.clock   = m_clock;
+
+        ram0.address = addr[11:2];
+        ram1.address = addr[11:2] + 12'h1;
+        ram2.address = addr[11:2] + 12'h2;
+        ram3.address = addr[11:2] + 12'h3;
+
+        rdata       = {ram3.q, ram2.q, ram1.q, ram0.q};
+
+        {ram3.data, ram2.data, ram1.data, ram0.data} = wdata;
+        {ram3.rden, ram2.rden, ram1.rden, ram0.rden} = rden;
+        {ram3.wren, ram2.wren, ram1.wren, ram0.wren} = wren;
+
     }
 }
 

@@ -114,7 +114,5 @@
 #define     SW         8'h71
 #define     XOR        8'h72
 #define     XORI       8'h73
-
-#define     MUL             1'b0
-#define     DIV             1'b1
+#define     MRET       8'h74
 

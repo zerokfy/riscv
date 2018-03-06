@@ -7,6 +7,8 @@ declare riscv_top {
                 , seg_7_3[8]
                 , seg_7_4[8]
                 , seg_7_5[8]
+                , ecall
+                , ebreak
                 ;
 }
 
@@ -17,9 +19,11 @@ declare rv32i_core {
     output        iaddr[32]
                 , daddr[32]
                 , wdata[32]
+                , ecall_led
+                , ebreak_led
                 ;
-    func_out      dmem_read()
-                , dmem_write()
+    func_out      dmem_r()
+                , dmem_w()
                 ;
 }
 
@@ -39,8 +43,8 @@ declare CodeROM interface {
 declare ram_wrap {
     input         addr[32]
                 , wdata[32]
-                , rden
-                , wren
+                , rden[4]
+                , wren[4]
                 ;
     output        rdata[32]
                 ;
@@ -48,7 +52,7 @@ declare ram_wrap {
 
 declare OnChipRAM interface {
     input         clock
-                , address[9]
+                , address[12]
                 , data[32]
                 , rden
                 , wren
@@ -77,17 +81,14 @@ declare digit_dec {
 declare gen_gr {
     input         rs1_n[5]
                 , rs2_n[5]
-//                , rs3_n[5]
                 , rd_n[5]
                 , wd[32]
                 ;
     output        s1_rd[32]
                 , s2_rd[32]
-                , s3_rd[32]
                 ;
     func_in     rs1(rs1_n):s1_rd;
     func_in     rs2(rs2_n):s2_rd;
-//    func_in     rs3(rs3_n):s3_rd;
     func_in     rd(rd_n, wd);
 }
 

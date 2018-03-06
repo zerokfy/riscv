@@ -1,11 +1,11 @@
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
 */
 
-module riscv_top ( p_reset , m_clock , MODE , seg_7_0 , seg_7_1 , seg_7_2 , seg_7_3 , seg_7_4 , seg_7_5 );
+module riscv_top ( p_reset , m_clock , MODE , seg_7_0 , seg_7_1 , seg_7_2 , seg_7_3 , seg_7_4 , seg_7_5 , ecall , ebreak );
   input p_reset, m_clock;
   wire p_reset, m_clock;
   input MODE;
@@ -22,12 +22,18 @@ module riscv_top ( p_reset , m_clock , MODE , seg_7_0 , seg_7_1 , seg_7_2 , seg_
   wire [7:0] seg_7_4;
   output [7:0] seg_7_5;
   wire [7:0] seg_7_5;
+  output ecall;
+  wire ecall;
+  output ebreak;
+  wire ebreak;
   reg [1:0] mode_syn;
   wire [31:0] _core_idata;
   wire [31:0] _core_rdata;
   wire [31:0] _core_iaddr;
   wire [31:0] _core_daddr;
   wire [31:0] _core_wdata;
+  wire _core_ecall_led;
+  wire _core_ebreak_led;
   wire _core_dmem_read;
   wire _core_dmem_write;
   wire _core_p_reset;
@@ -57,7 +63,7 @@ module riscv_top ( p_reset , m_clock , MODE , seg_7_0 , seg_7_1 , seg_7_2 , seg_
 seg7_ctrl segc (.m_clock(m_clock), .p_reset(p_reset), .digit_0(_segc_digit_0), .digit_1(_segc_digit_1), .digit_2(_segc_digit_2), .digit_3(_segc_digit_3), .digit_4(_segc_digit_4), .digit_5(_segc_digit_5), .data(_segc_data));
 ram_wrap ram (.m_clock(m_clock), .p_reset(p_reset), .rdata(_ram_rdata), .addr(_ram_addr), .wdata(_ram_wdata), .rden(_ram_rden), .wren(_ram_wren));
 rom_wrap rom (.m_clock(m_clock), .p_reset(p_reset), .rdata(_rom_rdata), .addr(_rom_addr));
-rv32i_core core (.m_clock(m_clock), .p_reset(p_reset), .dmem_write(_core_dmem_write), .dmem_read(_core_dmem_read), .iaddr(_core_iaddr), .daddr(_core_daddr), .wdata(_core_wdata), .idata(_core_idata), .rdata(_core_rdata));
+rv32i_core core (.m_clock(m_clock), .p_reset(p_reset), .dmem_write(_core_dmem_write), .dmem_read(_core_dmem_read), .iaddr(_core_iaddr), .daddr(_core_daddr), .wdata(_core_wdata), .ecall_led(_core_ecall_led), .ebreak_led(_core_ebreak_led), .idata(_core_idata), .rdata(_core_rdata));
 
    assign  _core_idata = _rom_rdata;
    assign  _core_rdata = ((_core_dmem_read)?_ram_rdata:32'b0)|
@@ -94,11 +100,13 @@ rv32i_core core (.m_clock(m_clock), .p_reset(p_reset), .dmem_write(_core_dmem_wr
     ((_net_0)?8'b01000000:8'b0);
    assign  seg_7_5 = ((_net_1)?_segc_digit_5:8'b0)|
     ((_net_0)?8'b01000000:8'b0);
+   assign  ecall = _core_ecall_led;
+   assign  ebreak = _core_ebreak_led;
 always @(posedge m_clock)
   begin
   mode_syn <= ({(mode_syn[0]),MODE});
 end
 endmodule
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
  Licensed to :EVALUATION USER*/

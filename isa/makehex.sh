@@ -1,6 +1,6 @@
 #!/bin/bash
 
-riscv32-unknown-elf-objcopy -O binary ${1} ${1}.bin
+/opt/riscv/bin/riscv32-unknown-elf-objcopy -O binary ${1} ${1}.bin
 hexdump -v -e '1/4 "%08X" "\n"' ${1}.bin > ${1}.hex
 
 cat template.mif > ${1}.mif

@@ -1,11 +1,11 @@
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
 */
 
-module gen_gr ( p_reset , m_clock , rs1_n , rs2_n , rd_n , wd , s1_rd , s2_rd , s3_rd , rs1 , rs2 , rd );
+module gen_gr ( p_reset , m_clock , rs1_n , rs2_n , rd_n , wd , s1_rd , s2_rd , rs1 , rs2 , rd );
   input p_reset, m_clock;
   wire p_reset, m_clock;
   input [4:0] rs1_n;
@@ -20,8 +20,6 @@ module gen_gr ( p_reset , m_clock , rs1_n , rs2_n , rd_n , wd , s1_rd , s2_rd , 
   wire [31:0] s1_rd;
   output [31:0] s2_rd;
   wire [31:0] s2_rd;
-  output [31:0] s3_rd;
-  wire [31:0] s3_rd;
   input rs1;
   wire rs1;
   input rs2;
@@ -45,5 +43,5 @@ always @(posedge m_clock)
 end
 endmodule
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Sun Feb 25 14:58:55 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
  Licensed to :EVALUATION USER*/

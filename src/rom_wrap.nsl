@@ -5,7 +5,7 @@ module rom_wrap {
 
     {
         rom.clock   = m_clock;
-        rom.address = addr[9:0];
+        rom.address = addr[11:2];
         rdata       = rom.q;
     }
 }
