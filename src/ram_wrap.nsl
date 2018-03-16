@@ -9,17 +9,27 @@ module ram_wrap {
         ram2.clock   = m_clock;
         ram3.clock   = m_clock;
 
-        ram0.address = addr[11:2];
-        ram1.address = addr[11:2] + 12'h1;
-        ram2.address = addr[11:2] + 12'h2;
-        ram3.address = addr[11:2] + 12'h3;
+        ram0.address = {addr[11:2], 2'h0};
+        ram1.address = {addr[11:2], 2'h1};
+        ram2.address = {addr[11:2], 2'h2};
+        ram3.address = {addr[11:2], 2'h3};
 
         rdata       = {ram3.q, ram2.q, ram1.q, ram0.q};
 
-        {ram3.data, ram2.data, ram1.data, ram0.data} = wdata;
-        {ram3.rden, ram2.rden, ram1.rden, ram0.rden} = rden;
-        {ram3.wren, ram2.wren, ram1.wren, ram0.wren} = wren;
+        ram3.data = wdata[31:24];
+        ram2.data = wdata[23:16];
+        ram1.data = wdata[15:8];
+        ram0.data = wdata[7:0];
 
+        ram3.rden = rden[3];
+        ram2.rden = rden[2];
+        ram1.rden = rden[1];
+        ram0.rden = rden[0];
+
+        ram3.wren = wren[3];
+        ram2.wren = wren[2];
+        ram1.wren = wren[1];
+        ram0.wren = wren[0];
     }
 }
 

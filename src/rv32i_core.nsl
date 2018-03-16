@@ -10,10 +10,18 @@ module rv32i_core {
                     , rs1[5]
                     , rs2[5]
                     , rd[5]
-                    , en[4]
+                    , en[2]
                     , imm12[12]
                     , imm[20]
                     , order[8]
+                    , ord[8]
+                    , dest[5]
+                    , adr[32]
+                    , rd_tmp[32]
+                    , dst[5]
+                    , tmp[32]
+                    , ben[2]
+                    , odr[8]
                     , ecall
                     , ebreak
                     ;
@@ -27,21 +35,23 @@ module rv32i_core {
                     , exeb(order, rs1, rs2, imm12)
                     , exeu(order, rd,  imm)
                     , exej(order, rd,  imm)
-                    , meml_1(rd, en, sign)
-                    , meml_2(rd, en, sign)
+                    , meml_1(ord, dest, en)
+                    , meml_2(ord, dest, adr)
+                    , meml_last(odr, dst, tmp, ben)
                     ;
 
     {
-        rst_d := p_reset;
+        rst_d := rst_n;
         any {
-            rst_d && ~p_reset : ift(INST_ADDR);
+            ~rst_d && rst_n : ift(INST_ADDR);
         }
-        if(p_reset) {
+        if(~rst_n) {
             ecall  := 1'b0;
             ebreak := 1'b0;
+        } else {
+            ecall_led  = ecall;
+            ebreak_led = ebreak;
         }
-        ecall_led  = ecall;
-        ebreak_led = ebreak;
     }
 
     proc ift {
@@ -147,7 +157,7 @@ module rv32i_core {
 
     proc exei_1 {
         any {
-            order == ADDI :     gr.rd(rd, (gr.rs1(rs1) +  32#imm12)[31:0]);
+            order == ADDI :     gr.rd(rd, (gr.rs1(rs1)+32#imm12)[31:0]);
             order == SLLI :     gr.rd(rd, (gr.rs1(rs1) << 32'imm12)[31:0]);
             order == SLTI : any {
                ~gr.rs1(rs1)[31] &  ~imm12[11] :   gr.rd(rd, 32'(gr.rs1(rs1)<32'imm12));
@@ -174,23 +184,30 @@ module rv32i_core {
         order == LB : {
             dmem_r();
             daddr = gr.rs1(rs1) + 32#imm12;
-            meml_1(rd, daddr[1:0], 1'b1);
+            meml_1(order, rd, daddr[1:0]);
         }
         order == LH : {
+            dmem_r();
             daddr = gr.rs1(rs1) + 32#imm12;
-            meml(rd, 4'h3, 1'b1);
+            if(daddr[1:0] == 2'h3)  meml_2(order, rd, daddr);
+            else                    meml_1(order, rd, daddr[1:0]);
         }
         order == LW : {
+            dmem_r();
             daddr = gr.rs1(rs1) + 32#imm12;
-            meml(rd, 4'hF, 1'b1);
+            if(daddr[1:0] == 2'h0)  meml_1(order, rd, daddr[1:0]);
+            else                    meml_2(order, rd, daddr);
         }
         order == LBU : {
+            dmem_r();
             daddr = gr.rs1(rs1) + 32'imm12;
-            meml(rd, 4'h1, 1'b0);
+            meml_1(order, rd, daddr[1:0]);
         }
         order == LHU : {
+            dmem_r();
             daddr = gr.rs1(rs1) + 32'imm12;
-            meml(rd, 4'h3, 1'b0);
+            if(daddr[1:0] == 2'h0)  meml_1(order, rd, daddr[1:0]);
+            else                    meml_2(order, rd, daddr);
         }
         order == CSRRW : {
             gr.rd(rd, 32'h0);
@@ -232,19 +249,34 @@ module rv32i_core {
     proc exes {
         any {
             order == SB : {
-                dmem_write();
+                dmem_w();
                 daddr = gr.rs1(rs1) + 32#imm12;
-                wdata = {24'h0, gr.rs2(rs2)[7:0]};
+                any {
+                    daddr[1:0] == 2'h0 : wdata = {24'h0, gr.rs2(rs2)[7:0]};
+                    daddr[1:0] == 2'h1 : wdata = {16'h0, gr.rs2(rs2)[7:0],  8'h0};
+                    daddr[1:0] == 2'h2 : wdata = {8'h0,  gr.rs2(rs2)[7:0], 16'h0};
+                    daddr[1:0] == 2'h3 : wdata = {       gr.rs2(rs2)[7:0], 24'h0};
+                }
             }
             order == SH : {
-                dmem_write();
+                dmem_w();
                 daddr = gr.rs1(rs1) + 32#imm12;
-                wdata = {16'h0, gr.rs2(rs2)[15:0]};
+                any {
+                    daddr[1:0] == 2'h0 : wdata = {16'h0, gr.rs2(rs2)[15:0]};
+                    daddr[1:0] == 2'h1 : wdata = {8'h0,  gr.rs2(rs2)[15:0],  8'h0};
+                    daddr[1:0] == 2'h2 : wdata = {       gr.rs2(rs2)[15:0], 16'h0};
+                    daddr[1:0] == 2'h3 : wdata = {       gr.rs2(rs2)[7:0],  24'h0};
+                }
             }
             order == SW : {
-                dmem_write();
+                dmem_w();
                 daddr = gr.rs1(rs1) + 32#imm12;
-                wdata = gr.rs2(rs2)[31:0];
+                any {
+                    daddr[1:0] == 2'h0 : wdata =  gr.rs2(rs2);
+                    daddr[1:0] == 2'h1 : wdata = {gr.rs2(rs2)[23:0],  8'h0};
+                    daddr[1:0] == 2'h2 : wdata = {gr.rs2(rs2)[15:0], 16'h0};
+                    daddr[1:0] == 2'h3 : wdata = {gr.rs2(rs2)[7:0],  24'h0};
+                }
             }
         }
         ift(pc+32'h4);
@@ -302,15 +334,68 @@ module rv32i_core {
         }
     }
 
-    proc meml {
-        if(sign) any {
-            en == 4'h1 : gr.rd(rd, 32#(rdata[7:0]));
-            en == 4'h3 : gr.rd(rd, 32#(rdata[15:0]));
-            en == 4'hF : gr.rd(rd,    rdata);
-        } else any {
-            en == 4'h1 : gr.rd(rd, 32'(rdata[7:0]));
-            en == 4'h3 : gr.rd(rd, 32'(rdata[15:0]));
-            en == 4'hF : gr.rd(rd,    rdata);
+    proc meml_1 {
+        any {
+            ord == LB : any {
+                en == 2'h0 : gr.rd(dest, 32#(rdata[7:0]));
+                en == 2'h1 : gr.rd(dest, 32#(rdata[15:8]));
+                en == 2'h2 : gr.rd(dest, 32#(rdata[23:16]));
+                en == 2'h3 : gr.rd(dest, 32#(rdata[31:24]));
+            }
+            ord == LH : any {
+                en == 2'h0 : gr.rd(dest, 32#(rdata[15:0]));
+                en == 2'h1 : gr.rd(dest, 32#(rdata[23:8]));
+                en == 2'h2 : gr.rd(dest, 32#(rdata[31:16]));
+            }
+            ord == LW : gr.rd(dest, rdata);
+            ord == LBU : any {
+                en == 2'h0 : gr.rd(dest, 32'(rdata[7:0]));
+                en == 2'h1 : gr.rd(dest, 32'(rdata[15:8]));
+                en == 2'h2 : gr.rd(dest, 32'(rdata[23:16]));
+                en == 2'h3 : gr.rd(dest, 32'(rdata[31:24]));
+            }
+            ord == LHU : any {
+                en == 2'h0 : gr.rd(dest, 32'(rdata[15:0]));
+                en == 2'h1 : gr.rd(dest, 32'(rdata[23:8]));
+                en == 2'h2 : gr.rd(dest, 32'(rdata[31:16]));
+            }
+        }
+        ift(pc+32'h4);
+    }
+
+    proc meml_2 {
+        any {
+            ord == LH : {
+                rd_tmp := {24'h0, rdata[31:24]};
+                daddr = adr + 32'h4;
+            }
+            ord == LW : {
+                any {
+                    adr[1:0] == 2'h1 :  rd_tmp := {8'h0, rdata[31:8]};
+                    adr[1:0] == 2'h2 :  rd_tmp := {16'h0, rdata[31:16]};
+                    adr[1:0] == 2'h3 :  rd_tmp := {24'h0, rdata[31:24]};
+                }
+                daddr = adr + 32'h4;
+            }
+            ord == LHU : {
+                rd_tmp := {24'h0, rdata[31:24]};
+                daddr = adr + 32'h4;
+            }
+        }
+        meml_last(ord, dest, rd_tmp, adr[1:0]);
+    }
+
+    proc meml_last {
+        any {
+            odr == LH : gr.rd(dst, 32#{rdata[8:0], tmp[8:0]});
+            odr == LW : any {
+                ben[1:0] == 2'h1 :  gr.rd(dst, {rdata[7:0],  rd_tmp[23:0]});
+                ben[1:0] == 2'h2 :  gr.rd(dst, {rdata[15:0], rd_tmp[15:0]});
+                ben[1:0] == 2'h3 :  gr.rd(dst, {rdata[23:0], rd_tmp[7:0]});
+            }
+            odr == LHU : {
+                gr.rd(dst, 32'{rdata[8:0], rd_tmp[8:0]});
+            }
         }
         ift(pc+32'h4);
     }

@@ -1,13 +1,13 @@
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Thu Mar 15 23:58:27 2018
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
 */
 
-module seg7_ctrl ( p_reset , m_clock , data , digit_0 , digit_1 , digit_2 , digit_3 , digit_4 , digit_5 );
-  input p_reset, m_clock;
-  wire p_reset, m_clock;
+module seg7_ctrl ( rst_n , m_clock , data , digit_0 , digit_1 , digit_2 , digit_3 , digit_4 , digit_5 );
+  input rst_n, m_clock;
+  wire rst_n, m_clock;
   input [31:0] data;
   wire [31:0] data;
   output [7:0] digit_0;
@@ -24,52 +24,52 @@ module seg7_ctrl ( p_reset , m_clock , data , digit_0 , digit_1 , digit_2 , digi
   wire [7:0] digit_5;
   wire [3:0] _dec_data;
   wire [7:0] _dec_seg;
-  wire _dec_p_reset;
+  wire _dec_rst_n;
   wire _dec_m_clock;
   wire [3:0] _dec_5_data;
   wire [7:0] _dec_5_seg;
-  wire _dec_5_p_reset;
+  wire _dec_5_rst_n;
   wire _dec_5_m_clock;
   wire [3:0] _dec_4_data;
   wire [7:0] _dec_4_seg;
-  wire _dec_4_p_reset;
+  wire _dec_4_rst_n;
   wire _dec_4_m_clock;
   wire [3:0] _dec_3_data;
   wire [7:0] _dec_3_seg;
-  wire _dec_3_p_reset;
+  wire _dec_3_rst_n;
   wire _dec_3_m_clock;
   wire [3:0] _dec_2_data;
   wire [7:0] _dec_2_seg;
-  wire _dec_2_p_reset;
+  wire _dec_2_rst_n;
   wire _dec_2_m_clock;
   wire [3:0] _dec_1_data;
   wire [7:0] _dec_1_seg;
-  wire _dec_1_p_reset;
+  wire _dec_1_rst_n;
   wire _dec_1_m_clock;
-digit_dec dec (.m_clock(m_clock), .p_reset(p_reset), .seg(_dec_seg), .data(_dec_data));
-digit_dec dec_5 (.m_clock(m_clock), .p_reset(p_reset), .seg(_dec_5_seg), .data(_dec_5_data));
-digit_dec dec_4 (.m_clock(m_clock), .p_reset(p_reset), .seg(_dec_4_seg), .data(_dec_4_data));
-digit_dec dec_3 (.m_clock(m_clock), .p_reset(p_reset), .seg(_dec_3_seg), .data(_dec_3_data));
-digit_dec dec_2 (.m_clock(m_clock), .p_reset(p_reset), .seg(_dec_2_seg), .data(_dec_2_data));
-digit_dec dec_1 (.m_clock(m_clock), .p_reset(p_reset), .seg(_dec_1_seg), .data(_dec_1_data));
+digit_dec dec (.m_clock(m_clock), .rst_n(rst_n), .seg(_dec_seg), .data(_dec_data));
+digit_dec dec_5 (.m_clock(m_clock), .rst_n(rst_n), .seg(_dec_5_seg), .data(_dec_5_data));
+digit_dec dec_4 (.m_clock(m_clock), .rst_n(rst_n), .seg(_dec_4_seg), .data(_dec_4_data));
+digit_dec dec_3 (.m_clock(m_clock), .rst_n(rst_n), .seg(_dec_3_seg), .data(_dec_3_data));
+digit_dec dec_2 (.m_clock(m_clock), .rst_n(rst_n), .seg(_dec_2_seg), .data(_dec_2_data));
+digit_dec dec_1 (.m_clock(m_clock), .rst_n(rst_n), .seg(_dec_1_seg), .data(_dec_1_data));
 
    assign  _dec_data = (data[3:0]);
-   assign  _dec_p_reset = p_reset;
+   assign  _dec_rst_n = rst_n;
    assign  _dec_m_clock = m_clock;
    assign  _dec_5_data = (data[23:20]);
-   assign  _dec_5_p_reset = p_reset;
+   assign  _dec_5_rst_n = rst_n;
    assign  _dec_5_m_clock = m_clock;
    assign  _dec_4_data = (data[19:16]);
-   assign  _dec_4_p_reset = p_reset;
+   assign  _dec_4_rst_n = rst_n;
    assign  _dec_4_m_clock = m_clock;
    assign  _dec_3_data = (data[15:12]);
-   assign  _dec_3_p_reset = p_reset;
+   assign  _dec_3_rst_n = rst_n;
    assign  _dec_3_m_clock = m_clock;
    assign  _dec_2_data = (data[11:8]);
-   assign  _dec_2_p_reset = p_reset;
+   assign  _dec_2_rst_n = rst_n;
    assign  _dec_2_m_clock = m_clock;
    assign  _dec_1_data = (data[7:4]);
-   assign  _dec_1_p_reset = p_reset;
+   assign  _dec_1_rst_n = rst_n;
    assign  _dec_1_m_clock = m_clock;
    assign  digit_0 = _dec_seg;
    assign  digit_1 = _dec_1_seg;
@@ -79,18 +79,18 @@ digit_dec dec_1 (.m_clock(m_clock), .p_reset(p_reset), .seg(_dec_1_seg), .data(_
    assign  digit_5 = _dec_5_seg;
 endmodule
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Thu Mar 15 23:58:27 2018
  Licensed to :EVALUATION USER*/
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Thu Mar 15 23:58:27 2018
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
 */
 
-module digit_dec ( p_reset , m_clock , data , seg );
-  input p_reset, m_clock;
-  wire p_reset, m_clock;
+module digit_dec ( rst_n , m_clock , data , seg );
+  input rst_n, m_clock;
+  wire rst_n, m_clock;
   input [3:0] data;
   wire [3:0] data;
   output [7:0] seg;
@@ -146,5 +146,5 @@ module digit_dec ( p_reset , m_clock , data , seg );
     ((_net_0)?8'b01110001:8'b0);
 endmodule
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Thu Mar 15 23:58:27 2018
  Licensed to :EVALUATION USER*/

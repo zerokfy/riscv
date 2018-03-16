@@ -1,13 +1,13 @@
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Thu Mar 15 23:58:30 2018
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
 */
 
-module rom_wrap ( p_reset , m_clock , addr , rdata );
-  input p_reset, m_clock;
-  wire p_reset, m_clock;
+module rom_wrap ( rst_n , m_clock , addr , rdata );
+  input rst_n, m_clock;
+  wire rst_n, m_clock;
   input [31:0] addr;
   wire [31:0] addr;
   output [31:0] rdata;
@@ -22,5 +22,5 @@ CodeROM rom (.q(_rom_q), .clock(_rom_clock), .address(_rom_address));
    assign  rdata = _rom_q;
 endmodule
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Tue Mar  6 13:30:22 2018
+/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Thu Mar 15 23:58:30 2018
  Licensed to :EVALUATION USER*/

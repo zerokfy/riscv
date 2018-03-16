@@ -172,11 +172,19 @@
 					"strict" : false
 				},
 				{
-					"name" : "m_clock",
+					"name" : "ecall",
 					"strict" : false
 				},
 				{
-					"name" : "p_reset",
+					"name" : "ebreak",
+					"strict" : false
+				},
+				{
+					"name" : "rst_n",
+					"strict" : false
+				},
+				{
+					"name" : "m_clock",
 					"strict" : false
 				},
 				{

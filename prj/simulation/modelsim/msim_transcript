@@ -1,3 +1,4 @@
+# Reading E:/intelFPGA_lite/17.1/modelsim_ase/tcl/vsim/pref.tcl
 # do riscv_top_run_msim_rtl_verilog.do
 # if {[file exists rtl_work]} {
 # 	vdel -lib rtl_work -all
@@ -6,213 +7,188 @@
 # vmap work rtl_work
 # Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
 # vmap work rtl_work 
-# Copying /opt/intelFPGA_lite/17.1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini
+# Copying E:/intelFPGA_lite/17.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vlog -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/src/rtl {/home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v}
+# vlog -vlog01compat -work work +incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl {E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/gen_gr.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:56:21 on Mar 04,2018
-# vlog -reportprogress 300 -vlog01compat -work work "+incdir+/home/zerokfy/work/repo/riscv/src/rtl" /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
+# Start time: 20:59:28 on Mar 15,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl" E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/gen_gr.v 
 # -- Compiling module gen_gr
 # 
 # Top level modules:
 # 	gen_gr
-# End time: 20:56:21 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 20:59:28 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/src/rtl {/home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v}
+# vlog -vlog01compat -work work +incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl {E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:56:21 on Mar 04,2018
-# vlog -reportprogress 300 -vlog01compat -work work "+incdir+/home/zerokfy/work/repo/riscv/src/rtl" /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
+# Start time: 20:59:28 on Mar 15,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl" E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v 
 # -- Compiling module rv32i_core
 # 
 # Top level modules:
 # 	rv32i_core
-# End time: 20:56:21 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 20:59:28 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/ip/OnChipRAM {/home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v}
+# vlog -vlog01compat -work work +incdir+E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM {E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:56:21 on Mar 04,2018
-# vlog -reportprogress 300 -vlog01compat -work work "+incdir+/home/zerokfy/work/repo/riscv/ip/OnChipRAM" /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v 
+# Start time: 20:59:28 on Mar 15,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM" E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v 
 # -- Compiling module OnChipRAM
 # 
 # Top level modules:
 # 	OnChipRAM
-# End time: 20:56:21 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 20:59:28 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/ip/CodeROM {/home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v}
+# vlog -vlog01compat -work work +incdir+E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM {E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:56:21 on Mar 04,2018
-# vlog -reportprogress 300 -vlog01compat -work work "+incdir+/home/zerokfy/work/repo/riscv/ip/CodeROM" /home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v 
+# Start time: 20:59:28 on Mar 15,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM" E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v 
 # -- Compiling module CodeROM
 # 
 # Top level modules:
 # 	CodeROM
-# End time: 20:56:21 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 20:59:28 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/src/rtl {/home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v}
+# vlog -vlog01compat -work work +incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl {E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:56:21 on Mar 04,2018
-# vlog -reportprogress 300 -vlog01compat -work work "+incdir+/home/zerokfy/work/repo/riscv/src/rtl" /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
+# Start time: 20:59:28 on Mar 15,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl" E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v 
 # -- Compiling module seg7_ctrl
 # -- Compiling module digit_dec
 # 
 # Top level modules:
 # 	seg7_ctrl
-# End time: 20:56:21 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 20:59:28 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/src/rtl {/home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v}
+# vlog -vlog01compat -work work +incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl {E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:56:21 on Mar 04,2018
-# vlog -reportprogress 300 -vlog01compat -work work "+incdir+/home/zerokfy/work/repo/riscv/src/rtl" /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
+# Start time: 20:59:28 on Mar 15,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl" E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v 
 # -- Compiling module rom_wrap
 # 
 # Top level modules:
 # 	rom_wrap
-# End time: 20:56:21 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 20:59:28 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/src/rtl {/home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v}
+# vlog -vlog01compat -work work +incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl {E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:56:21 on Mar 04,2018
-# vlog -reportprogress 300 -vlog01compat -work work "+incdir+/home/zerokfy/work/repo/riscv/src/rtl" /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
+# Start time: 20:59:28 on Mar 15,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl" E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v 
 # -- Compiling module riscv_top
 # 
 # Top level modules:
 # 	riscv_top
-# End time: 20:56:21 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 20:59:28 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/src/rtl {/home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v}
+# vlog -vlog01compat -work work +incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl {E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:56:21 on Mar 04,2018
-# vlog -reportprogress 300 -vlog01compat -work work "+incdir+/home/zerokfy/work/repo/riscv/src/rtl" /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
+# Start time: 20:59:28 on Mar 15,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl" E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v 
 # -- Compiling module ram_wrap
 # 
 # Top level modules:
 # 	ram_wrap
-# End time: 20:56:21 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 20:59:29 on Mar 15,2018, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # 
-cd /home/zerokfy/work/repo/riscv/prj
-# reading /opt/intelFPGA_lite/17.1/modelsim_ase/linuxaloem/../modelsim.ini
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
+cd E:/cygwin64/home/tatsu/work/repo/riscv/prj
+# reading modelsim.ini
+vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/gen_gr.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:57:13 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
+# Start time: 21:00:03 on Mar 15,2018
+# vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/gen_gr.v 
 # -- Compiling module gen_gr
 # 
 # Top level modules:
 # 	gen_gr
-# End time: 20:57:13 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:00:03 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
+vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:57:13 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
+# Start time: 21:00:03 on Mar 15,2018
+# vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v 
 # -- Compiling module ram_wrap
 # 
 # Top level modules:
 # 	ram_wrap
-# End time: 20:57:13 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:00:03 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
+vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:57:13 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
+# Start time: 21:00:03 on Mar 15,2018
+# vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v 
 # -- Compiling module riscv_top
 # 
 # Top level modules:
 # 	riscv_top
-# End time: 20:57:13 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:00:03 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
+vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:57:13 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
+# Start time: 21:00:03 on Mar 15,2018
+# vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v 
 # -- Compiling module rom_wrap
 # 
 # Top level modules:
 # 	rom_wrap
-# End time: 20:57:13 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:00:03 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
+vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:57:13 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
+# Start time: 21:00:03 on Mar 15,2018
+# vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v 
 # -- Compiling module rv32i_core
 # 
 # Top level modules:
 # 	rv32i_core
-# End time: 20:57:13 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:00:03 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
+vlog -reportprogress 30 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:57:13 on Mar 04,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
+# Start time: 21:00:03 on Mar 15,2018
+# vlog -reportprogress 30 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v 
 # -- Compiling module seg7_ctrl
 # -- Compiling module digit_dec
 # 
 # Top level modules:
 # 	seg7_ctrl
-# End time: 20:57:13 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:00:03 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
+vlog -reportprogress 30 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/sim_top.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:57:13 on Mar 04,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
+# Start time: 21:00:03 on Mar 15,2018
+# vlog -reportprogress 30 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/sim_top.v 
 # -- Compiling module sim_top
 # -- Compiling module tb
 # 
 # Top level modules:
 # 	tb
-# End time: 20:57:13 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:00:04 on Mar 15,2018, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v
+vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:57:18 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v 
+# Start time: 21:00:07 on Mar 15,2018
+# vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/ip/CodeROM/CodeROM.v 
 # -- Compiling module CodeROM
 # 
 # Top level modules:
 # 	CodeROM
-# End time: 20:57:18 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:00:07 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v
+vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 20:57:20 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v 
+# Start time: 21:00:10 on Mar 15,2018
+# vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v 
 # -- Compiling module OnChipRAM
 # 
 # Top level modules:
 # 	OnChipRAM
-# End time: 20:57:20 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:00:10 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vsim -i -l msim_transcript work.tb
-# vsim -i -l msim_transcript work.tb 
-# Start time: 20:57:38 on Mar 04,2018
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.OnChipRAM
-# ** Error: (vsim-3033) /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v(65): Instantiation of 'altsyncram' failed. The design unit was not found.
-#    Time: 0 ps  Iteration: 0  Instance: /tb/sim_top_instance/logic_top/ram/ram File: /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v
-#         Searched libraries:
-#             /home/zerokfy/work/repo/riscv/prj/work
-# Loading work.rom_wrap
-# Loading work.CodeROM
-# ** Error: (vsim-3033) /home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v(58): Instantiation of 'altsyncram' failed. The design unit was not found.
-#    Time: 0 ps  Iteration: 0  Instance: /tb/sim_top_instance/logic_top/rom/rom File: /home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v
-#         Searched libraries:
-#             /home/zerokfy/work/repo/riscv/prj/work
-# Loading work.rv32i_core
-# Loading work.gen_gr
-# Error loading design
-# End time: 20:57:38 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 2, Warnings: 0
-vsim -i -l msim_transcript work.tb -L altera_mf_ver -L altera_mf
-# vsim -i -l msim_transcript work.tb -L altera_mf_ver -L altera_mf 
-# Start time: 20:58:01 on Mar 04,2018
+vsim -gui -l msim_transcript work.tb -L altera_mf_ver -L altera_mf
+# vsim -gui -l msim_transcript work.tb -L altera_mf_ver -L altera_mf 
+# Start time: 21:00:43 on Mar 15,2018
 # Loading work.tb
 # Loading work.sim_top
 # Loading work.riscv_top
@@ -228,8 +204,6 @@ vsim -i -l msim_transcript work.tb -L altera_mf_ver -L altera_mf
 # Loading altera_mf_ver.altsyncram_body
 # Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
 # Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
-# ** Warning: (vsim-3015) /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v(27): [PCDPC] - Port size (12) does not match connection size (9) for port 'address'. The port definition is at: /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v(40).
-#    Time: 0 ps  Iteration: 0  Instance: /tb/sim_top_instance/logic_top/ram/ram File: /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/m_clock
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/p_reset
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/iaddr
@@ -237,8 +211,12 @@ add wave -position end  sim:/tb/sim_top_instance/logic_top/core/idata
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/daddr
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/rdata
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/wdata
+add wave -position end  sim:/tb/sim_top_instance/logic_top/core/ecall_led
+add wave -position end  sim:/tb/sim_top_instance/logic_top/core/ebreak_led
+add wave -position end  sim:/tb/sim_top_instance/logic_top/core/dmem_r
+add wave -position end  sim:/tb/sim_top_instance/logic_top/core/dmem_w
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/pc
-add wave -position end  sim:/tb/sim_top_instance/logic_top/core/inst
+add wave -position end  sim:/tb/sim_top_instance/logic_top/core/rst_d
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/rs1
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/rs2
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/rd
@@ -255,226 +233,9 @@ add wave -position end  sim:/tb/sim_top_instance/logic_top/core/exes
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/exeb
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/exeu
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/exej
-restart
-# ** Warning: (vsim-3015) /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v(27): [PCDPC] - Port size (12) does not match connection size (9) for port 'address'. The port definition is at: /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v(40).
-#    Time: 0 ps  Iteration: 0  Instance: /tb/sim_top_instance/logic_top/ram/ram File: /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-add wave -position end  sim:/tb/sim_top_instance/logic_top/ram/ram/address
-add wave -position end  sim:/tb/sim_top_instance/logic_top/ram/ram/clock
-add wave -position end  sim:/tb/sim_top_instance/logic_top/ram/ram/data
-add wave -position end  sim:/tb/sim_top_instance/logic_top/ram/ram/rden
-add wave -position end  sim:/tb/sim_top_instance/logic_top/ram/ram/wren
-add wave -position end  sim:/tb/sim_top_instance/logic_top/ram/ram/q
-restart
-# Closing VCD file "sim_top.vcd"
-# ** Warning: (vsim-3015) /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v(27): [PCDPC] - Port size (12) does not match connection size (9) for port 'address'. The port definition is at: /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v(40).
-#    Time: 0 ps  Iteration: 0  Instance: /tb/sim_top_instance/logic_top/ram/ram File: /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:19:59 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/ip/CodeROM/CodeROM.v 
-# -- Compiling module CodeROM
-# 
-# Top level modules:
-# 	CodeROM
-# End time: 21:19:59 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:20:02 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v 
-# -- Compiling module OnChipRAM
-# 
-# Top level modules:
-# 	OnChipRAM
-# End time: 21:20:02 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:20:08 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 21:20:08 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:20:08 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 21:20:08 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:20:08 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 21:20:08 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:20:08 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 21:20:08 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:20:08 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 21:20:08 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:20:08 on Mar 04,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 21:20:08 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:20:08 on Mar 04,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 21:20:08 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.OnChipRAM
-# Loading work.rom_wrap
-# Loading work.CodeROM
-# Loading work.rv32i_core
-# Loading work.gen_gr
-# ** Warning: (vsim-3015) /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v(27): [PCDPC] - Port size (12) does not match connection size (9) for port 'address'. The port definition is at: /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v(40).
-#    Time: 0 ps  Iteration: 0  Instance: /tb/sim_top_instance/logic_top/ram/ram File: /home/zerokfy/work/repo/riscv/ip/OnChipRAM/OnChipRAM.v
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:21:59 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 21:21:59 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:21:59 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 21:21:59 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:21:59 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 21:21:59 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:21:59 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 21:21:59 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:21:59 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 21:21:59 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:21:59 on Mar 04,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 21:21:59 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:21:59 on Mar 04,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 21:21:59 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-add wave -position end  sim:/tb/sim_top_instance/logic_top/core/gr/gr
+add wave -position end  sim:/tb/sim_top_instance/logic_top/core/meml_1
+add wave -position end  sim:/tb/sim_top_instance/logic_top/core/meml_2
+add wave -position end  sim:/tb/sim_top_instance/logic_top/core/meml_last
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/gr/gr[0]
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/gr/gr[1]
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/gr/gr[2]
@@ -508,177 +269,81 @@ add wave -position end  sim:/tb/sim_top_instance/logic_top/core/gr/gr[29]
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/gr/gr[30]
 add wave -position end  sim:/tb/sim_top_instance/logic_top/core/gr/gr[31]
 restart
-# Closing VCD file "sim_top.vcd"
 run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
+# ** Note: $stop    : E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/sim_top.v(39)
+#    Time: 425 ns  Iteration: 1  Instance: /tb/sim_top_instance
+# Break in Module sim_top at E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/sim_top.v line 39
+vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/gen_gr.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:16:32 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
+# Start time: 21:20:42 on Mar 15,2018
+# vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/gen_gr.v 
 # -- Compiling module gen_gr
 # 
 # Top level modules:
 # 	gen_gr
-# End time: 22:16:32 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:20:42 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
+vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:16:32 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
+# Start time: 21:20:42 on Mar 15,2018
+# vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/ram_wrap.v 
 # -- Compiling module ram_wrap
 # 
 # Top level modules:
 # 	ram_wrap
-# End time: 22:16:32 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:20:42 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
+vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:16:32 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
+# Start time: 21:20:42 on Mar 15,2018
+# vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/riscv_top.v 
 # -- Compiling module riscv_top
 # 
 # Top level modules:
 # 	riscv_top
-# End time: 22:16:32 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:20:42 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
+vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:16:32 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
+# Start time: 21:20:42 on Mar 15,2018
+# vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rom_wrap.v 
 # -- Compiling module rom_wrap
 # 
 # Top level modules:
 # 	rom_wrap
-# End time: 22:16:32 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:20:42 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
+vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:16:32 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
+# Start time: 21:20:42 on Mar 15,2018
+# vlog -reportprogress 300 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/rv32i_core.v 
 # -- Compiling module rv32i_core
 # 
 # Top level modules:
 # 	rv32i_core
-# End time: 22:16:32 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:20:42 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
+vlog -reportprogress 30 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:16:32 on Mar 04,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
+# Start time: 21:20:42 on Mar 15,2018
+# vlog -reportprogress 30 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/seg7_ctrl.v 
 # -- Compiling module seg7_ctrl
 # -- Compiling module digit_dec
 # 
 # Top level modules:
 # 	seg7_ctrl
-# End time: 22:16:32 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:20:43 on Mar 15,2018, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
+vlog -reportprogress 30 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/sim_top.v
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:16:32 on Mar 04,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
+# Start time: 21:20:43 on Mar 15,2018
+# vlog -reportprogress 30 -work work E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/sim_top.v 
 # -- Compiling module sim_top
 # -- Compiling module tb
 # 
 # Top level modules:
 # 	tb
-# End time: 22:16:32 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-# Warning in wave window restart: (vish-4014) No objects found matching '/tb/sim_top_instance/logic_top/core/inst'. 
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-add wave -position 24  sim:/tb/sim_top_instance/logic_top/core/meml
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:44:52 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 23:44:52 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:44:52 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 23:44:52 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:44:52 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 23:44:52 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:44:52 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 23:44:52 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:44:52 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 23:44:52 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:44:52 on Mar 04,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 23:44:52 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:44:52 on Mar 04,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 23:44:52 on Mar 04,2018, Elapsed time: 0:00:00
+# End time: 21:20:43 on Mar 15,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 restart
 # Closing VCD file "sim_top.vcd"
@@ -692,1660 +357,8 @@ restart
 # Loading work.rv32i_core
 # Loading work.gen_gr
 run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:45:56 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 23:45:56 on Mar 04,2018, Elapsed time: 0:00:00
+# ** Note: $stop    : E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/sim_top.v(39)
+#    Time: 425 ns  Iteration: 1  Instance: /tb/sim_top_instance
+# Break in Module sim_top at E:/cygwin64/home/tatsu/work/repo/riscv/src/rtl/sim_top.v line 39
+# End time: 22:08:32 on Mar 15,2018, Elapsed time: 1:07:49
 # Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:45:56 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 23:45:56 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:45:56 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 23:45:56 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:45:56 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 23:45:56 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:45:56 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 23:45:56 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:45:56 on Mar 04,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 23:45:56 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:45:56 on Mar 04,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 23:45:56 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:46:48 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 23:46:48 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:46:48 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 23:46:48 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:46:48 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 23:46:48 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:46:48 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 23:46:48 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:46:48 on Mar 04,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 23:46:48 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:46:48 on Mar 04,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 23:46:48 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:46:48 on Mar 04,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 23:46:48 on Mar 04,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:33:38 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 00:33:38 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:33:38 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 00:33:38 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:33:38 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 00:33:38 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:33:38 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 00:33:38 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:33:38 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 00:33:38 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:33:38 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 00:33:38 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:33:38 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 00:33:38 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:38:40 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 00:38:40 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:38:40 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 00:38:40 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:38:40 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 00:38:40 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:38:40 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 00:38:40 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:38:40 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 00:38:40 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:38:40 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 00:38:40 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:38:40 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 00:38:40 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-add wave -position 35  sim:/tb/sim_top_instance/logic_top/core/tmp_wire
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:41:45 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 00:41:45 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:41:45 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 00:41:45 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:41:45 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 00:41:45 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:41:45 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 00:41:45 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:41:45 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 00:41:45 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:41:45 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 00:41:45 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:41:45 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 00:41:45 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-add wave -position 37  sim:/tb/sim_top_instance/logic_top/core/_net_77
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:45:49 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 00:45:49 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:45:49 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 00:45:49 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:45:49 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 00:45:49 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:45:49 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 00:45:49 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:45:49 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 00:45:49 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:45:49 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 00:45:49 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:45:49 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 00:45:49 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:52:02 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 00:52:02 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:52:02 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 00:52:03 on Mar 05,2018, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:52:03 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 00:52:03 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:52:03 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 00:52:03 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:52:03 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 00:52:03 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:52:03 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 00:52:03 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:52:03 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 00:52:03 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:54:10 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 00:54:10 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:54:10 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 00:54:10 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:54:10 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 00:54:10 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:54:10 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 00:54:11 on Mar 05,2018, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:54:11 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 00:54:11 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:54:11 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 00:54:11 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 00:54:11 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 00:54:11 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:35:38 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 01:35:38 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:35:38 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 01:35:38 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:35:38 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 01:35:38 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:35:38 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 01:35:38 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:35:38 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 01:35:38 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:35:38 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 01:35:38 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:35:38 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 01:35:38 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:44:26 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 01:44:26 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:44:26 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 01:44:26 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:44:26 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 01:44:26 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:44:26 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 01:44:26 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:44:26 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 01:44:26 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:44:26 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 01:44:26 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 01:44:26 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 01:44:26 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 02:07:01 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 02:07:01 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 02:07:01 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 02:07:01 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 02:07:01 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 02:07:01 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 02:07:01 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 02:07:01 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 02:07:01 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 02:07:01 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 02:07:01 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 02:07:01 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 02:07:01 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 02:07:01 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:15:08 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 13:15:08 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:15:08 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 13:15:08 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:15:08 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 13:15:08 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:15:08 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 13:15:08 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:15:08 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 13:15:08 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:15:08 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 13:15:08 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:15:08 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 13:15:08 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:30:58 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 13:30:58 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:30:58 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 13:30:58 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:30:58 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 13:30:58 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:30:58 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 13:30:58 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:30:58 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 13:30:58 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:30:58 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 13:30:58 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:30:58 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 13:30:58 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 15:26:55 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 15:26:55 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 15:26:55 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 15:26:55 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 15:26:55 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 15:26:55 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 15:26:55 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 15:26:55 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 15:26:55 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 15:26:55 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 15:26:55 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 15:26:55 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 15:26:55 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 15:26:55 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 20003 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 15:59:13 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 15:59:13 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 15:59:13 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 15:59:13 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 15:59:13 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 15:59:13 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 15:59:13 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 15:59:13 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 15:59:13 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 15:59:13 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 15:59:13 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 15:59:13 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 15:59:13 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 15:59:13 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 1235 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-add wave -position 36  sim:/tb/sim_top_instance/logic_top/ecall
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 1235 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-# Load canceled
-# Load canceled
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 16:32:30 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 16:32:30 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 16:32:30 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 16:32:30 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 16:32:30 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 16:32:30 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 16:32:30 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 16:32:30 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 16:32:30 on Mar 05,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 16:32:30 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 16:32:30 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 16:32:30 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 16:32:30 on Mar 05,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 16:32:30 on Mar 05,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 289 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 301 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:31:33 on Mar 06,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v 
-# -- Compiling module gen_gr
-# 
-# Top level modules:
-# 	gen_gr
-# End time: 13:31:33 on Mar 06,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:31:33 on Mar 06,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v 
-# -- Compiling module ram_wrap
-# 
-# Top level modules:
-# 	ram_wrap
-# End time: 13:31:33 on Mar 06,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:31:33 on Mar 06,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v 
-# -- Compiling module riscv_top
-# 
-# Top level modules:
-# 	riscv_top
-# End time: 13:31:33 on Mar 06,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:31:33 on Mar 06,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v 
-# -- Compiling module rom_wrap
-# 
-# Top level modules:
-# 	rom_wrap
-# End time: 13:31:33 on Mar 06,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:31:33 on Mar 06,2018
-# vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v 
-# -- Compiling module rv32i_core
-# 
-# Top level modules:
-# 	rv32i_core
-# End time: 13:31:33 on Mar 06,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:31:33 on Mar 06,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v 
-# -- Compiling module seg7_ctrl
-# -- Compiling module digit_dec
-# 
-# Top level modules:
-# 	seg7_ctrl
-# End time: 13:31:33 on Mar 06,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:31:33 on Mar 06,2018
-# vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v 
-# -- Compiling module sim_top
-# -- Compiling module tb
-# 
-# Top level modules:
-# 	tb
-# End time: 13:31:33 on Mar 06,2018, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-restart
-# Closing VCD file "sim_top.vcd"
-# Loading work.tb
-# Loading work.sim_top
-# Loading work.riscv_top
-# Loading work.seg7_ctrl
-# Loading work.digit_dec
-# Loading work.ram_wrap
-# Loading work.rom_wrap
-# Loading work.rv32i_core
-# Loading work.gen_gr
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 413 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-add wave -position 37  sim:/tb/sim_top_instance/logic_top/core/be
-add wave -position 38  sim:/tb/sim_top_instance/logic_top/core/sign
-restart
-# Closing VCD file "sim_top.vcd"
-run -all
-# ** Note: $stop    : /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v(39)
-#    Time: 413 ns  Iteration: 1  Instance: /tb/sim_top_instance
-# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 39
-# End time: 14:54:40 on Mar 06,2018, Elapsed time: 41:56:39
-# Errors: 3, Warnings: 4

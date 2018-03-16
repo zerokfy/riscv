@@ -53,11 +53,11 @@ declare ram_wrap {
 declare OnChipRAM interface {
     input         clock
                 , address[12]
-                , data[32]
+                , data[8]
                 , rden
                 , wren
                 ;
-    output        q[32]
+    output        q[8]
                 ;
 }
 

@@ -17,44 +17,43 @@ module riscv_top {
         rom.addr    = core.iaddr;
         core.idata  = rom.rdata;
 
-        ram.addr    = core.daddr;
         ram.wdata   = core.wdata;
-        core.rdata  = ram.rdata;
 
         segc.data   = ram.rdata;
         ecall       = core.ecall_led;
         ebreak      = core.ebreak_led;
     }
 
-    func dmem_w {
+    func core.dmem_w {
         ram.wren = 4'hF;
         ram.rden = 4'h0;
     }
 
-    func dmem_r {
+    func core.dmem_r {
         ram.wren = 4'h0;
         ram.rden = 4'hF;
     }
 
     any {
         mode_syn[1] : {
-            ram.addr  = 0x00000200;
-            seg_7_0 = segc.digit_0;
-            seg_7_1 = segc.digit_1;
-            seg_7_2 = segc.digit_2;
-            seg_7_3 = segc.digit_3;
-            seg_7_4 = segc.digit_4;
-            seg_7_5 = segc.digit_5;
+            ram.addr    = 0x00000200;
+            segc.data   = ram.rdata;
+            seg_7_0     = segc.digit_0;
+            seg_7_1     = segc.digit_1;
+            seg_7_2     = segc.digit_2;
+            seg_7_3     = segc.digit_3;
+            seg_7_4     = segc.digit_4;
+            seg_7_5     = segc.digit_5;
         }
        ~mode_syn[1] : {
-            ram.addr  = core.daddr;
-            ram.wdata = core.wdata;
-            seg_7_0 = 8'b0100_0000;
-            seg_7_1 = 8'b0100_0000;
-            seg_7_2 = 8'b0100_0000;
-            seg_7_3 = 8'b0100_0000;
-            seg_7_4 = 8'b0100_0000;
-            seg_7_5 = 8'b0100_0000;
+            ram.addr    = core.daddr;
+            core.rdata  = ram.rdata;
+            seg_7_0     = 8'b0100_0000;
+            seg_7_1     = 8'b0100_0000;
+            seg_7_2     = 8'b0100_0000;
+            seg_7_3     = 8'b0100_0000;
+            seg_7_4     = 8'b0100_0000;
+            seg_7_5     = 8'b0100_0000;
         }
     }
 }
