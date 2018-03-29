@@ -1,5 +1,5 @@
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Thu Mar 15 23:58:27 2018
+/*Produced by NSL Core(version=20180302), IP ARCH, Inc. Thu Mar 22 19:59:21 2018
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
@@ -79,10 +79,10 @@ digit_dec dec_1 (.m_clock(m_clock), .rst_n(rst_n), .seg(_dec_1_seg), .data(_dec_
    assign  digit_5 = _dec_5_seg;
 endmodule
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Thu Mar 15 23:58:27 2018
+/*Produced by NSL Core(version=20180302), IP ARCH, Inc. Thu Mar 22 19:59:21 2018
  Licensed to :EVALUATION USER*/
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Thu Mar 15 23:58:27 2018
+/*Produced by NSL Core(version=20180302), IP ARCH, Inc. Thu Mar 22 19:59:21 2018
  Licensed to :EVALUATION USER*/
 /*
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
@@ -146,5 +146,5 @@ module digit_dec ( rst_n , m_clock , data , seg );
     ((_net_0)?8'b01110001:8'b0);
 endmodule
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Thu Mar 15 23:58:27 2018
+/*Produced by NSL Core(version=20180302), IP ARCH, Inc. Thu Mar 22 19:59:21 2018
  Licensed to :EVALUATION USER*/

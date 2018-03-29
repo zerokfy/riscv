@@ -22,8 +22,8 @@ module rv32i_core {
                     , tmp[32]
                     , ben[2]
                     , odr[8]
-                    , ecall
-                    , ebreak
+                    , ecall  = 1'b0
+                    , ebreak = 1'b0
                     ;
     proc_name         ift(pc)
                     , dec()
@@ -41,17 +41,10 @@ module rv32i_core {
                     ;
 
     {
-        rst_d := rst_n;
-        any {
-            ~rst_d && rst_n : ift(INST_ADDR);
-        }
-        if(~rst_n) {
-            ecall  := 1'b0;
-            ebreak := 1'b0;
-        } else {
-            ecall_led  = ecall;
-            ebreak_led = ebreak;
-        }
+        rst_d      := rst_n;
+        ecall_led   = ecall;
+        ebreak_led  = ebreak;
+        if(~rst_d&&rst_n) ift(INST_ADDR);
     }
 
     proc ift {
@@ -189,14 +182,14 @@ module rv32i_core {
         order == LH : {
             dmem_r();
             daddr = gr.rs1(rs1) + 32#imm12;
-            if(daddr[1:0] == 2'h3)  meml_2(order, rd, daddr);
-            else                    meml_1(order, rd, daddr[1:0]);
+            if(&daddr[1:0])     meml_2(order, rd, daddr);
+            else                meml_1(order, rd, daddr[1:0]);
         }
         order == LW : {
             dmem_r();
             daddr = gr.rs1(rs1) + 32#imm12;
-            if(daddr[1:0] == 2'h0)  meml_1(order, rd, daddr[1:0]);
-            else                    meml_2(order, rd, daddr);
+            if(|daddr[1:0])     meml_2(order, rd, daddr);
+            else                meml_1(order, rd, daddr[1:0]);
         }
         order == LBU : {
             dmem_r();
@@ -206,8 +199,8 @@ module rv32i_core {
         order == LHU : {
             dmem_r();
             daddr = gr.rs1(rs1) + 32'imm12;
-            if(daddr[1:0] == 2'h0)  meml_1(order, rd, daddr[1:0]);
-            else                    meml_2(order, rd, daddr);
+            if(|daddr[1:0])     meml_2(order, rd, daddr);
+            else                meml_1(order, rd, daddr[1:0]);
         }
         order == CSRRW : {
             gr.rd(rd, 32'h0);

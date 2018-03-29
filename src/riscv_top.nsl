@@ -8,10 +8,20 @@ module riscv_top {
     seg7_ctrl     segc;
 
     reg           mode_syn[2]
+                , rst_d[2] = 2'b00
+                ;
+    wire          rst_wire
                 ;
 
 
     {
+        rst_d      := {rst_d[0], 1'b1};
+        rst_wire    = rst_d[1];
+        core.rst_n  = rst_wire;
+        rom.rst_n   = rst_wire;
+        ram.rst_n   = rst_wire;
+        segc.rst_n  = rst_wire;
+
         mode_syn   := {mode_syn[0], MODE};
 
         rom.addr    = core.iaddr;

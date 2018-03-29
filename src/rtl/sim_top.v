@@ -3,7 +3,7 @@
 `default_nettype wire
 
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Thu Mar 15 23:58:27 2018
+/*Produced by NSL Core(version=20180302), IP ARCH, Inc. Thu Mar 22 19:59:21 2018
  Licensed to :EVALUATION USER*/
 
 // synthesis translate_off
@@ -12,9 +12,9 @@
  DO NOT USE ANY PART OF THIS FILE FOR COMMERCIAL PRODUCTS. 
 */
 
-module sim_top ( p_reset , m_clock );
-  input p_reset, m_clock;
-  wire p_reset, m_clock;
+module sim_top ( rst_n , m_clock );
+  input rst_n, m_clock;
+  wire rst_n, m_clock;
   reg [31:0] sim_time;
   wire _logic_top_MODE;
   wire [7:0] _logic_top_seg_7_0;
@@ -25,12 +25,12 @@ module sim_top ( p_reset , m_clock );
   wire [7:0] _logic_top_seg_7_5;
   wire _logic_top_ecall;
   wire _logic_top_ebreak;
-  wire _logic_top_p_reset;
+  wire _logic_top_rst_n;
   wire _logic_top_m_clock;
-riscv_top logic_top (.m_clock(m_clock), .p_reset(p_reset), .seg_7_0(_logic_top_seg_7_0), .seg_7_1(_logic_top_seg_7_1), .seg_7_2(_logic_top_seg_7_2), .seg_7_3(_logic_top_seg_7_3), .seg_7_4(_logic_top_seg_7_4), .seg_7_5(_logic_top_seg_7_5), .ecall(_logic_top_ecall), .ebreak(_logic_top_ebreak), .MODE(_logic_top_MODE));
+riscv_top logic_top (.m_clock(m_clock), .rst_n(rst_n), .seg_7_0(_logic_top_seg_7_0), .seg_7_1(_logic_top_seg_7_1), .seg_7_2(_logic_top_seg_7_2), .seg_7_3(_logic_top_seg_7_3), .seg_7_4(_logic_top_seg_7_4), .seg_7_5(_logic_top_seg_7_5), .ecall(_logic_top_ecall), .ebreak(_logic_top_ebreak), .MODE(_logic_top_MODE));
 
    assign  _logic_top_MODE = 1'b0;
-   assign  _logic_top_p_reset = p_reset;
+   assign  _logic_top_rst_n = rst_n;
    assign  _logic_top_m_clock = m_clock;
 always @(posedge m_clock)
   begin
@@ -39,9 +39,9 @@ always @(posedge m_clock)
     $stop;
     end
   end
-always @(posedge m_clock or posedge p_reset)
+always @(posedge m_clock or negedge rst_n)
   begin
-if (p_reset)
+if (~rst_n)
      sim_time <= 32'b00000000000000000000000000000000;
 else   sim_time <= (sim_time+32'b00000000000000000000000000000001);
 end
@@ -50,10 +50,10 @@ endmodule
 // synthesis translate_on
 // synopsys translate_on
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Thu Mar 15 23:58:27 2018
+/*Produced by NSL Core(version=20180302), IP ARCH, Inc. Thu Mar 22 19:59:21 2018
  Licensed to :EVALUATION USER*/
 
-/*Produced by NSL Core(version=20171221), IP ARCH, Inc. Thu Mar 15 23:58:27 2018
+/*Produced by NSL Core(version=20180302), IP ARCH, Inc. Thu Mar 22 19:59:21 2018
  Licensed to :EVALUATION USER*/
 
 //synthesis translate_off
@@ -64,11 +64,11 @@ module tb;
 	parameter tCYC=2;
 	parameter tPD=(tCYC/10);
 
-	reg p_reset;
+	reg rst_n;
 	reg m_clock;
 
 	sim_top sim_top_instance(
-		.p_reset(p_reset),
+		.rst_n(rst_n),
 		.m_clock(m_clock)
 	);
 
@@ -81,10 +81,10 @@ module tb;
 
 	initial begin
 		#(tPD)
-			p_reset = 1;
+			rst_n = 0;
 			m_clock = 0;
 		#(tCYC)
-			p_reset = 0;
+			rst_n = 1;
 	end
 
 endmodule
