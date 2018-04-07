@@ -7,9 +7,9 @@ module sim_top {
     reg         sim_time[32] = 32'h0;
 
     {
-        logic_top.MODE = 1'b0;
         sim_time++;
-        if(logic_top.ecall)   _stop();
+        if(sim_time == 32'(0d10000))
+            _stop();
     }
 }
 

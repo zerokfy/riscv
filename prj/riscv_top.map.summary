@@ -1,0 +1,10 @@
+Analysis & Synthesis Status : Successful - Sat Apr  7 14:30:14 2018
+Quartus II Version : 11.0 Build 208 07/03/2011 SP 1 SJ Web Edition
+Revision Name : riscv_top
+Top-level Entity Name : riscv_top
+Family : Cyclone
+Total logic elements : 4,991
+Total pins : 10
+Total virtual pins : 0
+Total memory bits : 161,792
+Total PLLs : 0

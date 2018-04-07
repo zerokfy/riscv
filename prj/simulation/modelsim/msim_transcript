@@ -1,0 +1,144 @@
+# do riscv_top_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying /opt/altera/11.0sp1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied /opt/altera/11.0sp1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/src/rtl {/home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v}
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module rv32i_core
+# 
+# Top level modules:
+# 	rv32i_core
+# vlog -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/src/rtl {/home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v}
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module rom_wrap
+# 
+# Top level modules:
+# 	rom_wrap
+# vlog -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/src/rtl {/home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v}
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module riscv_top
+# 
+# Top level modules:
+# 	riscv_top
+# vlog -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/src/rtl {/home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v}
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module ram_wrap
+# 
+# Top level modules:
+# 	ram_wrap
+# vlog -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/src/rtl {/home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v}
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module gen_gr
+# 
+# Top level modules:
+# 	gen_gr
+# vlog -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/ip/RAM {/home/zerokfy/work/repo/riscv/ip/RAM/data_ram.v}
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module data_ram
+# 
+# Top level modules:
+# 	data_ram
+# vlog -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/ip/ROM {/home/zerokfy/work/repo/riscv/ip/ROM/code_rom.v}
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module code_rom
+# 
+# Top level modules:
+# 	code_rom
+# 
+cd /home/zerokfy/work/repo/riscv/prj
+# reading /opt/altera/11.0sp1/modelsim_ase/linuxaloem/../modelsim.ini
+vlib work
+vmap work work
+# Copying /opt/altera/11.0sp1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied /opt/altera/11.0sp1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module gen_gr
+# 
+# Top level modules:
+# 	gen_gr
+vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module ram_wrap
+# 
+# Top level modules:
+# 	ram_wrap
+vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module riscv_top
+# 
+# Top level modules:
+# 	riscv_top
+vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module rom_wrap
+# 
+# Top level modules:
+# 	rom_wrap
+vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module rv32i_core
+# 
+# Top level modules:
+# 	rv32i_core
+vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module seg7_ctrl
+# -- Compiling module digit_dec
+# 
+# Top level modules:
+# 	seg7_ctrl
+vlog -reportprogress 30 -work work /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module sim_top
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/ip/RAM/data_ram.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module data_ram
+# 
+# Top level modules:
+# 	data_ram
+vlog -reportprogress 300 -work work /home/zerokfy/work/repo/riscv/ip/ROM/code_rom.v
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module code_rom
+# 
+# Top level modules:
+# 	code_rom
+vsim -L altera_mf_ver -L altera_mf -do riscv_top_run_msim_rtl_verilog.do -l msim_transcript -i work.tb
+# vsim -L altera_mf_ver -L altera_mf -do riscv_top_run_msim_rtl_verilog.do -l msim_transcript -i work.tb 
+# Loading work.tb
+# Loading work.sim_top
+# Loading work.riscv_top
+# Loading work.ram_wrap
+# Loading work.data_ram
+# Loading altera_mf_ver.altsyncram
+# Loading altera_mf_ver.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf_ver.ALTERA_MF_MEMORY_INITIALIZATION
+# Loading work.rom_wrap
+# Loading work.code_rom
+# Loading work.rv32i_core
+# Loading work.gen_gr
+# riscv_top_run_msim_rtl_verilog.do 
+# invalid command name "riscv_top_run_msim_rtl_verilog.do"
+restart
+run -all
+# ** Warning: (vsim-3534) [FOFIR] - Failed to open file "riscv_top.mif" for reading.
+# No such file or directory. (errno = ENOENT)    : /opt/altera/11.0sp1/modelsim_ase/linuxaloem/../altera/verilog/src/altera_mf.v(191)
+#    Time: 0 ps  Iteration: 0  Instance: /tb/sim_top_instance/logic_top/rom/rom/altsyncram_component
+# ERROR: cannot read riscv_top.mif.
+# ** Warning: (vsim-7) Failed to open readmem file "riscv_top.ver" in read mode.
+# No such file or directory. (errno = ENOENT)    : /opt/altera/11.0sp1/modelsim_ase/linuxaloem/../altera/verilog/src/altera_mf.v(44994)
+#    Time: 0 ps  Iteration: 0  Instance: /tb/sim_top_instance/logic_top/rom/rom/altsyncram_component
+# Break in Module sim_top at /home/zerokfy/work/repo/riscv/src/rtl/sim_top.v line 35

@@ -1,0 +1,30 @@
+#include    "declare.inc"
+
+module ram_cascade {
+    data_ram    ram0, ram1, ram2, ram3;
+
+    {
+        ram0.clock   = clk_20M;
+        ram1.clock   = clk_20M;
+        ram2.clock   = clk_20M;
+        ram3.clock   = clk_20M;
+
+        ram0.address = {addr[11:2], 2'h0};
+        ram1.address = {addr[11:2], 2'h1};
+        ram2.address = {addr[11:2], 2'h2};
+        ram3.address = {addr[11:2], 2'h3};
+
+        rdata       = {ram3.q, ram2.q, ram1.q, ram0.q};
+
+        ram3.data = wdata[31:24];
+        ram2.data = wdata[23:16];
+        ram1.data = wdata[15:8];
+        ram0.data = wdata[7:0];
+
+        ram3.wren = wren[3];
+        ram2.wren = wren[2];
+        ram1.wren = wren[1];
+        ram0.wren = wren[0];
+    }
+}
+

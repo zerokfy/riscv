@@ -1,0 +1,170 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/home/zerokfy/work/repo/riscv/prj
+vcode_rom
+!s100 8omoH6_98zFMBIKd2h]?b0
+ISb;RlZEL]D;JLGg4HNTSK2
+VR[aJmzMVKFQHOm5;eQ[aQ1
+Z1 d/home/zerokfy/work/repo/riscv/prj
+w1522489113
+8/home/zerokfy/work/repo/riscv/ip/ROM/code_rom.v
+F/home/zerokfy/work/repo/riscv/ip/ROM/code_rom.v
+L0 39
+Z2 OV;L;6.6d;45
+r1
+!s85 0
+31
+!s101 -O0
+Z3 o-work work -O0
+vdata_ram
+Z4 I8SWk@P4]n5_7XagW;?H>`3
+Z5 V4KA=Qh@]hbfQdSmfi6aUk3
+R1
+Z6 w1522489627
+Z7 8/home/zerokfy/work/repo/riscv/ip/RAM/data_ram.v
+Z8 F/home/zerokfy/work/repo/riscv/ip/RAM/data_ram.v
+L0 39
+R2
+r1
+31
+R3
+Z9 !s100 2O^i2EJg]JeTADL5ARcAJ2
+!s85 0
+!s101 -O0
+vdigit_dec
+Z10 IYkSDl<GJYkI2lc[HFPOkM2
+Z11 VAQdnDIT:m:l8;8Zg?02;Z2
+R1
+Z12 w1522503763
+Z13 8/home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
+Z14 F/home/zerokfy/work/repo/riscv/src/rtl/seg7_ctrl.v
+L0 91
+R2
+r1
+31
+R3
+Z15 !s100 [ooKH2[fDQYY0[HFSl`C_0
+!s85 0
+!s101 -O0
+vgen_gr
+Z16 IAA4C:B8NbmRUZAe;?z8Fl0
+Z17 VOR^JfI>P=_gk20VbJRDzI1
+R1
+R12
+Z18 8/home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
+Z19 F/home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
+L0 8
+R2
+r1
+31
+R3
+Z20 !s100 ADRb6iF9LfzWo?nJ;0=4H1
+!s85 0
+!s101 -O0
+vram_wrap
+Z21 IAz8WDKCOdM0L2>F0ZdjjY2
+Z22 Vfk>SO`Vi<S=n2Dc=]FegB0
+R1
+R12
+Z23 8/home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
+Z24 F/home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
+L0 8
+R2
+r1
+31
+R3
+Z25 !s100 5cMH7IPWAUfOa9<8XA8513
+!s85 0
+!s101 -O0
+vriscv_top
+Z26 I2:;8NXffD2O2eW9j]=Kn:1
+Z27 V7LQc[Ibke]>Inm7n@5?@23
+R1
+R12
+Z28 8/home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
+Z29 F/home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
+L0 8
+R2
+r1
+31
+R3
+Z30 !s100 1hnX>ezF2mJf[1fNd:IM]1
+!s85 0
+!s101 -O0
+vrom_wrap
+Z31 IhV<XE0M^7d>RFLbzfK3TP0
+Z32 VcW`=mhcWgTBIhRe9`ggFQ1
+R1
+R12
+Z33 8/home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
+Z34 F/home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
+L0 8
+R2
+r1
+31
+R3
+Z35 !s100 oMTJgHo5Km7cQi^n6l9U23
+!s85 0
+!s101 -O0
+vrv32i_core
+Z36 IkN6GVZ1@j];;J?>@5FnLV3
+Z37 VP9Nen9b>7a5ZGb]O_Hi7l0
+R1
+R12
+Z38 8/home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
+Z39 F/home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
+L0 8
+R2
+r1
+31
+R3
+Z40 !s100 `c2O4WVSd;1QcCI^kjiGa2
+!s85 0
+!s101 -O0
+vseg7_ctrl
+Z41 Ik2WH1V19ZCc=?<ZDK`gCK3
+Z42 V6fR]3Q3NBLdMQceMTI=H^3
+R1
+R12
+R13
+R14
+L0 8
+R2
+r1
+31
+R3
+Z43 !s100 AbN?f9BT`Rl^z8CdTkzo[2
+!s85 0
+!s101 -O0
+vsim_top
+Z44 I6<neLkJk7ObeQ=J_a:H:G0
+Z45 VlCh:mgO0M]Y_JX^U[WA5:0
+R1
+R12
+Z46 8/home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
+Z47 F/home/zerokfy/work/repo/riscv/src/rtl/sim_top.v
+L0 15
+R2
+r1
+31
+R3
+Z48 !s100 fm47U0ba78Cg8F34gmi371
+!s85 0
+!s101 -O0
+vtb
+Z49 IEPlVM@nbz=ShkoYW1ZE^f1
+Z50 V0?d@F1b;Z2Nglh=MTJh=02
+R1
+R12
+R46
+R47
+L0 59
+R2
+r1
+31
+R3
+Z51 !s100 STlj_dPzNae_lOz;KEahh2
+!s85 0
+!s101 -O0

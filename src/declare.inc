@@ -1,14 +1,5 @@
 declare riscv_top {
-    input         MODE
-                ;
-    output        seg_7_0[8]
-                , seg_7_1[8]
-                , seg_7_2[8]
-                , seg_7_3[8]
-                , seg_7_4[8]
-                , seg_7_5[8]
-                , ecall
-                , ebreak
+    output        led[8]
                 ;
 }
 
@@ -27,12 +18,7 @@ declare rv32i_core {
                 ;
 }
 
-declare rom_wrap {
-    input       addr[32];
-    output      rdata[32];
-}
-
-declare CodeROM interface {
+declare code_rom interface {
     input         clock
                 , address[10]
                 ;
@@ -40,42 +26,23 @@ declare CodeROM interface {
                 ;
 }
 
-declare ram_wrap {
+declare ram_cascade {
     input         addr[32]
                 , wdata[32]
-                , rden[4]
                 , wren[4]
                 ;
     output        rdata[32]
                 ;
 }
 
-declare OnChipRAM interface {
+declare data_ram interface {
     input         clock
                 , address[12]
                 , data[8]
-                , rden
                 , wren
                 ;
     output        q[8]
                 ;
-}
-
-declare seg7_ctrl {
-    input         data[32]
-                ;
-    output        digit_0[8]
-                , digit_1[8]
-                , digit_2[8]
-                , digit_3[8]
-                , digit_4[8]
-                , digit_5[8]
-                ;
-}
-
-declare digit_dec {
-    input       data[4];
-    output      seg[8];
 }
 
 declare gen_gr {
@@ -90,5 +57,14 @@ declare gen_gr {
     func_in     rs1(rs1_n):s1_rd;
     func_in     rs2(rs2_n):s2_rd;
     func_in     rd(rd_n, wd);
+}
+
+declare PLL interface {
+    input       areset
+              , inclk0
+              ;
+    output      c0
+              , locked
+              ;
 }
 

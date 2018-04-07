@@ -1,0 +1,117 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/home/zerokfy/work/repo/riscv/prj/simulation/modelsim
+vcode_rom
+!s100 8omoH6_98zFMBIKd2h]?b0
+I^K3C>[AL<c`B>Uz3Cz9me0
+VR[aJmzMVKFQHOm5;eQ[aQ1
+Z1 d/home/zerokfy/work/repo/riscv/prj/simulation/modelsim
+w1522489113
+8/home/zerokfy/work/repo/riscv/ip/ROM/code_rom.v
+F/home/zerokfy/work/repo/riscv/ip/ROM/code_rom.v
+L0 39
+Z2 OV;L;6.6d;45
+r1
+!s85 0
+31
+!s101 -O0
+Z3 o-vlog01compat -work work -O0
+!s92 -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/ip/ROM -O0
+vdata_ram
+ImOa6clk^1A4OVkCgkWDTD3
+V4KA=Qh@]hbfQdSmfi6aUk3
+R1
+w1522489627
+8/home/zerokfy/work/repo/riscv/ip/RAM/data_ram.v
+F/home/zerokfy/work/repo/riscv/ip/RAM/data_ram.v
+L0 39
+R2
+r1
+31
+R3
+!s100 2O^i2EJg]JeTADL5ARcAJ2
+!s85 0
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/ip/RAM -O0
+vgen_gr
+I`NKQzP8X[g^N=[UFd83;H1
+VOR^JfI>P=_gk20VbJRDzI1
+R1
+Z4 w1522503763
+8/home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
+F/home/zerokfy/work/repo/riscv/src/rtl/gen_gr.v
+L0 8
+R2
+r1
+31
+R3
+Z5 !s92 -vlog01compat -work work +incdir+/home/zerokfy/work/repo/riscv/src/rtl -O0
+!s100 ADRb6iF9LfzWo?nJ;0=4H1
+!s85 0
+!s101 -O0
+vram_wrap
+IN6E_g9I9;[K6FjHiYA7Af3
+Vfk>SO`Vi<S=n2Dc=]FegB0
+R1
+R4
+8/home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
+F/home/zerokfy/work/repo/riscv/src/rtl/ram_wrap.v
+L0 8
+R2
+r1
+31
+R3
+R5
+!s100 5cMH7IPWAUfOa9<8XA8513
+!s85 0
+!s101 -O0
+vriscv_top
+ILBZ:aQNIYO59FOFecYXAF3
+V7LQc[Ibke]>Inm7n@5?@23
+R1
+R4
+8/home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
+F/home/zerokfy/work/repo/riscv/src/rtl/riscv_top.v
+L0 8
+R2
+r1
+31
+R3
+R5
+!s100 1hnX>ezF2mJf[1fNd:IM]1
+!s85 0
+!s101 -O0
+vrom_wrap
+IbIH>Ej73EL9dU=JTEhM]=1
+VcW`=mhcWgTBIhRe9`ggFQ1
+R1
+R4
+8/home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
+F/home/zerokfy/work/repo/riscv/src/rtl/rom_wrap.v
+L0 8
+R2
+r1
+31
+R3
+R5
+!s100 oMTJgHo5Km7cQi^n6l9U23
+!s85 0
+!s101 -O0
+vrv32i_core
+I@967L4hkS422LR2CTRXl21
+VP9Nen9b>7a5ZGb]O_Hi7l0
+R1
+R4
+8/home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
+F/home/zerokfy/work/repo/riscv/src/rtl/rv32i_core.v
+L0 8
+R2
+r1
+31
+R3
+R5
+!s100 `c2O4WVSd;1QcCI^kjiGa2
+!s85 0
+!s101 -O0

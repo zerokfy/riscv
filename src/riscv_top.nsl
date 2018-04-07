@@ -2,69 +2,58 @@
 
 module riscv_top {
 
-    rv32i_core    core;
-    rom_wrap      rom;
-    ram_wrap      ram;
-    seg7_ctrl     segc;
+    rv32i_core      core;
+    code_rom        rom;
+    ram_cascade     ram;
+    PLL             pll;
 
-    reg           mode_syn[2]
-                , rst_d[2] = 2'b00
+    reg           rst_d[2] = 2'b00
+                //, sw_d0[2]
+                //, sw_d1[2]
+                //, sw_d2[2]
+                //, sw_d3[2]
+                , led_buf[8] = 8'h00
                 ;
     wire          rst_wire
+                , clk_wire
                 ;
 
 
     {
+        //  PLL
+        pll.inclk0   = clk_50M;
+        core.clk_20M = pll.c0;
+        rom.clock    = pll.c0;
+        ram.clk_20M  = pll.c0;
+
+        //  reset distribution
         rst_d      := {rst_d[0], 1'b1};
         rst_wire    = rst_d[1];
-        core.rst_n  = rst_wire;
-        rom.rst_n   = rst_wire;
-        ram.rst_n   = rst_wire;
-        segc.rst_n  = rst_wire;
+        pll.areset  = rst_wire;
+        core.rst_n  = pll.locked;
+        ram.rst_n   = pll.locked;
 
-        mode_syn   := {mode_syn[0], MODE};
+        //  connection to ROM
+        rom.address = core.iaddr;
+        core.idata  = rom.q;
 
-        rom.addr    = core.iaddr;
-        core.idata  = rom.rdata;
-
+        //  connection to RAM
+        ram.addr    = core.daddr;
+        core.rdata  = ram.rdata;
         ram.wdata   = core.wdata;
 
-        segc.data   = ram.rdata;
-        ecall       = core.ecall_led;
-        ebreak      = core.ebreak_led;
+        //  led output
+        led         = led_buf;
+        if(core.daddr == 0x00001000)
+            led_buf := ram.rdata[7:0];
     }
 
     func core.dmem_w {
         ram.wren = 4'hF;
-        ram.rden = 4'h0;
     }
 
     func core.dmem_r {
         ram.wren = 4'h0;
-        ram.rden = 4'hF;
-    }
-
-    any {
-        mode_syn[1] : {
-            ram.addr    = 0x00000200;
-            segc.data   = ram.rdata;
-            seg_7_0     = segc.digit_0;
-            seg_7_1     = segc.digit_1;
-            seg_7_2     = segc.digit_2;
-            seg_7_3     = segc.digit_3;
-            seg_7_4     = segc.digit_4;
-            seg_7_5     = segc.digit_5;
-        }
-       ~mode_syn[1] : {
-            ram.addr    = core.daddr;
-            core.rdata  = ram.rdata;
-            seg_7_0     = 8'b0100_0000;
-            seg_7_1     = 8'b0100_0000;
-            seg_7_2     = 8'b0100_0000;
-            seg_7_3     = 8'b0100_0000;
-            seg_7_4     = 8'b0100_0000;
-            seg_7_5     = 8'b0100_0000;
-        }
     }
 }
 

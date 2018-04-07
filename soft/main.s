@@ -8,18 +8,20 @@ main:
 	addi	sp,sp,-32
 	sw	s0,28(sp)
 	addi	s0,sp,32
-	li	a5,10
-	sw	a5,-20(s0)
-	li	a5,20
-	sw	a5,-24(s0)
-	li	a5,512
-	lw	a3,-20(s0)
-	lw	a4,-24(s0)
-	add	a4,a3,a4
-	sw	a4,0(a5)
-	nop
-	lw	s0,28(sp)
-	addi	sp,sp,32
-	jr	ra
+	sw	zero,-20(s0)
+	sw	zero,-24(s0)
+.L3:
+	lw	a5,-20(s0)
+	addi	a4,a5,1
+	sw	a4,-20(s0)
+	li	a4,50
+	bne	a5,a4,.L3
+	lw	a5,-24(s0)
+	addi	a4,a5,1
+	sw	a4,-24(s0)
+	li	a4,4096
+	sw	a5,0(a4)
+	sw	zero,-20(s0)
+	j	.L3
 	.size	main, .-main
 	.ident	"GCC: (GNU) 7.2.0"
