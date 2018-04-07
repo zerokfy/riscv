@@ -15,7 +15,6 @@ module riscv_top {
                 , led_buf[8] = 8'h00
                 ;
     wire          rst_wire
-                , clk_wire
                 ;
 
 
@@ -31,10 +30,9 @@ module riscv_top {
         rst_wire    = rst_d[1];
         pll.areset  = rst_wire;
         core.rst_n  = pll.locked;
-        ram.rst_n   = pll.locked;
 
         //  connection to ROM
-        rom.address = core.iaddr;
+        rom.address = core.iaddr[9:0];
         core.idata  = rom.q;
 
         //  connection to RAM

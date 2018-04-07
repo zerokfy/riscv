@@ -3,8 +3,10 @@ declare riscv_top {
                 ;
 }
 
-declare rv32i_core {
-    input         idata[32]
+declare rv32i_core interface {
+    input         clk_20M
+                , rst_n
+                , idata[32]
                 , rdata[32]
                 ;
     output        iaddr[32]
@@ -26,8 +28,9 @@ declare code_rom interface {
                 ;
 }
 
-declare ram_cascade {
-    input         addr[32]
+declare ram_cascade interface {
+    input         clk_20M
+                , addr[32]
                 , wdata[32]
                 , wren[4]
                 ;
